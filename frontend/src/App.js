@@ -3,6 +3,9 @@ import './App.css';
 import {Routes, Route, Outlet, Link} from 'react-router-dom';
 import Edit from './edit';
 import MainPage from "./main"
+import Login from './login';
+import Template from "./template"
+
 
 
 export default function App() {
@@ -12,7 +15,9 @@ export default function App() {
           <Routes>
               <Route path="/" element={<Layout/>}>
               <Route index element={<MainPage/> } />
-              <Route path="Edit" element={<Edit/> } />
+              <Route path="Edit" element={<Edit/>} />
+              <Route path="Template" element={<Template/>}/>
+              <Route path="Login" element={<Login/>}/>
               <Route path= "*" element={<Bad count={count} setCount ={setCount}/>} />
               </Route>
           </Routes>
