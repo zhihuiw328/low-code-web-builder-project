@@ -1,15 +1,17 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import {Routes, Route, Outlet, Link} from 'react-router-dom';
 import Edit from './edit';
 import MainPage from "./main"
 import Login from './login';
 import Template from "./template"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
 
 
+const LOGINFLAG = true;
 
 export default function App() {
-  const [count, setCount] = useState(0);
   return(
       <div>
           <Routes>
@@ -18,7 +20,7 @@ export default function App() {
               <Route path="Edit" element={<Edit/>} />
               <Route path="Template" element={<Template/>}/>
               <Route path="Login" element={<Login/>}/>
-              <Route path= "*" element={<Bad count={count} setCount ={setCount}/>} />
+              <Route path= "*" element={<Bad/>} />
               </Route>
           </Routes>
       </div>
@@ -26,20 +28,53 @@ export default function App() {
 };
 
 function Layout() {
+  // May need a global variable
+  const [loginFlag, setLoginFlag] = useState(LOGINFLAG);
+  let button = <Link to ="/Login" className ="header-word" >Login</Link>;
+
+  // After login, the login button should shows a person logo
+  // Before login, shows text 'login'
+  // useEffect(() => {
+    if (loginFlag === true) {
+      button = <Link to ="/Login" className ="header-word" >
+                  <FontAwesomeIcon icon={faUser} size="2x"/>
+                </Link>;
+    }  else {
+      button = <Link to ="/Login" className ="header-word" >Login</Link>;
+    }
+  // }, [loginFlag]);
+
+
   return (
       <div>
-          <Link to ="/">Home</Link>
+          <div className = 'nav'>
+                <div className = 'item'>
+                    <Link to ="/" className ="header-word">Home</Link>
+                </div>
+                <div className = 'item'>
+                    <Link to ="/Edit" className ="header-word">Edit</Link>
+                </div>
+                
+                <div className = 'item'>
+                    <Link to ="/Template" className ="header-word">Template</Link>
+                </div>
+               
+                <div className = 'item-narrow'>
+                  {button}
+                </div>
+                
+            </div>
           <Outlet/>
+ 
+          <div className = 'footer'></div>
       </div>
     );
 }
 
-function Bad(props) {
+function Bad() {
   return (
       <div className ="body">
-        <h2>There is no info for this page, but do you know {props.count} people has already liked our website !</h2>
-        <h2>Click the button to be one of them!</h2>
-        <button onClick = {()=>props.setCount(props.count + 1)}>I Like this page</button>
+        <h2>There is no info for this page</h2>
         <p>
           <Link to="/"><h2>Go to the home page</h2></Link>
         </p>
