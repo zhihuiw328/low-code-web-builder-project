@@ -1,0 +1,22 @@
+
+.carousel {
+    overflow: hidden;
+    /* display: flex;
+    flex-wrap: nowrap;
+    background-color: green; */
+    /* height: 200px; */
+}
+
+.carousel-inner {
+    white-space: nowrap;
+    transition: transform 0.3s;
+    /* height: 200px; */
+    /* transform: transformX(-0%); */
+}
+
+.carousel-item {
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    background-color: blue;
+}
