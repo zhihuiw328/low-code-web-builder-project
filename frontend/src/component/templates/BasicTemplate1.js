@@ -18,4 +18,4 @@ function BasicTemplate1() {
   );
 }
 
-export default App;
+export default BasicTemplate1;
