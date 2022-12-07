@@ -22,6 +22,7 @@ class EditScreen extends React.Component {
     };
 
     this.handleClick = this.handleClick.bind(this);
+
     this.handleShowHideText = this.handleShowHideText.bind(this);
     this.handleHideText = this.handleHideText.bind(this);
     this.handleChangeText = this.handleChangeText.bind(this);
@@ -80,9 +81,12 @@ class EditScreen extends React.Component {
       <>
       <Modal show={this.state.showImage} onHide={this.handleCloseImage}>
         <Modal.Header closeButton>
-          <Modal.Title>Upload Your Graph below</Modal.Title>
+          <Modal.Title>Upload Your Image</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          {/* TODO */}
+          <label className="mx-3">Choose file: </label>
+          <input className="d-none" type="file" />
           
         </Modal.Body>
         <Modal.Footer>
@@ -100,7 +104,10 @@ class EditScreen extends React.Component {
           {/* Template */}
           <Col>
             <Card style={{width: '50rem'}}>
-              <BasicTemplate2 input={this.state.text}/>
+              <BasicTemplate2 
+              updateParentCallback={(update)=>
+                this.setState(state => ({text: update}))}/>
+              {/* input={this.state.text}/> */}
             </Card>  
           </Col>
 
