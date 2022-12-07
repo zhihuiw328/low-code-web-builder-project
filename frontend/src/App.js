@@ -11,12 +11,15 @@ const App = () => {
   return(
       <>
         <Header />
-          <Routes>
+        <div style={{ marginTop: 50 }}>
+        <Routes >
               <Route path="/" element={<MainScreen/>} />
               <Route path="/login" element={<LoginScreen/>} />
               <Route path="/template" element={<TemplateScreen/>} />
               <Route path="/edit" element={<EditScreen/>} />
           </Routes>
+        </div>
+          
         <Footer />
       </>
   )
