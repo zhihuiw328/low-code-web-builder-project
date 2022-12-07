@@ -16,15 +16,19 @@ class EditScreen extends React.Component {
     super(props);
     this.state = {
       pageTitle : "12345",
-      text : "USER INPUT TEXT",
-      show: false,
+      text : "",
+      showImage: false,
+      showText: false,
     };
 
     this.handleClick = this.handleClick.bind(this);
-    this.handleShow = this.handleShow.bind(this);
-    this.handleClear = this.handleClear.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.handleShowHideText = this.handleShowHideText.bind(this);
+    this.handleHideText = this.handleHideText.bind(this);
+    this.handleChangeText = this.handleChangeText.bind(this);
+    this.handleClearText = this.handleClearText.bind(this);
+
+    this.handleShowImage = this.handleShowImage.bind(this);
+    this.handleCloseImage = this.handleCloseImage.bind(this);
   }
 
   handleClick() {
@@ -33,25 +37,38 @@ class EditScreen extends React.Component {
     }));
   }
 
-  handleShow() {
+  handleShowImage() {
     this.setState(state => ({
-      show : true
+      showImage : true
     }));
   }
 
-  handleClose() {
+  handleCloseImage() {
     this.setState(state => ({
-      show : false
+      showImage : false
     }));
   }
 
-  handleClear(event) {
+
+  handleClearText(event) {
     this.setState(state => ({
       text: ""
     }));
   }
 
-  handleChange(event) {
+  handleHideText(event) {
+    this.setState(state => ({
+      showText : false
+    }));
+  }
+
+  handleShowHideText(event) {
+    this.setState(state => ({
+      showText : !this.state.showText
+    }));
+  }
+
+  handleChangeText(event) {
     this.setState(state => ({
       text: event.target.value
     }));
@@ -61,37 +78,28 @@ class EditScreen extends React.Component {
   render() {
     return (
       <>
-      <Modal show={this.state.show} onHide={this.handleClose}>
+      <Modal show={this.state.showImage} onHide={this.handleCloseImage}>
         <Modal.Header closeButton>
-          <Modal.Title>Enter your text below</Modal.Title>
+          <Modal.Title>Upload Your Graph below</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={this.handleSubmit}>
-              <Form.Control
-                type="txt"
-                placeholder={this.state.text}
-                value={this.state.text}
-                onChange={this.handleChange}
-              />
-          </Form>
+          
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="danger" onClick={this.handleClear}>
-            Clear
-          </Button>
-          <Button variant="success" onClick={this.handleClose}>
+          <Button variant="success" onClick={this.handleCloseImage}>
             Save
           </Button>
         </Modal.Footer>
       </Modal>  
+
       <Container>
-        <Row className='edit-button'>
+        <Row className='space'>
         </Row>
 
         <Row>
           {/* Template */}
           <Col>
-            <Card style={{ width: '50rem'}}>
+            <Card style={{width: '50rem'}}>
               <BasicTemplate2 input={this.state.text}/>
             </Card>  
           </Col>
@@ -99,11 +107,37 @@ class EditScreen extends React.Component {
           {/* Buttons for editing */}
           <Col>
             <Row className='edit-button'>
-              <Button variant="secondary">Edit Image DIV</Button>  
+              <Button variant="secondary" onClick={this.handleShowImage}>Edit Image DIV</Button>  
             </Row>
+
+
             <Row className='edit-button'>
-              <Button variant="secondary" onClick={this.handleShow}>Edit Text block</Button>  
+              <Button variant="secondary" onClick={this.handleShowHideText}>Edit Text block</Button>  
+              { this.state.showText
+                    
+              ? <Card className='input-text'>
+              <Form onSubmit={this.handleSubmit} show={this.state.show} onHide={this.handleClose}>
+                <Form.Control
+                  type="txt"
+                  placeholder={"Input Text Here"}
+                  value={this.state.text}
+                  onChange={this.handleChangeText}
+                />
+              </Form>
+              <Modal.Footer>
+                <Button variant="danger" onClick={this.handleClearText}>
+                  Clear
+                </Button>
+                <Button variant="success" onClick={this.handleShowHideText}>
+                  Submit
+                </Button>
+              </Modal.Footer>
+              </Card>
+              
+              : null
+          }
             </Row>
+
             <Row className='edit-button'>
               <Button variant="secondary">Button</Button>  
             </Row>
