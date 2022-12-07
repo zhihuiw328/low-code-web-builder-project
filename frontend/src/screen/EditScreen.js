@@ -8,7 +8,7 @@ import FormContainer from '../component/FormContainer';
 import ControlledCarousel from '../component/Carousel/Carousel';
 import BasicTemplate2 from '../component/templates/BasicTemplate2';
 import Card from 'react-bootstrap/Card';
-
+import * as ReactDOMServer from 'react-dom/server';
 
 
 class EditScreen extends React.Component {
@@ -19,6 +19,7 @@ class EditScreen extends React.Component {
       text : "",
       showImage: false,
       showText: false,
+      tmp: <div><h1>235456</h1></div>
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -78,9 +79,13 @@ class EditScreen extends React.Component {
     }));
   }
 
-
+  
 
   render() {
+    var templatePart = <BasicTemplate2 
+      updateParentCallback={(update)=>
+        this.setState(state => ({text: update}))}
+       input={this.state.text}/>
     return (
       <>
       <Modal show={this.state.showImage} onHide={this.handleCloseImage}>
@@ -95,7 +100,7 @@ class EditScreen extends React.Component {
                   value={this.state.text}
                   onChange={this.handleUploadImage}
                 />
-    
+        
         </Modal.Body>
         <Modal.Footer>
           <Button variant="success" onClick={this.handleCloseImage}>
@@ -105,6 +110,9 @@ class EditScreen extends React.Component {
       </Modal>  
 
       <Container>
+
+        {/* {TODO: Need backend first */}
+        {console.log(ReactDOMServer.renderToString(templatePart))}
         <Row className='space'>
         </Row>
 
@@ -112,11 +120,7 @@ class EditScreen extends React.Component {
           {/* Template */}
           <Col>
             <Card style={{width: '50rem'}}>
-              <BasicTemplate2 
-              updateParentCallback={(update)=>
-                this.setState(state => ({text: update}))}
-               input={this.state.text}/>
-     
+              {templatePart}
             </Card>  
           </Col>
 
