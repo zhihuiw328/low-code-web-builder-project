@@ -1,9 +1,11 @@
 .div_hover {
     background-color: #ffffff;
+    border: 1px;
 }
   
 .div_hover:hover {
     background-color: #a8daf5;
+    border: 1px;
 }
 
 .div_clicked {
