@@ -3,11 +3,12 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Header = () => {
   return (
     <>
-      <Navbar style={{backgroundColor:'#0c2852'}}>
+      <Navbar style={{backgroundColor:'#0c2852'}} fixed="top" >
       <Container>
         <Navbar.Brand className='ms-auto' href="/" style={{color: 'white'}}>Website Builder</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
