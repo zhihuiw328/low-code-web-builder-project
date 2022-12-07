@@ -22,7 +22,7 @@ class BasicTemplate2 extends React.Component {
     };
 
     componentDidUpdate(previousProps, previousState) {
-        if (previousProps.data !== this.props.data) {
+        if (previousProps.input !== this.props.input) {
             if (this.state.currentSection === "pageTitle") {
                 this.setState((state, props) => ({ pageTitle: props.input}));
                 console.log('updated.');
