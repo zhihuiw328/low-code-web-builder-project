@@ -2,23 +2,38 @@ import React, { useState } from 'react'
 import Figure from 'react-bootstrap/Figure';
 import Container from 'react-bootstrap/Container';
 import { Link } from 'react-router-dom'
-import { Form, Button, Row, Col } from 'react-bootstrap'
+import { Form, Button, Col, Row} from 'react-bootstrap'
 import FormContainer from '../component/FormContainer';
 import ControlledCarousel from '../component/Carousel/Carousel';
-import BasicTemplate1 from '../component/templates/BasicTemplate1';
+import BasicTemplate2 from '../component/templates/BasicTemplate2';
+import Card from 'react-bootstrap/Card';
 
 const EditScreen = () => {
   const [index, setIndex] = useState(0);
+  const userInputForm = {
+    pageTitle : "12345",
+    text : "USER INPUT TEXT",
+  }
 
   return (
-    <Container  fluid>
+    <Container fluid>
       <Row>
-        <Col>1 of 2</Col>
-        <Col>2 of 2</Col>
+      <Col>
+        <Card style={{ height: '28rem'}}>
+        <BasicTemplate2 userInput={userInputForm}/>
+        </Card>  
+        </Col>
+      <Col>
+        <Row>
+          s
+        </Row>
+        <Row>
+          s2
+        </Row>
+      </Col>
       </Row>
-      <Row>
-        <BasicTemplate1/>
-      </Row>
+    
+        
     </Container>
   )
 }
