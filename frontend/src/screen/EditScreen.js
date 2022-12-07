@@ -30,6 +30,7 @@ class EditScreen extends React.Component {
 
     this.handleShowImage = this.handleShowImage.bind(this);
     this.handleCloseImage = this.handleCloseImage.bind(this);
+    this.handleUploadImage = this.handleUploadImage.bind(this);
   }
 
   handleClick() {
@@ -38,10 +39,18 @@ class EditScreen extends React.Component {
     }));
   }
 
+
   handleShowImage() {
     this.setState(state => ({
       showImage : true
     }));
+  }
+
+  handleUploadImage() {
+    // this.setState(state => ({
+    //   showImage : true
+    // }));
+    console.log("upload")
   }
 
   handleCloseImage() {
@@ -73,7 +82,6 @@ class EditScreen extends React.Component {
     this.setState(state => ({
       text: event.target.value
     }));
-    console.log(this.state.text)
   }
 
   render() {
@@ -85,9 +93,14 @@ class EditScreen extends React.Component {
         </Modal.Header>
         <Modal.Body>
           {/* TODO */}
-          <label className="mx-3">Choose file: </label>
-          <input className="d-none" type="file" />
-          
+          <Form.Control
+                  label='Choose File'
+                  type="file"
+                  placeholder={"Input Text Here"}
+                  value={this.state.text}
+                  onChange={this.handleUploadImage}
+                />
+    
         </Modal.Body>
         <Modal.Footer>
           <Button variant="success" onClick={this.handleCloseImage}>
@@ -106,8 +119,9 @@ class EditScreen extends React.Component {
             <Card style={{width: '50rem'}}>
               <BasicTemplate2 
               updateParentCallback={(update)=>
-                this.setState(state => ({text: update}))}/>
-              {/* input={this.state.text}/> */}
+                this.setState(state => ({text: update}))}
+               input={this.state.text}/>
+     
             </Card>  
           </Col>
 
