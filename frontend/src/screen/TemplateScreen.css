@@ -1,0 +1,9 @@
+.templates {
+    display: block;
+    /* justify-content: center; */
+    margin: auto;
+    /* overflow-y: scroll; */
+    display: flex;
+    flex-wrap: no-wrap;
+    overflow-x: scroll;
+  }
