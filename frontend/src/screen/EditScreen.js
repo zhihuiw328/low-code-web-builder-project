@@ -32,6 +32,8 @@ class EditScreen extends React.Component {
     this.handleShowImage = this.handleShowImage.bind(this);
     this.handleCloseImage = this.handleCloseImage.bind(this);
     this.handleUploadImage = this.handleUploadImage.bind(this);
+
+    this.handleExport = this.handleExport.bind(this);
   }
 
   handleClick() {
@@ -79,6 +81,10 @@ class EditScreen extends React.Component {
     }));
   }
 
+  handleExport() {
+    // console.log(ReactDOMServer.renderToString(templatePart))
+    /* {TODO: Need backend first */
+  }
   
 
   render() {
@@ -97,7 +103,6 @@ class EditScreen extends React.Component {
           <Form.Control
                   label='Choose File'
                   type="file"
-                  value={this.state.text}
                   onChange={this.handleUploadImage}
                 />
         
@@ -110,9 +115,6 @@ class EditScreen extends React.Component {
       </Modal>  
 
       <Container>
-
-        {/* {TODO: Need backend first */}
-        {console.log(ReactDOMServer.renderToString(templatePart))}
         <Row className='space'>
         </Row>
 
@@ -149,7 +151,7 @@ class EditScreen extends React.Component {
                   Clear
                 </Button>
                 <Button variant="success" onClick={this.handleShowHideText}>
-                  Submit
+                  Return
                 </Button>
               </Modal.Footer>
               </Card>
@@ -181,9 +183,9 @@ class EditScreen extends React.Component {
         </Row>
 
         <Row  className="justify-content-md-center">
-          <Button variant="primary"style={{ width: '60rem'}}>Export Model as HTML/CSS</Button>  
+          <Button variant="primary" style={{ width: '60rem'}} onClick={()=>console.log(ReactDOMServer.renderToString(templatePart))}>Export Model as HTML/CSS</Button>  
         </Row>
-      
+
         <Row className='edit-button'>
         </Row>
           
@@ -191,13 +193,6 @@ class EditScreen extends React.Component {
       </>
     )
   }
-}
-
-function InputText(props) {
-  console.log("ss");
-  const [userText, setUserText] = useState(props.text);
-  setUserText("ssss");
-  props.text = userText;
 }
 
 export default EditScreen
