@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { View } from "react-native";
 
 function BasicTemplate2(props) {
     const userInput = props.userInput;
@@ -10,14 +11,18 @@ function BasicTemplate2(props) {
 
     return (
         <>
-        <div>
+        <View style={{
+            // Try setting `flexDirection` to `"row"`.
+            flexDirection: "column"
+            }}>
+                
         <h1>HELLO WORLD {userInput.pageTitle}</h1>
         <p>My first paragraph</p>
         <h2>Subeading 1</h2>
         <p>My first paragraph {userInput.text}</p>
         <h2>Subeading 1</h2>
         <p>My first paragraph</p>
-        </div>
+        </View>
 
         </>
     );
