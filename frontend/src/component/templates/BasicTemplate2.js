@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, View } from "react-native";
+import './BasicTemplate.css';
 
 class BasicTemplate2 extends React.Component {
     constructor(props) {
@@ -50,27 +51,27 @@ class BasicTemplate2 extends React.Component {
             
             <>
             <div>
-                <div onClick={(e) => this.handleSubmit(e, "pageTitle")}>
+                <div onClick={(e) => this.handleSubmit(e, "pageTitle")} className="div_hover">
                     <h1>{this.state.pageTitle}</h1>
                 </div>
 
-                <div onClick={(e) => this.handleSubmit(e, "titleText")}>
+                <div onClick={(e) => this.handleSubmit(e, "titleText")} className="div_hover">
                     <p>{this.state.titleText}</p>
                 </div>
 
-                <div onClick={(e) => this.handleSubmit(e, "subTitle1")}>
+                <div onClick={(e) => this.handleSubmit(e, "subTitle1")} className="div_hover">
                     <h2>{this.state.subTitle1}</h2>
                 </div>
 
-                <div onClick={(e) => this.handleSubmit(e, "subText1")}>
+                <div onClick={(e) => this.handleSubmit(e, "subText1")} className="div_hover">
                     <p>{this.state.subText1}</p>
                 </div>
 
-                <div onClick={(e) => this.handleSubmit(e, "subTitle2")}>
+                <div onClick={(e) => this.handleSubmit(e, "subTitle2")} className="div_hover">
                     <h2>{this.state.subTitle2}</h2>
                 </div>
 
-                <div onClick={(e) => this.handleSubmit(e, "subText2")}>
+                <div onClick={(e) => this.handleSubmit(e, "subText2")} className="div_hover">
                     <p>{this.state.subText2}</p>
                 </div>
             </div>
