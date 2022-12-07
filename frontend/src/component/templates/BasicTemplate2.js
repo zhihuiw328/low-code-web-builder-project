@@ -15,10 +15,31 @@ class BasicTemplate2 extends React.Component {
             subText2 : "SUBTEXT TEXT 2",
         };
     }
+    passTextToParent = (text) => {
+        this.props.updateParentCallback(text)
+    }
 
     handleSubmit(e, section) {
         console.log('You clicked submit.');
-        this.setState({currentSection:section});
+        if (this.state.currentSection == section) {
+            this.setState({currentSection:null});
+            this.passTextToParent("")
+        } else {
+            this.setState({currentSection:section});
+            if (section === "pageTitle") {
+                this.passTextToParent(this.state.pageTitle)
+            } else if (section === "titleText") {
+                this.passTextToParent(this.state.titleText)
+            } else if (section === "subTitle1") {
+                this.passTextToParent(this.state.subTitle1)
+            } else if (section === "subText1") {
+                this.passTextToParent(this.state.subText1)
+            } else if (section === "subTitle2") {
+                this.passTextToParent(this.state.subTitle2)
+            } else if (section === "subText2") {
+                this.passTextToParent(this.state.subText2)
+            }
+        }
         console.log(this.state.currentSection);
     };
 
