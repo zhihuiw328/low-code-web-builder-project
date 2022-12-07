@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Form, Button, Row, Col } from 'react-bootstrap'
 import FormContainer from '../component/FormContainer';
+import ControlledCarousel from '../component/Carousel/Carousel';
 
 const EditScreen = () => {
   const [index, setIndex] = useState(0);
