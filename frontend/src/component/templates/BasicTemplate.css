@@ -5,3 +5,8 @@
 .div_hover:hover {
     background-color: #a8daf5;
 }
+
+.div_clicked {
+    background-color: #a8daf5;
+    border: 1px solid #0943a7;
+}
