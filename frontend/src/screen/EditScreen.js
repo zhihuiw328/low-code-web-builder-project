@@ -20,9 +20,11 @@ class EditScreen extends React.Component {
       show: false,
     };
 
-    // This binding is necessary to make `this` work in the callback
     this.handleClick = this.handleClick.bind(this);
     this.handleShow = this.handleShow.bind(this);
+    this.handleClear = this.handleClear.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleClick() {
@@ -37,26 +39,50 @@ class EditScreen extends React.Component {
     }));
   }
 
+  handleClose() {
+    this.setState(state => ({
+      show : false
+    }));
+  }
+
+  handleClear(event) {
+    this.setState(state => ({
+      text: ""
+    }));
+  }
+
+  handleChange(event) {
+    this.setState(state => ({
+      text: event.target.value
+    }));
+    console.log(this.state.text)
+  }
+
   render() {
     return (
       <>
-      <Modal show={this.state.show}>
+      <Modal show={this.state.show} onHide={this.handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Enter your text</Modal.Title>
+          <Modal.Title>Enter your text below</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Email address</Form.Label>
+          <Form onSubmit={this.handleSubmit}>
               <Form.Control
-                type="email"
-                placeholder="name@example.com"
-                autoFocus
+                type="txt"
+                placeholder={this.state.text}
+                value={this.state.text}
+                onChange={this.handleChange}
               />
-            </Form.Group>
-            
           </Form>
         </Modal.Body>
+        <Modal.Footer>
+          <Button variant="danger" onClick={this.handleClear}>
+            Clear
+          </Button>
+          <Button variant="success" onClick={this.handleClose}>
+            Save
+          </Button>
+        </Modal.Footer>
       </Modal>  
       <Container>
         <Row className='edit-button'>
@@ -66,7 +92,7 @@ class EditScreen extends React.Component {
           {/* Template */}
           <Col>
             <Card style={{ width: '50rem'}}>
-              <BasicTemplate2 userInput={this.state}/>
+              <BasicTemplate2 input={this.state.text}/>
             </Card>  
           </Col>
 
