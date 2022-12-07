@@ -10,10 +10,7 @@ import Card from 'react-bootstrap/Card';
 
 const EditScreen = () => {
   const [index, setIndex] = useState(0);
-  const userInputForm = {
-    pageTitle : "12345",
-    text : "USER INPUT TEXT",
-  }
+  const userInputForm = "inputinputinput"
 
   return (
     <Container fluid>
