@@ -1,6 +1,6 @@
 import React, { useState , useEffect} from 'react';
-import TemplateList from '../component/TemplateList';
-import './TemplateScreen.css';
+// import TemplateList from '../component/TemplateList';
+// import './TemplateScreen.css';
 import Stack from 'react-bootstrap/Stack';
 // import axios from 'axios';
 const TemplateScreen = () => {
