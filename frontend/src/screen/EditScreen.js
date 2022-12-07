@@ -39,20 +39,17 @@ class EditScreen extends React.Component {
     }));
   }
 
-
   handleShowImage() {
     this.setState(state => ({
       showImage : true
     }));
   }
-
   handleUploadImage() {
     // this.setState(state => ({
     //   showImage : true
     // }));
     console.log("upload")
   }
-
   handleCloseImage() {
     this.setState(state => ({
       showImage : false
@@ -65,24 +62,23 @@ class EditScreen extends React.Component {
       text: ""
     }));
   }
-
   handleHideText(event) {
     this.setState(state => ({
       showText : false
     }));
   }
-
   handleShowHideText(event) {
     this.setState(state => ({
       showText : !this.state.showText
     }));
   }
-
   handleChangeText(event) {
     this.setState(state => ({
       text: event.target.value
     }));
   }
+
+
 
   render() {
     return (
@@ -92,11 +88,10 @@ class EditScreen extends React.Component {
           <Modal.Title>Upload Your Image</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {/* TODO */}
+          {/* TODO: Need to post this part in server, do later*/}
           <Form.Control
                   label='Choose File'
                   type="file"
-                  placeholder={"Input Text Here"}
                   value={this.state.text}
                   onChange={this.handleUploadImage}
                 />
@@ -133,11 +128,11 @@ class EditScreen extends React.Component {
 
 
             <Row className='edit-button'>
-              <Button variant="secondary" onClick={this.handleShowHideText}>Edit Text block</Button>  
+              <Button variant="secondary" onClick={this.handleShowHideText}>Edit Text Block</Button>  
               { this.state.showText
-                    
+
               ? <Card className='input-text'>
-              <Form onSubmit={this.handleSubmit} show={this.state.show} onHide={this.handleClose}>
+              <Form onSubmit={this.handleSubmit} show={this.state.show}>
                 <Form.Control
                   type="txt"
                   placeholder={"Input Text Here"}
@@ -160,18 +155,18 @@ class EditScreen extends React.Component {
             </Row>
 
             <Row className='edit-button'>
-              <Button variant="secondary">Button</Button>  
+              <Button variant="secondary">Edit Button</Button>  
             </Row>
             <Row className='edit-button'>
             </Row>
 
             {/* Return buttons */}
             <Row>
-              <Col md={{ span: 4, offset: 3 }}>
-                <Button variant="primary">Return Home</Button>  
+              <Col md={{ span: 4, offset: 2 }}>
+                <Link to="/"><Button variant="primary">Return Home</Button></Link>
               </Col>
               <Col md={{ span: 5}}>
-                <Button variant="primary">Return Template</Button>  
+              <Link to="/Template"><Button variant="primary">Return Template</Button></Link>
               </Col>
             </Row>
 
@@ -182,7 +177,7 @@ class EditScreen extends React.Component {
         </Row>
 
         <Row  className="justify-content-md-center">
-          <Button variant="primary"style={{ width: '60rem'}}>Export model as HTML/CSS</Button>  
+          <Button variant="primary"style={{ width: '60rem'}}>Export Model as HTML/CSS</Button>  
         </Row>
       
         <Row className='edit-button'>
