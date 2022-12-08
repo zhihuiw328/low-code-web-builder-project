@@ -21,7 +21,8 @@ class EditScreen extends React.Component {
       text : "",
       showImage: false,
       showText: false,
-      tmp: <div><h1>235456</h1></div>
+      color: "black",
+      backgroundColor: "white"
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -92,15 +93,15 @@ class EditScreen extends React.Component {
   render() {
     var templatePart = 
       <BasicTemplate2 
-       updateText={(update)=>this.setState(state => ({text: update}))}
-       text={this.state.text}
+        updateText={(update)=>this.setState(state => ({text: update}))}
+        text={this.state.text}
 
-       updateColor={(update)=>this.setState(state => ({color: update}))}
-       color ={this.state.color}
-       
-       updateBackgroundColor={(update)=>this.setState(state => ({color: update}))}
-       backgroundColor ={this.state.backgroundColor}
-       />
+        updateColor={(update)=>this.setState(state => ({color: update}))}
+        color ={this.state.color}
+
+        updateBackgroundColor={(update)=>this.setState(state => ({backgroundColor: update}))}
+        backgroundColor ={this.state.backgroundColor}
+        />
     return (
       <>
       <Modal show={this.state.showImage} onHide={this.handleCloseImage}>
@@ -110,10 +111,10 @@ class EditScreen extends React.Component {
         <Modal.Body>
           {/* TODO: Need to post this part in server, do later*/}
           <Form.Control
-                  label='Choose File'
-                  type="file"
-                  onChange={this.handleUploadImage}
-                />
+              label='Choose File'
+              type="file"
+              onChange={this.handleUploadImage}
+              />
         
         </Modal.Body>
         <Modal.Footer>
@@ -156,7 +157,7 @@ class EditScreen extends React.Component {
                   placeholder={"Input Text Here"}
                   value={this.state.text}
                   onChange={this.handleChangeText}
-                />
+                  />
               </Form>
               <Modal.Footer>
                 <Button variant="danger" onClick={this.handleClearText}>
