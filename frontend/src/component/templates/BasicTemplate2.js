@@ -7,7 +7,7 @@ class BasicTemplate2 extends React.Component {
         super(props);
         this.state = {
             currentSection : null,
-
+            backgroundColor: "white",
             pageContent : {
                 pageTitle : {
                     name: "pageTitle",
@@ -114,7 +114,6 @@ class BasicTemplate2 extends React.Component {
         // Pass empty strings and texts to parent
         this.passTextToParent("")
         this.passTextColorToParent("")
-        this.passBackgroundColorToParent("")
     };
 
     updateClickedSection = (section) => {
@@ -137,11 +136,10 @@ class BasicTemplate2 extends React.Component {
             this.updateClickedSection(section)
             this.passTextToParent(this.state.pageContent[section].text)
             this.passTextColorToParent(this.state.pageContent[section].color)
-            this.passBackgroundColorToParent(this.state.pageContent[section].backgroundColor)
         }
     };
     
-    updateSectionInfo = (section, newText, newColor, newBackgroundColor) => {
+    updateSectionInfo = (section, newText, newColor) => {
         console.log(12344)
         console.log(newColor)
         this.setState(prevState => {
@@ -149,36 +147,33 @@ class BasicTemplate2 extends React.Component {
             newPageContent[section] = {
                 ...prevState.pageContent[section],
                 text: newText,
-                color: newColor,
-                backgroundColor: newBackgroundColor
+                color: newColor
             }
             return {currentSection:section, pageContent:newPageContent}
         })
     }
 
+    componentDidMount() {
+        this.passBackgroundColorToParent(this.state.backgroundColor)
+    }
+    
     componentDidUpdate(previousProps, previousState) {
         if (this.state.currentSection !== null) {
             if (previousProps.text !== this.props.text) {
                 this.updateSectionInfo(this.state.currentSection,
                     this.props.text,
-                    this.state.pageContent[this.state.currentSection].color,
-                    this.state.pageContent[this.state.currentSection].backgroundColor)
+                    this.state.pageContent[this.state.currentSection].color)
             }
             if (previousProps.color !== this.props.color) {
                 console.log(this.props.color)
                 console.log(1)
                 this.updateSectionInfo(this.state.currentSection,
                     this.state.pageContent[this.state.currentSection].text,
-                    this.props.color,
-                    this.state.pageContent[this.state.currentSection].backgroundColor)
+                    this.props.color)
             }
-
-            if (previousProps.backgroundColor !== this.props.backgroundColor) {
-                this.updateSectionInfo(this.state.currentSection,
-                    this.state.pageContent[this.state.currentSection].text,
-                    this.state.pageContent[this.state.currentSection].color,
-                    this.props.backgroundColor)
-            }
+        }
+        if (previousProps.backgroundColor !== this.props.backgroundColor) {
+            this.setState((state, props) => ({backgroundColor: this.props.backgroundColor}))
         }
     };
 
@@ -186,11 +181,12 @@ class BasicTemplate2 extends React.Component {
         return (
             
             <>
-            <div id='container'>
+            <div id='container' style={{textAlign:"center", 
+                        backgroundColor: this.state.backgroundColor}}>
                 <div onClick={(e) => this.handleSectionClick(e, "pageTitle")} 
                     className={this.state.pageContent.pageTitle.style}
                     style={{textAlign:"center", 
-                        backgroundColor: this.state.pageContent.pageTitle.backgroundColor,
+                        backgroundColor: this.state.backgroundColor,
                         color: this.state.pageContent.pageTitle.color,
                         margin:0}}>
                     <h1>{this.state.pageContent.pageTitle.text}</h1>
@@ -198,7 +194,7 @@ class BasicTemplate2 extends React.Component {
 
                 <div onClick={(e) => this.handleSectionClick(e, "titleText")}
                     className={this.state.pageContent.titleText.style}
-                    style={{backgroundColor: this.state.pageContent.titleText.backgroundColor, 
+                    style={{backgroundColor: this.state.backgroundColor, 
                         color: this.state.pageContent.titleText.color,
                         margin:0}}>
                     <p>{this.state.pageContent.titleText.text}</p>
@@ -206,25 +202,25 @@ class BasicTemplate2 extends React.Component {
 
                 <div onClick={(e) => this.handleSectionClick(e, "subTitle1")} 
                     className={this.state.pageContent.subTitle1.style}
-                    style={{backgroundColor: this.state.pageContent.subTitle1.backgroundColor, color: this.state.pageContent.subTitle1.color}}>
+                    style={{backgroundColor: this.state.backgroundColor, color: this.state.pageContent.subTitle1.color}}>
                     <h2>{this.state.pageContent.subTitle1.text}</h2>
                 </div>
 
                 <div onClick={(e) => this.handleSectionClick(e, "subText1")}
                     className={this.state.pageContent.subText1.style}
-                    style={{backgroundColor: this.state.pageContent.subText1.backgroundColor, color: this.state.pageContent.subText1.color}}>
+                    style={{backgroundColor: this.state.backgroundColor, color: this.state.pageContent.subText1.color}}>
                     <p>{this.state.pageContent.subText1.text}</p>
                 </div>
 
                 <div onClick={(e) => this.handleSectionClick(e, "subTitle2")} 
                     className={this.state.pageContent.subTitle2.style}
-                    style={{backgroundColor: this.state.pageContent.subTitle2.backgroundColor, color: this.state.pageContent.subTitle2.color}}>
+                    style={{backgroundColor: this.state.backgroundColor, color: this.state.pageContent.subTitle2.color}}>
                     <h2>{this.state.pageContent.subTitle2.text}</h2>
                 </div>
 
                 <div onClick={(e) => this.handleSectionClick(e, "subText2")} 
                     className={this.state.pageContent.subText2.style}
-                    style={{backgroundColor: this.state.pageContent.subText2.backgroundColor, color: this.state.pageContent.subText2.color}}>
+                    style={{backgroundColor:this.state.backgroundColor, color: this.state.pageContent.subText2.color}}>
                     <p>{this.state.pageContent.subText2.text}</p>
                 </div>
             </div>
