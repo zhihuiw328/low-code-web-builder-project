@@ -1,159 +1,303 @@
 import React, { useState } from 'react';
 import { StyleSheet, View } from "react-native";
-// import './BasicTemplate.css';
+import './BasicTemplate.css';
 
 class BasicTemplate1 extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             currentSection : null,
-            pageTitle : "THIS IS BASIC TEMPLATE 1",
-            titleText : "THIS IS BASIC TEMPLATE 1",
-            subTitle1 : "THIS IS BASIC TEMPLATE 1",
-            subText1 : "THIS IS BASIC TEMPLATE 1",
-            subTitle2 : "THIS IS BASIC TEMPLATE 1",
-            subText2 : "THIS IS BASIC TEMPLATE 1",
-            pageTitleStyle: "div_hover",
-            titleTextStyle : "div_hover",
-            subTitle1Style : "div_hover",
-            subText1Style : "div_hover",
-            subTitle2Style : "div_hover",
-            subText2Style : "div_hover",
+            backgroundColor: "white",
+            pageContent : {
+                pageTitle : {
+                    name: "pageTitle",
+                    text: "USER INPUT PAGE TITLE",
+                    style: "div_hover",
+                    color: "black",
+                    backgroundColor: "white",
+                    font:"Georgia",
+                    fontSize:"15",
+                    fontStyle:"italic"
+
+                },
+                titleText : {
+                    name: "titleText",
+                    text: "TITLE TEXT",
+                    style: "div_hover",
+                    color: "black",
+                    backgroundColor: "white",
+                    font:"Georgia",
+                    fontSize:"15",
+                    fontStyle:"italic"
+
+                },
+                subTitle1 : {
+                    name: "subTitle1",
+                    text:"SUB TITLE 1",
+                    style: "div_hover",
+                    color: "black",
+                    backgroundColor: "white",
+                    font:"Georgia",
+                    fontSize:"15",
+                    fontStyle:"italic"
+
+                },
+                subText1 : {
+                    name: "subText1",
+                    text:"SUB TITLE TEXT 1",
+                    style: "div_hover",
+                    color: "black",
+                    backgroundColor: "white",
+                    font:"Georgia",
+                    fontSize:"15",
+                    fontStyle:"italic"
+
+                },
+                subTitle2 : {
+                    name: "subTitle2",
+                    text:"SUB TITLE TEXT 2",
+                    style: "div_hover",
+                    color: "black",
+                    backgroundColor: "white",
+                    font:"Georgia",
+                    fontSize:"15",
+                    fontStyle:"italic"
+
+                },
+                subText2 : {
+                    name: "subText2",
+                    text:"SUBTEXT TEXT 2",
+                    style: "div_hover",
+                    color: "black",
+                    backgroundColor: "white",
+                    font:"Georgia",
+                    fontSize:"15",
+                    fontStyle:"italic"
+
+                }
+            }
         };
     }
 
-    resetStyle = () => {
-        this.setState({
-            pageTitleStyle: "div_hover",
-            titleTextStyle : "div_hover",
-            subTitle1Style : "div_hover",
-            subText1Style : "div_hover",
-            subTitle2Style : "div_hover",
-            subText2Style : "div_hover",
-        })
-    }
-    passTextToParent = (text) => {
-        this.props.updateParentCallback(text)
-    }
 
-    handleSubmit(e, section) {
-        console.log('You clicked submit.');
-        if (section === "pageTitle") {
-            if (this.state.currentSection == section) {
-                this.setState({currentSection:null, pageTitleStyle: "div_hover"});
-                this.passTextToParent("")
-            } else {
-                this.resetStyle();
-                this.setState({currentSection:section, pageTitleStyle: "div_clicked"});
-                this.passTextToParent(this.state.pageTitle)
+    resetSection = () => {
+        // Reset hover status for all sections
+        this.setState((prevState, props) => {
+            let newPageContent = {
+                pageTitle : {
+                    ...prevState.pageContent.pageTitle ,
+                    style: "div_hover"
+
+                },
+                titleText : {
+                    ...prevState.pageContent.titleText ,
+                    style: "div_hover"
+
+                },
+                subTitle1 : {
+                    ...prevState.pageContent.subTitle1 ,
+                    style: "div_hover"
+
+                },
+                subText1 : {
+                    ...prevState.pageContent.subText1 ,
+                    style: "div_hover"
+
+                },
+                subTitle2 : {
+                    ...prevState.pageContent.subTitle2 ,
+                    style: "div_hover"
+
+                },
+                subText2 : {
+                    ...prevState.pageContent.subText2 ,
+                    style: "div_hover"
+
+                }
             }
-            
-        } else if (section === "titleText") {
-            if (this.state.currentSection == section) {
-                this.setState({currentSection:null, titleTextStyle: "div_hover"});
-                this.passTextToParent("")
-            } else {
-                this.resetStyle();
-                this.setState({currentSection:section, titleTextStyle: "div_clicked"});
-                this.passTextToParent(this.state.titleText)
-            }
-        } else if (section === "subTitle1") {
-            if (this.state.currentSection == section) {
-                this.setState({currentSection:null, subTitle1Style: "div_hover"});
-                this.passTextToParent("")
-            } else {
-                this.resetStyle();
-                this.setState({currentSection:section, subTitle1Style: "div_clicked"});
-                this.passTextToParent(this.state.subTitle1)
-            }
-        } else if (section === "subText1") {
-            if (this.state.currentSection == section) {
-                this.setState({currentSection:null, subText1Style: "div_hover"});
-                this.passTextToParent("")
-            } else {
-                this.resetStyle();
-                this.setState({currentSection:section, subText1Style: "div_clicked"});
-                this.passTextToParent(this.state.subText1)
-            }
-        } else if (section === "subTitle2") {
-            if (this.state.currentSection == section) {
-                this.setState({currentSection:null, subTitle2Style: "div_hover"});
-                this.passTextToParent("")
-            } else {
-                this.resetStyle();
-                this.setState({currentSection:section, subTitle2Style: "div_clicked"});
-                this.passTextToParent(this.state.subTitle2)
-            }
-        } else if (section === "subText2") {
-            if (this.state.currentSection == section) {
-                this.setState({currentSection:null, subText2Style: "div_hover"});
-                this.passTextToParent("")
-            } else {
-                this.resetStyle();
-                this.setState({currentSection:section, subText2Style: "div_clicked"});
-                this.passTextToParent(this.state.subText2)
-            }
-        }
-        console.log(this.state.currentSection);
+            return {pageContent:newPageContent}
+        })
+
+        // Pass empty strings and texts to parent
+        this.props.updateText("")
+        this.props.updateColor("")
     };
 
-    componentDidUpdate(previousProps, previousState) {
-        if (previousProps.input !== this.props.input) {
-            if (this.state.currentSection === "pageTitle") {
-                this.setState((state, props) => ({ pageTitle: props.input}));
-                console.log('updated.');
-            } else if (this.state.currentSection === "titleText") {
-                this.setState((state, props) => ({ titleText: props.input}));
-                console.log('updated.');
-            } else if (this.state.currentSection === "subTitle1") {
-                this.setState((state, props) => ({ subTitle1: props.input}));
-                console.log('updated.');
-            } else if (this.state.currentSection === "subText1") {
-                this.setState((state, props) => ({ subText1: props.input}));
-                console.log('updated.');
-            } else if (this.state.currentSection === "subTitle2") {
-                this.setState((state, props) => ({ subTitle2: props.input}));
-                console.log('updated.');
-            } else if (this.state.currentSection === "subText2") {
-                this.setState((state, props) => ({ subText2: props.input}));
-                console.log('updated.');
-            } 
+    updateClickedSection = (section) => {
+        this.setState(prevState => {
+            let newPageContent = Object.assign({}, prevState.pageContent)
+            newPageContent[section] = {
+                ...prevState.pageContent[section],
+                style: "div_clicked"
+            }
+            return {currentSection:section, pageContent:newPageContent}
+        })
+    };
+
+
+    handleSectionClick(e, section) {
+        this.resetSection()
+        if (this.state.currentSection == section) {
+            this.setState({currentSection:null})
+        } else {
+            this.updateClickedSection(section)
+            this.props.updateText(this.state.pageContent[section].text)
+            this.props.updateColor(this.state.pageContent[section].color)
         }
+    };
+    
+    updateSectionInfo = (section, newText, newColor, newFont, newFontSize, newFontStyle) => {
+        this.setState(prevState => {
+            let newPageContent = Object.assign({}, prevState.pageContent)
+            newPageContent[section] = {
+                ...prevState.pageContent[section],
+                text: newText,
+                color: newColor,
+                font: newFont,
+                fontSize: newFontSize,
+                fontStyle: newFontStyle
+            }
+            return {currentSection:section, pageContent:newPageContent}
+        })
     }
+
+    componentDidMount() {
+        this.props.updateBackgroundColor(this.state.backgroundColor)
+    }
+    
+    componentDidUpdate(previousProps, previousState) {
+        if (this.state.currentSection !== null) {
+            if (previousProps.text !== this.props.text) {
+                this.updateSectionInfo(this.state.currentSection,
+                    this.props.text,
+                    this.state.pageContent[this.state.currentSection].color,
+                    this.state.pageContent[this.state.currentSection].font,
+                    this.state.pageContent[this.state.currentSection].fontSize,
+                    this.state.pageContent[this.state.currentSection].fontStyle
+                )
+            }
+            if (previousProps.color !== this.props.color) {
+                this.updateSectionInfo(this.state.currentSection,
+                    this.state.pageContent[this.state.currentSection].text,
+                    this.props.color,
+                    this.state.pageContent[this.state.currentSection].font,
+                    this.state.pageContent[this.state.currentSection].fontSize,
+                    this.state.pageContent[this.state.currentSection].fontStyle
+                )
+            }
+            if (previousProps.font !== this.props.font) {
+                this.updateSectionInfo(this.state.currentSection,
+                    this.state.pageContent[this.state.currentSection].text,
+                    this.state.pageContent[this.state.currentSection].color,
+                    this.props.font,
+                    this.state.pageContent[this.state.currentSection].fontSize,
+                    this.state.pageContent[this.state.currentSection].fontStyle
+                )
+            }
+            if (previousProps.fontSize !== this.props.fontSize) {
+                this.updateSectionInfo(this.state.currentSection,
+                    this.state.pageContent[this.state.currentSection].text,
+                    this.state.pageContent[this.state.currentSection].color,
+                    this.state.pageContent[this.state.currentSection].font,
+                    this.props.fontSize,
+                    this.state.pageContent[this.state.currentSection].fontStyle
+                )
+            }
+            if (previousProps.fontStyle !== this.props.fontStyle) {
+                this.updateSectionInfo(this.state.currentSection,
+                    this.state.pageContent[this.state.currentSection].text,
+                    this.state.pageContent[this.state.currentSection].color,
+                    this.state.pageContent[this.state.currentSection].font,
+                    this.state.pageContent[this.state.currentSection].fontSize,
+                    this.props.fontStyle
+                )
+            }
+        }
+        if (previousProps.backgroundColor !== this.props.backgroundColor) {
+            this.setState((state, props) => ({backgroundColor: this.props.backgroundColor}))
+        }
+    };
 
     render() {
         return (
             
             <>
-            <div>
-                <div onClick={(e) => this.handleSubmit(e, "pageTitle")} className={this.state.pageTitleStyle}>
-                    <h1>{this.state.pageTitle}</h1>
+            <div id='container' style={{textAlign:"center", 
+                        backgroundColor: this.state.backgroundColor}}>
+                
+                <div onClick={(e) => this.handleSectionClick(e, "pageTitle")} 
+                    className={this.state.pageContent.pageTitle.style}
+                    style={{textAlign:"center", 
+                        backgroundColor: this.state.backgroundColor,
+                        color: this.state.pageContent.pageTitle.color,
+                        margin:0,
+                        height: "10%",
+                        fontFamily: this.state.pageContent.pageTitle.font,
+                        fontSize: this.state.pageContent.pageTitle.fontSize,
+                        fontStyle: this.state.pageContent.pageTitle.fontStyle}}>
+                    <h1>{this.state.pageContent.pageTitle.text}</h1>
                 </div>
 
-                <div onClick={(e) => this.handleSubmit(e, "titleText")} className={this.state.titleTextStyle}>
-                    <p>{this.state.titleText}</p>
+                <div onClick={(e) => this.handleSectionClick(e, "titleText")}
+                    className={this.state.pageContent.titleText.style}
+                    style={{backgroundColor: this.state.backgroundColor, 
+                        color: this.state.pageContent.titleText.color,
+                        margin:0,
+                        height: "20%",
+                        fontFamily: this.state.pageContent.titleText.font,
+                        fontSize: this.state.pageContent.titleText.fontSize,
+                        fontStyle: this.state.pageContent.titleText.fontStyle}}>
+                    <p>{this.state.pageContent.titleText.text}</p>
                 </div>
 
-                <div onClick={(e) => this.handleSubmit(e, "subTitle1")} className={this.state.subTitle1Style}>
-                    <h2>{this.state.subTitle1}</h2>
+                <div onClick={(e) => this.handleSectionClick(e, "subTitle1")} 
+                    className={this.state.pageContent.subTitle1.style}
+                    style={{backgroundColor: this.state.backgroundColor,
+                        color: this.state.pageContent.subTitle1.color,
+                        height: "10%",
+                        fontFamily: this.state.pageContent.subTitle1.font,
+                        fontSize: this.state.pageContent.subTitle1.fontSize,
+                        fontStyle: this.state.pageContent.subTitle1.fontStyle}}>
+                    <h2>{this.state.pageContent.subTitle1.text}</h2>
                 </div>
 
-                <div onClick={(e) => this.handleSubmit(e, "subText1")} className={this.state.subText1Style}>
-                    <p>{this.state.subText1}</p>
+                <div onClick={(e) => this.handleSectionClick(e, "subText1")}
+                    className={this.state.pageContent.subText1.style}
+                    style={{backgroundColor: this.state.backgroundColor,
+                        color: this.state.pageContent.subText1.color,
+                        height: "20%",
+                        fontFamily: this.state.pageContent.subText1.font,
+                        fontSize: this.state.pageContent.subText1.fontSize,
+                        fontStyle: this.state.pageContent.subText1.fontStyle}}>
+                    <p>{this.state.pageContent.subText1.text}</p>
                 </div>
 
-                <div onClick={(e) => this.handleSubmit(e, "subTitle2")} className={this.state.subTitle2Style}>
-                    <h2>{this.state.subTitle2}</h2>
+                <div onClick={(e) => this.handleSectionClick(e, "subTitle2")} 
+                    className={this.state.pageContent.subTitle2.style}
+                    style={{backgroundColor: this.state.backgroundColor,
+                        color: this.state.pageContent.subTitle2.color,
+                        height: "10%",
+                        fontFamily: this.state.pageContent.subTitle2.font,
+                        fontSize: this.state.pageContent.subTitle2.fontSize,
+                        fontStyle: this.state.pageContent.subTitle2.fontStyle}}>
+                    <h2>{this.state.pageContent.subTitle2.text}</h2>
                 </div>
 
-                <div onClick={(e) => this.handleSubmit(e, "subText2")} className={this.state.subText2Style}>
-                    <p>{this.state.subText2}</p>
+                <div onClick={(e) => this.handleSectionClick(e, "subText2")} 
+                    className={this.state.pageContent.subText2.style}
+                    style={{backgroundColor:this.state.backgroundColor,
+                        color: this.state.pageContent.subText2.color,
+                        height: "20%",
+                        fontFamily: this.state.pageContent.subText2.font,
+                        fontSize: this.state.pageContent.subText2.fontSize,
+                        fontStyle: this.state.pageContent.subText2.fontStyle}}>
+                    <p>{this.state.pageContent.subText2.text}</p>
                 </div>
             </div>
 
             </>
         );
-    }
+    };
 }
 
 
