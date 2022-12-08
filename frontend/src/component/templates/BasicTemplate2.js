@@ -14,7 +14,10 @@ class BasicTemplate2 extends React.Component {
                     text: "USER INPUT PAGE TITLE",
                     style: "div_hover",
                     color: "black",
-                    backgroundColor: "white"
+                    backgroundColor: "white",
+                    font:"Georgia",
+                    fontSize:"15",
+                    fontStyle:"italic"
 
                 },
                 titleText : {
@@ -22,7 +25,10 @@ class BasicTemplate2 extends React.Component {
                     text: "TITLE TEXT",
                     style: "div_hover",
                     color: "black",
-                    backgroundColor: "white"
+                    backgroundColor: "white",
+                    font:"Georgia",
+                    fontSize:"15",
+                    fontStyle:"italic"
 
                 },
                 subTitle1 : {
@@ -30,7 +36,10 @@ class BasicTemplate2 extends React.Component {
                     text:"SUB TITLE 1",
                     style: "div_hover",
                     color: "black",
-                    backgroundColor: "white"
+                    backgroundColor: "white",
+                    font:"Georgia",
+                    fontSize:"15",
+                    fontStyle:"italic"
 
                 },
                 subText1 : {
@@ -38,7 +47,10 @@ class BasicTemplate2 extends React.Component {
                     text:"SUB TITLE TEXT 1",
                     style: "div_hover",
                     color: "black",
-                    backgroundColor: "white"
+                    backgroundColor: "white",
+                    font:"Georgia",
+                    fontSize:"15",
+                    fontStyle:"italic"
 
                 },
                 subTitle2 : {
@@ -46,7 +58,10 @@ class BasicTemplate2 extends React.Component {
                     text:"SUB TITLE TEXT 2",
                     style: "div_hover",
                     color: "black",
-                    backgroundColor: "white"
+                    backgroundColor: "white",
+                    font:"Georgia",
+                    fontSize:"15",
+                    fontStyle:"italic"
 
                 },
                 subText2 : {
@@ -54,24 +69,16 @@ class BasicTemplate2 extends React.Component {
                     text:"SUBTEXT TEXT 2",
                     style: "div_hover",
                     color: "black",
-                    backgroundColor: "white"
+                    backgroundColor: "white",
+                    font:"Georgia",
+                    fontSize:"15",
+                    fontStyle:"italic"
 
                 }
             }
         };
     }
 
-    passTextToParent = (text) => {
-        this.props.updateText(text)
-    }
-
-    passTextColorToParent = (color) => {
-        this.props.updateColor(color)
-    }
-
-    passBackgroundColorToParent = (color) => {
-        this.props.updateBackgroundColor(color)
-    }
 
     resetSection = () => {
         // Reset hover status for all sections
@@ -112,8 +119,8 @@ class BasicTemplate2 extends React.Component {
         })
 
         // Pass empty strings and texts to parent
-        this.passTextToParent("")
-        this.passTextColorToParent("")
+        this.props.updateText("")
+        this.props.updateColor("")
     };
 
     updateClickedSection = (section) => {
@@ -134,27 +141,28 @@ class BasicTemplate2 extends React.Component {
             this.setState({currentSection:null})
         } else {
             this.updateClickedSection(section)
-            this.passTextToParent(this.state.pageContent[section].text)
-            this.passTextColorToParent(this.state.pageContent[section].color)
+            this.props.updateText(this.state.pageContent[section].text)
+            this.props.updateColor(this.state.pageContent[section].color)
         }
     };
     
-    updateSectionInfo = (section, newText, newColor) => {
-        console.log(12344)
-        console.log(newColor)
+    updateSectionInfo = (section, newText, newColor, newFont, newFontSize, newFontStyle) => {
         this.setState(prevState => {
             let newPageContent = Object.assign({}, prevState.pageContent)
             newPageContent[section] = {
                 ...prevState.pageContent[section],
                 text: newText,
-                color: newColor
+                color: newColor,
+                font: newFont,
+                fontSize: newFontSize,
+                fontStyle: newFontStyle
             }
             return {currentSection:section, pageContent:newPageContent}
         })
     }
 
     componentDidMount() {
-        this.passBackgroundColorToParent(this.state.backgroundColor)
+        this.props.updateBackgroundColor(this.state.backgroundColor)
     }
     
     componentDidUpdate(previousProps, previousState) {
@@ -162,14 +170,47 @@ class BasicTemplate2 extends React.Component {
             if (previousProps.text !== this.props.text) {
                 this.updateSectionInfo(this.state.currentSection,
                     this.props.text,
-                    this.state.pageContent[this.state.currentSection].color)
+                    this.state.pageContent[this.state.currentSection].color,
+                    this.state.pageContent[this.state.currentSection].font,
+                    this.state.pageContent[this.state.currentSection].fontSize,
+                    this.state.pageContent[this.state.currentSection].fontStyle
+                )
             }
             if (previousProps.color !== this.props.color) {
-                console.log(this.props.color)
-                console.log(1)
                 this.updateSectionInfo(this.state.currentSection,
                     this.state.pageContent[this.state.currentSection].text,
-                    this.props.color)
+                    this.props.color,
+                    this.state.pageContent[this.state.currentSection].font,
+                    this.state.pageContent[this.state.currentSection].fontSize,
+                    this.state.pageContent[this.state.currentSection].fontStyle
+                )
+            }
+            if (previousProps.font !== this.props.font) {
+                this.updateSectionInfo(this.state.currentSection,
+                    this.state.pageContent[this.state.currentSection].text,
+                    this.state.pageContent[this.state.currentSection].color,
+                    this.props.font,
+                    this.state.pageContent[this.state.currentSection].fontSize,
+                    this.state.pageContent[this.state.currentSection].fontStyle
+                )
+            }
+            if (previousProps.fontSize !== this.props.fontSize) {
+                this.updateSectionInfo(this.state.currentSection,
+                    this.state.pageContent[this.state.currentSection].text,
+                    this.state.pageContent[this.state.currentSection].color,
+                    this.state.pageContent[this.state.currentSection].font,
+                    this.props.fontSize,
+                    this.state.pageContent[this.state.currentSection].fontStyle
+                )
+            }
+            if (previousProps.fontStyle !== this.props.fontStyle) {
+                this.updateSectionInfo(this.state.currentSection,
+                    this.state.pageContent[this.state.currentSection].text,
+                    this.state.pageContent[this.state.currentSection].color,
+                    this.state.pageContent[this.state.currentSection].font,
+                    this.state.pageContent[this.state.currentSection].fontSize,
+                    this.props.fontStyle
+                )
             }
         }
         if (previousProps.backgroundColor !== this.props.backgroundColor) {
@@ -183,12 +224,17 @@ class BasicTemplate2 extends React.Component {
             <>
             <div id='container' style={{textAlign:"center", 
                         backgroundColor: this.state.backgroundColor}}>
+                
                 <div onClick={(e) => this.handleSectionClick(e, "pageTitle")} 
                     className={this.state.pageContent.pageTitle.style}
                     style={{textAlign:"center", 
                         backgroundColor: this.state.backgroundColor,
                         color: this.state.pageContent.pageTitle.color,
-                        margin:0}}>
+                        margin:0,
+                        height: "10%",
+                        fontFamily: this.state.pageContent.pageTitle.font,
+                        fontSize: this.state.pageContent.pageTitle.fontSize,
+                        fontStyle: this.state.pageContent.pageTitle.fontStyle}}>
                     <h1>{this.state.pageContent.pageTitle.text}</h1>
                 </div>
 
@@ -196,31 +242,55 @@ class BasicTemplate2 extends React.Component {
                     className={this.state.pageContent.titleText.style}
                     style={{backgroundColor: this.state.backgroundColor, 
                         color: this.state.pageContent.titleText.color,
-                        margin:0}}>
+                        margin:0,
+                        height: "20%",
+                        fontFamily: this.state.pageContent.titleText.font,
+                        fontSize: this.state.pageContent.titleText.fontSize,
+                        fontStyle: this.state.pageContent.titleText.fontStyle}}>
                     <p>{this.state.pageContent.titleText.text}</p>
                 </div>
 
                 <div onClick={(e) => this.handleSectionClick(e, "subTitle1")} 
                     className={this.state.pageContent.subTitle1.style}
-                    style={{backgroundColor: this.state.backgroundColor, color: this.state.pageContent.subTitle1.color}}>
+                    style={{backgroundColor: this.state.backgroundColor,
+                        color: this.state.pageContent.subTitle1.color,
+                        height: "10%",
+                        fontFamily: this.state.pageContent.subTitle1.font,
+                        fontSize: this.state.pageContent.subTitle1.fontSize,
+                        fontStyle: this.state.pageContent.subTitle1.fontStyle}}>
                     <h2>{this.state.pageContent.subTitle1.text}</h2>
                 </div>
 
                 <div onClick={(e) => this.handleSectionClick(e, "subText1")}
                     className={this.state.pageContent.subText1.style}
-                    style={{backgroundColor: this.state.backgroundColor, color: this.state.pageContent.subText1.color}}>
+                    style={{backgroundColor: this.state.backgroundColor,
+                        color: this.state.pageContent.subText1.color,
+                        height: "20%",
+                        fontFamily: this.state.pageContent.subText1.font,
+                        fontSize: this.state.pageContent.subText1.fontSize,
+                        fontStyle: this.state.pageContent.subText1.fontStyle}}>
                     <p>{this.state.pageContent.subText1.text}</p>
                 </div>
 
                 <div onClick={(e) => this.handleSectionClick(e, "subTitle2")} 
                     className={this.state.pageContent.subTitle2.style}
-                    style={{backgroundColor: this.state.backgroundColor, color: this.state.pageContent.subTitle2.color}}>
+                    style={{backgroundColor: this.state.backgroundColor,
+                        color: this.state.pageContent.subTitle2.color,
+                        height: "10%",
+                        fontFamily: this.state.pageContent.subTitle2.font,
+                        fontSize: this.state.pageContent.subTitle2.fontSize,
+                        fontStyle: this.state.pageContent.subTitle2.fontStyle}}>
                     <h2>{this.state.pageContent.subTitle2.text}</h2>
                 </div>
 
                 <div onClick={(e) => this.handleSectionClick(e, "subText2")} 
                     className={this.state.pageContent.subText2.style}
-                    style={{backgroundColor:this.state.backgroundColor, color: this.state.pageContent.subText2.color}}>
+                    style={{backgroundColor:this.state.backgroundColor,
+                        color: this.state.pageContent.subText2.color,
+                        height: "20%",
+                        fontFamily: this.state.pageContent.subText2.font,
+                        fontSize: this.state.pageContent.subText2.fontSize,
+                        fontStyle: this.state.pageContent.subText2.fontStyle}}>
                     <p>{this.state.pageContent.subText2.text}</p>
                 </div>
             </div>
