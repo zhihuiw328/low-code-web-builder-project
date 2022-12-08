@@ -24,6 +24,7 @@ class EditScreen extends React.Component {
       showText: false,
       showColor: false,
       showFont: false,
+      save: false,
 
       color: 'black',
       backgroundColor: 'white',
@@ -31,6 +32,9 @@ class EditScreen extends React.Component {
       fontSize: 1,
       fontStyle: "bold",
       font:"times",
+
+      template: "",
+      name:""
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -154,6 +158,33 @@ class EditScreen extends React.Component {
         />
     return (
       <>
+      {/* HXY save here */}
+      <Modal show={this.state.save} onHide={this.handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Enter your name</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={this.handleSubmit}>
+              <Form.Control
+                type="txt"
+                placeholder={this.state.text}
+                value={this.state.text}
+                onChange={this.handleChange}
+              />
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="danger" onClick={this.handleClear}>
+            Clear
+          </Button>
+          <Button variant="success" onClick={this.handleClose}>
+            Save
+          </Button>
+        </Modal.Footer>
+      </Modal>  
+      {/* save */}
+
+
       <Modal show={this.state.showImage} onHide={this.handleCloseImage}>
         <Modal.Header closeButton>
           <Modal.Title>Upload Your Image</Modal.Title>
@@ -342,8 +373,13 @@ class EditScreen extends React.Component {
         <Row  className='justify-content-md-center'>
           <Button variant='primary' style={{ width: '60rem'}} onClick={()=>{console.log(ReactDOMServer.renderToReadableStream(templatePart));console.log(templatePart)}}>Export Model as HTML/CSS</Button>  
         </Row>
+        
+        {/* HXY */}
+        <Row  className='justify-content-md-center'>
+          <Button variant='primary' style={{ width: '60rem'}} onClick={()=>{this.setState({save:!this.state.save})}}>Save</Button>  
+        </Row>
 
-        <Row className='edit-button'>
+        <Row className='space'>
         </Row>
         
           
