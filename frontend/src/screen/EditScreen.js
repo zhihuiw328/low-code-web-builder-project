@@ -10,6 +10,7 @@ import BasicTemplate1 from '../component/templates/BasicTemplate1';
 import BasicTemplate2 from '../component/templates/BasicTemplate2';
 import Card from 'react-bootstrap/Card';
 import * as ReactDOMServer from 'react-dom/server';
+import axios from 'axios'
 
 
 
@@ -61,11 +62,28 @@ class EditScreen extends React.Component {
       showImage : true
     }));
   }
-  handleUploadImage() {
+  handleUploadImage = async(e) =>{
     // this.setState(state => ({
     //   showImage : true
     // }));
-    console.log('upload')
+    const file = e.target.files[0]
+    const formData = new FormData()
+    formData.append('image', file)
+    
+    try {
+      const config = {
+        headers: {
+          'Content-Type': 'multipart/form'
+        }
+      }
+
+      const { data } = await axios.post('/api/upload', formData, config)
+
+      console.log(data)
+    }catch (error){
+      console.log(error)
+    }
+
   }
   handleCloseImage() {
     this.setState(state => ({
