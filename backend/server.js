@@ -19,7 +19,7 @@ app.use('/api/users', userRoutes)
 app.use(errorHandler)
 app.use(notFound)
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 4000
 
 // Connect to a MongoDB --> Uncomment this once you have a connection string!!
 mongoose.connect(secrets.mongo_connection,  { useNewUrlParser: true, useUnifiedTopology: true });

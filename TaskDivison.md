@@ -8,3 +8,7 @@
         - heading_text
 ### Xinyi He
 
+### Carol Song
+- Responsible for implementing the front-end for EditScreen Page
+    - 
+

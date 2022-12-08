@@ -162,7 +162,7 @@ class EditScreen extends React.Component {
         <Row>
           {/* Template */}
           <Col>
-            <Card className='preview'>
+            <Card className='preview' border="dark">
               {templatePart}
             </Card>  
           </Col>
@@ -272,6 +272,7 @@ class EditScreen extends React.Component {
 
                 <Col>
                 <Dropdown className="dropdown-box">
+                  
                     <Dropdown.Toggle>
                       Font Size
                     </Dropdown.Toggle>
@@ -321,11 +322,12 @@ class EditScreen extends React.Component {
         </Row>
 
         <Row  className='justify-content-md-center'>
-          <Button variant='primary' style={{ width: '60rem'}} onClick={()=>console.log(ReactDOMServer.renderToString(templatePart))}>Export Model as HTML/CSS</Button>  
+          <Button variant='primary' style={{ width: '60rem'}} onClick={()=>{console.log(ReactDOMServer.renderToReadableStream(templatePart));console.log(templatePart)}}>Export Model as HTML/CSS</Button>  
         </Row>
 
         <Row className='edit-button'>
         </Row>
+        
           
       </Container>
       </>
