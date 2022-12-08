@@ -25,14 +25,15 @@ const Header = () => {
       <Navbar style={{backgroundColor:'#0c2852'}} fixed="top" >
       <Container>
         <Navbar.Brand className='ms-auto' href="/" style={{color: 'white'}}>Website Builder</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle aria-controls="basic-navbar-nav" style={{color: 'white'}} />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
+          <Nav className="ms-auto" >
             <Nav.Link href="/" style={{color: 'white', fontSize: '60%'}}>Home</Nav.Link>
             <Nav.Link href="/template" style={{color: 'white', fontSize: '60%'}}>Template</Nav.Link>
             <Nav.Link href="/edit" style={{color: 'white', fontSize: '60%'}}> Edit</Nav.Link>
+            
             {userLogin ? (
-              <NavDropdown title={userLogin.name} id="basic-nav-dropdown" style={{color: 'white', fontSize: '60%'}}>
+              <NavDropdown title={userLogin.name} className="basic-nav-dropdown" style={{color: 'white', fontSize: '60%'}}>
                 <NavDropdown.Item onClick = {profileHandler}>User profile</NavDropdown.Item>
                 <NavDropdown.Item onClick = {signoutHandler}>Sign Out</NavDropdown.Item>
               </NavDropdown>

@@ -5,7 +5,7 @@ import Stack from 'react-bootstrap/Stack';
 import FormContainer from '../component/FormContainer';
 import { Form, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import axios from 'axios';
+
 const TemplateScreen = () => {
     const [Basic_templates, setBasicTemplates] = useState([]);
     const [b_templates, setBTemplates] = useState([]);
