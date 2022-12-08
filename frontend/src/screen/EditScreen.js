@@ -20,6 +20,7 @@ class EditScreen extends React.Component {
     this.state = {
       pageTitle : '12345',
       text : '',
+      imageLink: "",
       showImage: false,
       showText: false,
       showColor: false,
@@ -34,7 +35,9 @@ class EditScreen extends React.Component {
       font:"times",
 
       template: "",
-      name:""
+      name:"",
+      userId:"",
+      templateState:{}
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -42,10 +45,14 @@ class EditScreen extends React.Component {
     this.handleShowHideText = this.handleShowHideText.bind(this);
     this.handleHideText = this.handleHideText.bind(this);
     this.handleChangeText = this.handleChangeText.bind(this);
+    this.handleChangeName = this.handleChangeName.bind(this);
     this.handleClearText = this.handleClearText.bind(this);
+    this.handleClearSave = this.handleClearSave.bind(this);
 
     this.handleShowImage = this.handleShowImage.bind(this);
     this.handleCloseImage = this.handleCloseImage.bind(this);
+    this.handleCloseSave = this.handleCloseSave.bind(this);
+    this.handleUploadSave = this.handleUploadSave.bind(this);
     this.handleUploadImage = this.handleUploadImage.bind(this);
 
     this.handleShowHideColor = this.handleShowHideColor.bind(this);
@@ -94,6 +101,23 @@ class EditScreen extends React.Component {
       showImage : false
     }));
   }
+  handleUploadSave= async() =>{
+    this.setState(state => ({
+      save : false
+    }));
+//TO DO: backend put/push
+  }
+
+  handleCloseSave(){
+    this.setState(state => ({
+      save : false
+    }));
+  }
+  handleClearSave(){
+    this.setState(state => ({
+      name : ""
+    }));
+  }
 
 
   handleClearText(event) {
@@ -114,6 +138,12 @@ class EditScreen extends React.Component {
   handleChangeText(event) {
     this.setState(state => ({
       text: event.target.value
+    }));
+  }
+
+  handleChangeName(event) {
+    this.setState(state => ({
+      name: event.target.value
     }));
   }
 
@@ -155,29 +185,31 @@ class EditScreen extends React.Component {
 
         updatefontStyle={(update)=>this.setState(state => ({fontStyle: update}))}
         fontStyle ={this.state.fontStyle}
+
+        collectTemplateStates={(update)=>this.setState(state => ({templateState: update}))}
         />
     return (
       <>
       {/* HXY save here */}
-      <Modal show={this.state.save} onHide={this.handleClose}>
+      <Modal show={this.state.save} onHide={this.handleCloseSave}>
         <Modal.Header closeButton>
-          <Modal.Title>Enter your name</Modal.Title>
+          <Modal.Title>Enter your template's name</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={this.handleSubmit}>
               <Form.Control
                 type="txt"
-                placeholder={this.state.text}
-                value={this.state.text}
-                onChange={this.handleChange}
+                placeholder={this.state.name}
+                value={this.state.name}
+                onChange={this.handleChangeName}
               />
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="danger" onClick={this.handleClear}>
+          <Button variant="danger" onClick={this.handleClearSave}>
             Clear
           </Button>
-          <Button variant="success" onClick={this.handleClose}>
+          <Button variant="success" onClick={this.handleUploadSave}>
             Save
           </Button>
         </Modal.Footer>
