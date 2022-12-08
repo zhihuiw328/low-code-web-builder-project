@@ -140,7 +140,7 @@ class EditScreen extends React.Component {
         />
     return (
       <>
-      {/* save here */}
+      {/* HXY save here */}
       <Modal show={this.state.save} onHide={this.handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Enter your name</Modal.Title>
@@ -355,8 +355,13 @@ class EditScreen extends React.Component {
         <Row  className='justify-content-md-center'>
           <Button variant='primary' style={{ width: '60rem'}} onClick={()=>{console.log(ReactDOMServer.renderToReadableStream(templatePart));console.log(templatePart)}}>Export Model as HTML/CSS</Button>  
         </Row>
+        
+        {/* HXY */}
+        <Row  className='justify-content-md-center'>
+          <Button variant='primary' style={{ width: '60rem'}} onClick={()=>{this.setState({save:!this.state.save})}}>Save</Button>  
+        </Row>
 
-        <Row className='edit-button'>
+        <Row className='space'>
         </Row>
         
           
