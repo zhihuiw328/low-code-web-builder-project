@@ -125,8 +125,8 @@ class BasicTemplate2 extends React.Component {
         return (
             
             <>
-            <div>
-                <div onClick={(e) => this.handleSubmit(e, "pageTitle")} className={this.state.pageTitleStyle}>
+            <div id='container'>
+                <div onClick={(e) => this.handleSubmit(e, "pageTitle")} className={this.state.pageTitleStyle}  style={{textAlign:"center", backgroundColor: "pink"}}>
                     <h1>{this.state.pageTitle}</h1>
                 </div>
 

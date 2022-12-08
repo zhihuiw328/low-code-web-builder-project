@@ -12,3 +12,7 @@
     background-color: #a8daf5;
     border: 1px solid #0943a7;
 }
+
+#container {
+    height: 80vh
+}
