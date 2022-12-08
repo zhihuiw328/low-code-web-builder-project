@@ -1,10 +1,12 @@
 const dotenv = require('dotenv')
+const path = require('path')
 const express = require('express')
 const notFound = require('./middlewares/errorMiddleware')
 const errorHandler = require('./middlewares/errorMiddleware')
 const mongoose = require('mongoose')
 const userRoutes = require('./routes/userRoutes')
 const secrets = require('./config/secrets')
+const uploadRoutes = require('./routes/uploadRoutes')
 
 
 dotenv.config()
@@ -15,6 +17,10 @@ app.use(express.json())
 
 // routes
 app.use('/api/users', userRoutes)
+
+
+app.use('/api/upload', uploadRoutes)
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 
 app.use(errorHandler)
 app.use(notFound)
