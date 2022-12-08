@@ -2,13 +2,15 @@ import React, { useState } from 'react'
 import './EditScreen.css';
 import Figure from 'react-bootstrap/Figure';
 import Container from 'react-bootstrap/Container';
-import { Link } from 'react-router-dom'
+import { Link, redirect } from 'react-router-dom'
 import { Form, Button, Col, Row, Badge, Modal} from 'react-bootstrap'
 import FormContainer from '../component/FormContainer';
 import ControlledCarousel from '../component/Carousel/Carousel';
+import BasicTemplate1 from '../component/templates/BasicTemplate1';
 import BasicTemplate2 from '../component/templates/BasicTemplate2';
 import Card from 'react-bootstrap/Card';
 import * as ReactDOMServer from 'react-dom/server';
+
 
 
 class EditScreen extends React.Component {
@@ -88,10 +90,17 @@ class EditScreen extends React.Component {
   
 
   render() {
-    var templatePart = <BasicTemplate2 
-      updateParentCallback={(update)=>
-        this.setState(state => ({text: update}))}
-       input={this.state.text}/>
+    var templatePart = 
+      <BasicTemplate2 
+       updateText={(update)=>this.setState(state => ({text: update}))}
+       text={this.state.text}
+
+       updateColor={(update)=>this.setState(state => ({color: update}))}
+       color ={this.state.color}
+       
+       updateBackgroundColor={(update)=>this.setState(state => ({color: update}))}
+       backgroundColor ={this.state.backgroundColor}
+       />
     return (
       <>
       <Modal show={this.state.showImage} onHide={this.handleCloseImage}>
@@ -128,6 +137,9 @@ class EditScreen extends React.Component {
 
           {/* Buttons for editing */}
           <Col>
+            <Row className='space'>
+            </Row>
+
             <Row className='edit-button'>
               <Button variant="secondary" onClick={this.handleShowImage}>Edit Image DIV</Button>  
             </Row>
@@ -161,7 +173,7 @@ class EditScreen extends React.Component {
             </Row>
 
             <Row className='edit-button'>
-              <Button variant="secondary">Edit Button</Button>  
+              <Button variant="secondary">Edit Color</Button>  
             </Row>
             <Row className='edit-button'>
             </Row>

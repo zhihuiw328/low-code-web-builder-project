@@ -2,8 +2,8 @@ import React from 'react';
 import './TemplateList.css';
 import Image from 'react-bootstrap/Image'
 import {Link} from "react-router-dom";
+
 const TemplateList = (props) =>{
-  
     return (
      <>
       {props.templates?.map((template, index) => (
