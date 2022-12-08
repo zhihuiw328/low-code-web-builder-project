@@ -15,6 +15,7 @@
 .preview {
   margin: auto;
   width: 50rem;
+  border: 0.3rem solid black;
 }
 
 .dropdown-box {
