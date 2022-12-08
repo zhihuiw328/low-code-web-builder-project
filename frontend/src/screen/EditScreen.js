@@ -3,7 +3,7 @@ import './EditScreen.css';
 import Figure from 'react-bootstrap/Figure';
 import Container from 'react-bootstrap/Container';
 import { Link, redirect } from 'react-router-dom'
-import { Form, Button, Col, Row, Badge, Modal} from 'react-bootstrap'
+import { Form, Button, Col, Row, Badge, Modal, Dropdown} from 'react-bootstrap'
 import FormContainer from '../component/FormContainer';
 import ControlledCarousel from '../component/Carousel/Carousel';
 import BasicTemplate1 from '../component/templates/BasicTemplate1';
@@ -17,12 +17,13 @@ class EditScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pageTitle : "12345",
-      text : "",
+      pageTitle : '12345',
+      text : '',
       showImage: false,
       showText: false,
-      color: "black",
-      backgroundColor: "white"
+      showColor: false,
+      color: 'black',
+      backgroundColor: 'white'
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -36,12 +37,14 @@ class EditScreen extends React.Component {
     this.handleCloseImage = this.handleCloseImage.bind(this);
     this.handleUploadImage = this.handleUploadImage.bind(this);
 
+    this.handleShowHideColor = this.handleShowHideColor.bind(this);
+
     this.handleExport = this.handleExport.bind(this);
   }
 
   handleClick() {
     this.setState(state => ({
-      text : "ssssssseqws"
+      text : 'ssssssseqws'
     }));
   }
 
@@ -54,7 +57,7 @@ class EditScreen extends React.Component {
     // this.setState(state => ({
     //   showImage : true
     // }));
-    console.log("upload")
+    console.log('upload')
   }
   handleCloseImage() {
     this.setState(state => ({
@@ -65,7 +68,7 @@ class EditScreen extends React.Component {
 
   handleClearText(event) {
     this.setState(state => ({
-      text: ""
+      text: ''
     }));
   }
   handleHideText(event) {
@@ -81,6 +84,12 @@ class EditScreen extends React.Component {
   handleChangeText(event) {
     this.setState(state => ({
       text: event.target.value
+    }));
+  }
+
+  handleShowHideColor(event) {
+    this.setState(state => ({
+      showColor : !this.state.showColor
     }));
   }
 
@@ -111,27 +120,26 @@ class EditScreen extends React.Component {
         <Modal.Body>
           {/* TODO: Need to post this part in server, do later*/}
           <Form.Control
-              label='Choose File'
-              type="file"
-              onChange={this.handleUploadImage}
-              />
-        
+            label='Choose File'
+            type='file'
+            onChange={this.handleUploadImage}
+            />
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="success" onClick={this.handleCloseImage}>
+          <Button variant='success' onClick={this.handleCloseImage}>
             Save
           </Button>
         </Modal.Footer>
       </Modal>  
 
-      <Container>
+      <Container fluid="md">
         <Row className='space'>
         </Row>
 
         <Row>
           {/* Template */}
           <Col>
-            <Card style={{width: '50rem'}}>
+            <Card className='preview'>
               {templatePart}
             </Card>  
           </Col>
@@ -142,28 +150,28 @@ class EditScreen extends React.Component {
             </Row>
 
             <Row className='edit-button'>
-              <Button variant="secondary" onClick={this.handleShowImage}>Edit Image DIV</Button>  
+              <Button variant='secondary' onClick={this.handleShowImage}>Upload Image</Button>  
             </Row>
 
 
             <Row className='edit-button'>
-              <Button variant="secondary" onClick={this.handleShowHideText}>Edit Text Block</Button>  
+              <Button variant='secondary' onClick={this.handleShowHideText}>Edit Text Block</Button>  
               { this.state.showText
 
               ? <Card className='input-text'>
-              <Form onSubmit={this.handleSubmit} show={this.state.show}>
+              <Form onSubmit={this.handleSubmit}>
                 <Form.Control
-                  type="txt"
-                  placeholder={"Input Text Here"}
+                  type='txt'
+                  placeholder={'Input Text Here'}
                   value={this.state.text}
                   onChange={this.handleChangeText}
                   />
               </Form>
               <Modal.Footer>
-                <Button variant="danger" onClick={this.handleClearText}>
+                <Button variant='danger' onClick={this.handleClearText}>
                   Clear
                 </Button>
-                <Button variant="success" onClick={this.handleShowHideText}>
+                <Button variant='success' onClick={this.handleShowHideText}>
                   Return
                 </Button>
               </Modal.Footer>
@@ -174,20 +182,66 @@ class EditScreen extends React.Component {
             </Row>
 
             <Row className='edit-button'>
-              <Button variant="secondary">Edit Color</Button>  
+              <Button variant='secondary' onClick={this.handleShowHideColor}>Edit Color</Button>  
             </Row>
+            <Row>
+              
+              {
+                this.state.showColor
+            ? <>
+            <Col>
+            <Dropdown className="dropdown-box">
+                <Dropdown.Toggle style={{color: this.state.backgroundColor ==="white" ?"black":"white",  background: this.state.backgroundColor}} >
+                  Background Color
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item onClick={()=>this.setState({backgroundColor:"black"})} active={this.state.backgroundColor === "black"}>Black</Dropdown.Item>
+                  <Dropdown.Item onClick={()=>this.setState({backgroundColor:"white"})} active={this.state.backgroundColor === "white"}>White</Dropdown.Item>
+                  <Dropdown.Item onClick={()=>this.setState({backgroundColor:"red"})} active={this.state.backgroundColor === "red"}>Red</Dropdown.Item>
+                  <Dropdown.Item onClick={()=>this.setState({backgroundColor:"orange"})} active={this.state.backgroundColor === "orange"}>Orange</Dropdown.Item>
+                  <Dropdown.Item onClick={()=>this.setState({backgroundColor:"pink"})} active={this.state.backgroundColor === "pink"}>Pink</Dropdown.Item>
+                  <Dropdown.Item onClick={()=>this.setState({backgroundColor:"blue"})} active={this.state.backgroundColor === "blue"}>Blue</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+              </Col>
+
+              <Col>
+              <Dropdown className="dropdown-box">
+                <Dropdown.Toggle style={{color: this.state.color ==="white" ?"black":"white", background: this.state.color}} >
+                  Font Color
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                  <Dropdown.Item onClick={()=>this.setState({color:"black"})} active={this.state.color === "black"}>Black</Dropdown.Item>
+                  <Dropdown.Item onClick={()=>this.setState({color:"white"})} active={this.state.color === "white"}>White</Dropdown.Item>
+                  <Dropdown.Item onClick={()=>this.setState({color:"red"})} active={this.state.color === "red"}>Red</Dropdown.Item>
+                  <Dropdown.Item onClick={()=>this.setState({color:"orange"})} active={this.state.color === "orange"}>Orange</Dropdown.Item>
+                  <Dropdown.Item onClick={()=>this.setState({color:"pink"})} active={this.state.color === "pink"}>Pink</Dropdown.Item>
+                  <Dropdown.Item onClick={()=>this.setState({color:"blue"})} active={this.state.color === "blue"}>Blue</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+              </Col>
+              </>
+              :null
+            }
+
+            </Row>
+
             <Row className='edit-button'>
+              <Button variant='secondary'>Edit Font</Button>  
+            </Row>
+            <Row className='space'>
             </Row>
 
             {/* Return buttons */}
-            <Row>
-              <Col md={{ span: 4, offset: 2 }}>
-                <Link to="/"><Button variant="primary">Return Home</Button></Link>
+            {/* <Row>
+              <Col className ="link-button">
+                <Link to='/'><Button variant='primary'>Return Home</Button></Link>
               </Col>
-              <Col md={{ span: 5}}>
-              <Link to="/Template"><Button variant="primary">Return Template</Button></Link>
+              <Col className ="link-button">
+              <Link to='/Template'><Button variant='primary'>Return Template</Button></Link>
               </Col>
-            </Row>
+            </Row> */}
 
           </Col>
         </Row>
@@ -195,8 +249,8 @@ class EditScreen extends React.Component {
         <Row className='edit-button'>
         </Row>
 
-        <Row  className="justify-content-md-center">
-          <Button variant="primary" style={{ width: '60rem'}} onClick={()=>console.log(ReactDOMServer.renderToString(templatePart))}>Export Model as HTML/CSS</Button>  
+        <Row  className='justify-content-md-center'>
+          <Button variant='primary' style={{ width: '60rem'}} onClick={()=>console.log(ReactDOMServer.renderToString(templatePart))}>Export Model as HTML/CSS</Button>  
         </Row>
 
         <Row className='edit-button'>
