@@ -1,5 +1,5 @@
-const express = require('express')
 const dotenv = require('dotenv')
+const express = require('express')
 const notFound = require('./middlewares/errorMiddleware')
 const errorHandler = require('./middlewares/errorMiddleware')
 const mongoose = require('mongoose')
@@ -16,8 +16,8 @@ app.use(express.json())
 // routes
 app.use('/api/users', userRoutes)
 
-app.use(notFound)
 app.use(errorHandler)
+app.use(notFound)
 
 const PORT = process.env.PORT || 5000
 

@@ -1,16 +1,30 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Form, Button, Row, Col } from 'react-bootstrap'
-import FormContainer from '../component/FormContainer';
+import FormContainer from '../component/FormContainer'
+import axios from 'axios'
 
 export const LoginScreen = () => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
+    const navigate = useNavigate()
+    const userLogin = localStorage.getItem('userInfo')
+    if(userLogin){
+      navigate('/')
+    }
 
-    const submitHandler = () => {
-
+    const submitHandler = async(e) => {
+      e.preventDefault()
+      const config = {
+        headers: {
+            'Content-Type': 'application/json',
+        }
+      }
+      const { data } = await axios.post('/api/users/login', {email, password}, config)
+      localStorage.setItem('userInfo', JSON.stringify(data))
+      navigate('/')
     }
 
 
