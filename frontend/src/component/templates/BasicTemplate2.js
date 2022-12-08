@@ -7,153 +7,209 @@ class BasicTemplate2 extends React.Component {
         super(props);
         this.state = {
             currentSection : null,
-            pageTitle : "USER INPUT PAGE TITLE",
-            titleText : "TITLE TEXT",
-            subTitle1 : "SUB TITLE TEXT 1",
-            subText1 : "SUBTEXT TEXT 1",
-            subTitle2 : "SUB TITLE TEXT 2",
-            subText2 : "SUBTEXT TEXT 2",
-            pageTitleStyle: "div_hover",
-            titleTextStyle : "div_hover",
-            subTitle1Style : "div_hover",
-            subText1Style : "div_hover",
-            subTitle2Style : "div_hover",
-            subText2Style : "div_hover",
+
+            pageContent : {
+                pageTitle : {
+                    name: "pageTitle",
+                    text: "USER INPUT PAGE TITLE",
+                    style: "div_hover",
+                    textColor: "black",
+                    backgroundColor: "white"
+
+                },
+                titleText : {
+                    name: "titleText",
+                    text: "TITLE TEXT",
+                    style: "div_hover",
+                    textColor: "black",
+                    backgroundColor: "white"
+
+                },
+                subTitle1 : {
+                    name: "subTitle1",
+                    text:"SUB TITLE 1",
+                    style: "div_hover",
+                    textColor: "black",
+                    backgroundColor: "white"
+
+                },
+                subText1 : {
+                    name: "subText1",
+                    text:"SUB TITLE TEXT 1",
+                    style: "div_hover",
+                    textColor: "black",
+                    backgroundColor: "white"
+
+                },
+                subTitle2 : {
+                    name: "subTitle2",
+                    text:"SUB TITLE TEXT 2",
+                    style: "div_hover",
+                    textColor: "black",
+                    backgroundColor: "white"
+
+                },
+                subText2 : {
+                    name: "subText2",
+                    text:"SUBTEXT TEXT 2",
+                    style: "div_hover",
+                    textColor: "black",
+                    backgroundColor: "white"
+
+                }
+            }
         };
     }
 
-    resetStyle = () => {
-        this.setState({
-            pageTitleStyle: "div_hover",
-            titleTextStyle : "div_hover",
-            subTitle1Style : "div_hover",
-            subText1Style : "div_hover",
-            subTitle2Style : "div_hover",
-            subText2Style : "div_hover",
-        })
-    }
     passTextToParent = (text) => {
-        this.props.updateParentCallback(text)
+        this.props.updateText(text)
     }
 
-    handleSubmit(e, section) {
-        console.log('You clicked submit.');
-        if (section === "pageTitle") {
-            if (this.state.currentSection == section) {
-                this.setState({currentSection:null, pageTitleStyle: "div_hover"});
-                this.passTextToParent("")
-            } else {
-                this.resetStyle();
-                this.setState({currentSection:section, pageTitleStyle: "div_clicked"});
-                this.passTextToParent(this.state.pageTitle)
+    passTextColorToParent = (color) => {
+        this.props.updateColor(color)
+    }
+
+    passBackgroundColorToParent = (color) => {
+        this.props.updateBackgroundColor(color)
+    }
+
+    resetSection = () => {
+        // Reset hover status for all sections
+        this.setState((prevState, props) => {
+            let newPageContent = {
+                pageTitle : {
+                    ...prevState.pageContent.pageTitle ,
+                    style: "div_hover"
+
+                },
+                titleText : {
+                    ...prevState.pageContent.titleText ,
+                    style: "div_hover"
+
+                },
+                subTitle1 : {
+                    ...prevState.pageContent.subTitle1 ,
+                    style: "div_hover"
+
+                },
+                subText1 : {
+                    ...prevState.pageContent.subText1 ,
+                    style: "div_hover"
+
+                },
+                subTitle2 : {
+                    ...prevState.pageContent.subTitle2 ,
+                    style: "div_hover"
+
+                },
+                subText2 : {
+                    ...prevState.pageContent.subText2 ,
+                    style: "div_hover"
+
+                }
             }
-            
-        } else if (section === "titleText") {
-            if (this.state.currentSection == section) {
-                this.setState({currentSection:null, titleTextStyle: "div_hover"});
-                this.passTextToParent("")
-            } else {
-                this.resetStyle();
-                this.setState({currentSection:section, titleTextStyle: "div_clicked"});
-                this.passTextToParent(this.state.titleText)
-            }
-        } else if (section === "subTitle1") {
-            if (this.state.currentSection == section) {
-                this.setState({currentSection:null, subTitle1Style: "div_hover"});
-                this.passTextToParent("")
-            } else {
-                this.resetStyle();
-                this.setState({currentSection:section, subTitle1Style: "div_clicked"});
-                this.passTextToParent(this.state.subTitle1)
-            }
-        } else if (section === "subText1") {
-            if (this.state.currentSection == section) {
-                this.setState({currentSection:null, subText1Style: "div_hover"});
-                this.passTextToParent("")
-            } else {
-                this.resetStyle();
-                this.setState({currentSection:section, subText1Style: "div_clicked"});
-                this.passTextToParent(this.state.subText1)
-            }
-        } else if (section === "subTitle2") {
-            if (this.state.currentSection == section) {
-                this.setState({currentSection:null, subTitle2Style: "div_hover"});
-                this.passTextToParent("")
-            } else {
-                this.resetStyle();
-                this.setState({currentSection:section, subTitle2Style: "div_clicked"});
-                this.passTextToParent(this.state.subTitle2)
-            }
-        } else if (section === "subText2") {
-            if (this.state.currentSection == section) {
-                this.setState({currentSection:null, subText2Style: "div_hover"});
-                this.passTextToParent("")
-            } else {
-                this.resetStyle();
-                this.setState({currentSection:section, subText2Style: "div_clicked"});
-                this.passTextToParent(this.state.subText2)
-            }
-        }
-        console.log(this.state.currentSection);
+            return {pageContent:newPageContent}
+        })
+
+        // Pass empty strings and texts to parent
+        this.passTextToParent("")
+        this.passTextColorToParent("")
+        this.passBackgroundColorToParent("")
     };
 
-    componentDidUpdate(previousProps, previousState) {
-        if (previousProps.input !== this.props.input) {
-            if (this.state.currentSection === "pageTitle") {
-                this.setState((state, props) => ({ pageTitle: props.input}));
-                console.log('updated.');
-            } else if (this.state.currentSection === "titleText") {
-                this.setState((state, props) => ({ titleText: props.input}));
-                console.log('updated.');
-            } else if (this.state.currentSection === "subTitle1") {
-                this.setState((state, props) => ({ subTitle1: props.input}));
-                console.log('updated.');
-            } else if (this.state.currentSection === "subText1") {
-                this.setState((state, props) => ({ subText1: props.input}));
-                console.log('updated.');
-            } else if (this.state.currentSection === "subTitle2") {
-                this.setState((state, props) => ({ subTitle2: props.input}));
-                console.log('updated.');
-            } else if (this.state.currentSection === "subText2") {
-                this.setState((state, props) => ({ subText2: props.input}));
-                console.log('updated.');
-            } 
+    updateClickedSection = (section) => {
+        this.setState(prevState => {
+            let newPageContent = Object.assign({}, prevState.pageContent)
+            newPageContent[section] = {
+                ...prevState.pageContent[section],
+                style: "div_clicked"
+            }
+            return {currentSection:section, pageContent:newPageContent}
+        })
+    };
+
+
+    handleSectionClick(e, section) {
+        this.resetSection()
+        if (this.state.currentSection == section) {
+            this.setState({currentSection:null})
+        } else {
+            this.updateClickedSection(section)
+            // console.log(this.state.pageContent[section].style)
         }
+    };
+    
+    updateSectionInfo = (section, newText, newColor, newBackgroundColor) => {
+        console.log(newText)
+        this.setState(prevState => {
+            let newPageContent = Object.assign({}, prevState.pageContent)
+            newPageContent[section] = {
+                ...prevState.pageContent[section],
+                text: newText,
+                color: newColor,
+                backgroundColor: newBackgroundColor
+            }
+            return {currentSection:section, pageContent:newPageContent}
+        })
     }
+
+    componentDidUpdate(previousProps, previousState) {
+        if (this.state.currentSection !== null) {
+            if (previousProps.text !== this.props.text) {
+                this.updateSectionInfo(this.state.currentSection,
+                    this.props.text,
+                    this.state.pageContent[this.state.currentSection].color,
+                    this.state.pageContent[this.state.currentSection].backgroundColor)
+            }
+            if (previousProps.color !== this.props.color) {
+                this.updateSectionInfo(this.state.currentSection,
+                    this.state.pageContent[this.state.currentSection].text,
+                    this.props.color,
+                    this.state.pageContent[this.state.currentSection].backgroundColor)
+            }
+
+            if (previousProps.backgroundColor !== this.props.backgroundColor) {
+                this.updateSectionInfo(this.state.currentSection,
+                    this.state.pageContent[this.state.currentSection].text,
+                    this.state.pageContent[this.state.currentSection].color,
+                    this.props.backgroundColor)
+            }
+        }
+    };
 
     render() {
         return (
             
             <>
             <div id='container'>
-                <div onClick={(e) => this.handleSubmit(e, "pageTitle")} className={this.state.pageTitleStyle}  style={{textAlign:"center", backgroundColor: "pink"}}>
-                    <h1>{this.state.pageTitle}</h1>
+                <div onClick={(e) => this.handleSectionClick(e, "pageTitle")} className={this.state.pageContent.pageTitle.style}  style={{textAlign:"center", backgroundColor: "pink"}}>
+                    <h1>{this.state.pageContent.pageTitle.text}</h1>
                 </div>
 
-                <div onClick={(e) => this.handleSubmit(e, "titleText")} className={this.state.titleTextStyle}>
-                    <p>{this.state.titleText}</p>
+                <div onClick={(e) => this.handleSectionClick(e, "titleText")} className={this.state.pageContent.titleText.style}>
+                    <p>{this.state.pageContent.titleText.text}</p>
                 </div>
 
-                <div onClick={(e) => this.handleSubmit(e, "subTitle1")} className={this.state.subTitle1Style}>
-                    <h2>{this.state.subTitle1}</h2>
+                <div onClick={(e) => this.handleSectionClick(e, "subTitle1")} className={this.state.pageContent.subTitle1.style}>
+                    <h2>{this.state.pageContent.subTitle1.text}</h2>
                 </div>
 
-                <div onClick={(e) => this.handleSubmit(e, "subText1")} className={this.state.subText1Style}>
-                    <p>{this.state.subText1}</p>
+                <div onClick={(e) => this.handleSectionClick(e, "subText1")} className={this.state.pageContent.subText1.style}>
+                    <p>{this.state.pageContent.subText1.text}</p>
                 </div>
 
-                <div onClick={(e) => this.handleSubmit(e, "subTitle2")} className={this.state.subTitle2Style}>
-                    <h2>{this.state.subTitle2}</h2>
+                <div onClick={(e) => this.handleSectionClick(e, "subTitle2")} className={this.state.pageContent.subTitle2.style}>
+                    <h2>{this.state.pageContent.subTitle2.text}</h2>
                 </div>
 
-                <div onClick={(e) => this.handleSubmit(e, "subText2")} className={this.state.subText2Style}>
-                    <p>{this.state.subText2}</p>
+                <div onClick={(e) => this.handleSectionClick(e, "subText2")} className={this.state.pageContent.subText2.style}>
+                    <p>{this.state.pageContent.subText2.text}</p>
                 </div>
             </div>
 
             </>
         );
-    }
+    };
 }
 
 
