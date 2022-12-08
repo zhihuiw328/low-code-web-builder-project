@@ -33,7 +33,7 @@ export const LoginScreen = () => {
 
   return (
     <FormContainer>
-      <h1>Sign In</h1>
+      <h1>Register</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group controlId='email'>
             <Form.Label>User Name</Form.Label>
