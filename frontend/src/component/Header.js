@@ -16,6 +16,10 @@ const Header = () => {
     navigate('/')
   }
 
+  const profileHandler = () => {
+    navigate('/profile')
+  }
+
   return (
     <>
       <Navbar style={{backgroundColor:'#0c2852'}} fixed="top" >
@@ -29,6 +33,7 @@ const Header = () => {
             <Nav.Link href="/edit" style={{color: 'white', fontSize: '60%'}}> Edit</Nav.Link>
             {userLogin ? (
               <NavDropdown title={userLogin.name} id="basic-nav-dropdown" style={{color: 'white', fontSize: '60%'}}>
+                <NavDropdown.Item onClick = {profileHandler}>User profile</NavDropdown.Item>
                 <NavDropdown.Item onClick = {signoutHandler}>Sign Out</NavDropdown.Item>
               </NavDropdown>
             ) : (

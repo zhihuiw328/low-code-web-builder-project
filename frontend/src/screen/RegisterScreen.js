@@ -16,9 +16,9 @@ export const LoginScreen = () => {
     const submitHandler = async(e) => {
         e.preventDefault()
         if(password !== confirmedPassword){
-            window.confirm("The passwords you entered two times are not consistence!")
+            alert("The passwords you entered two times are not consistence!")
         }else if(name === '' || email === '' || password === '' || confirmedPassword === ''){
-            window.confirm("Please enter every fields of the page!")
+            alert("Please enter every fields of the page!")
         }else{
             const config = {
                 headers: {
@@ -49,7 +49,7 @@ export const LoginScreen = () => {
         </Form.Group>
         <Form.Group controlId='email'>
             <Form.Label>Confirmed Password</Form.Label>
-            <Form.Control type='text' placeholder='Enter Password Again' value={confirmedPassword} onChange={(e) => setConfirmedPassword(e.target.value)}></Form.Control>
+            <Form.Control type='password' placeholder='Enter Password Again' value={confirmedPassword} onChange={(e) => setConfirmedPassword(e.target.value)}></Form.Control>
         </Form.Group>
         <Button className='my-3' type='submit' variant='primary'>
           Register
