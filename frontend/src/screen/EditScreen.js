@@ -22,8 +22,14 @@ class EditScreen extends React.Component {
       showImage: false,
       showText: false,
       showColor: false,
+      showFont: false,
+
       color: 'black',
-      backgroundColor: 'white'
+      backgroundColor: 'white',
+
+      fontSize: 1,
+      fontStyle: "bold",
+      font:"times",
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -38,6 +44,8 @@ class EditScreen extends React.Component {
     this.handleUploadImage = this.handleUploadImage.bind(this);
 
     this.handleShowHideColor = this.handleShowHideColor.bind(this);
+
+    this.handleShowHideFont = this.handleShowHideFont.bind(this);
 
     this.handleExport = this.handleExport.bind(this);
   }
@@ -93,6 +101,12 @@ class EditScreen extends React.Component {
     }));
   }
 
+  handleShowHideFont(event) {
+    this.setState(state => ({
+      showFont : !this.state.showFont
+    }));
+  }
+
   handleExport() {
     // console.log(ReactDOMServer.renderToString(templatePart))
     /* {TODO: Need backend first */
@@ -110,6 +124,15 @@ class EditScreen extends React.Component {
 
         updateBackgroundColor={(update)=>this.setState(state => ({backgroundColor: update}))}
         backgroundColor ={this.state.backgroundColor}
+
+        updatefont={(update)=>this.setState(state => ({font: update}))}
+        font ={this.state.font}
+        
+        updatefontSize={(update)=>this.setState(state => ({fontSize: update}))}
+        fontSize ={this.state.fontSize}
+
+        updatefontStyle={(update)=>this.setState(state => ({fontStyle: update}))}
+        fontStyle ={this.state.fontStyle}
         />
     return (
       <>
@@ -153,7 +176,7 @@ class EditScreen extends React.Component {
               <Button variant='secondary' onClick={this.handleShowImage}>Upload Image</Button>  
             </Row>
 
-
+            {/* Text edit */}
             <Row className='edit-button'>
               <Button variant='secondary' onClick={this.handleShowHideText}>Edit Text Block</Button>  
               { this.state.showText
@@ -178,58 +201,106 @@ class EditScreen extends React.Component {
               </Card>
               
               : null
-          }
+            }
             </Row>
 
+            {/* Color selection */}
             <Row className='edit-button'>
               <Button variant='secondary' onClick={this.handleShowHideColor}>Edit Color</Button>  
             </Row>
-            <Row>
-              
-              {
-                this.state.showColor
-            ? <>
-            <Col>
-            <Dropdown className="dropdown-box">
-                <Dropdown.Toggle style={{color: this.state.backgroundColor ==="white" ?"black":"white",  background: this.state.backgroundColor}} >
-                  Background Color
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item onClick={()=>this.setState({backgroundColor:"black"})} active={this.state.backgroundColor === "black"}>Black</Dropdown.Item>
-                  <Dropdown.Item onClick={()=>this.setState({backgroundColor:"white"})} active={this.state.backgroundColor === "white"}>White</Dropdown.Item>
-                  <Dropdown.Item onClick={()=>this.setState({backgroundColor:"red"})} active={this.state.backgroundColor === "red"}>Red</Dropdown.Item>
-                  <Dropdown.Item onClick={()=>this.setState({backgroundColor:"orange"})} active={this.state.backgroundColor === "orange"}>Orange</Dropdown.Item>
-                  <Dropdown.Item onClick={()=>this.setState({backgroundColor:"pink"})} active={this.state.backgroundColor === "pink"}>Pink</Dropdown.Item>
-                  <Dropdown.Item onClick={()=>this.setState({backgroundColor:"blue"})} active={this.state.backgroundColor === "blue"}>Blue</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-              </Col>
+    
+            {
+              this.state.showColor
+              ? <Row>
+                <Col>
+                <Dropdown className="dropdown-box">
+                    <Dropdown.Toggle style={{color: this.state.backgroundColor ==="white" ?"black":"white",  background: this.state.backgroundColor}} >
+                      Background Color
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                      <Dropdown.Item onClick={()=>this.setState({backgroundColor:"black"})} active={this.state.backgroundColor === "black"}>Black</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({backgroundColor:"white"})} active={this.state.backgroundColor === "white"}>White</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({backgroundColor:"red"})} active={this.state.backgroundColor === "red"}>Red</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({backgroundColor:"orange"})} active={this.state.backgroundColor === "orange"}>Orange</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({backgroundColor:"pink"})} active={this.state.backgroundColor === "pink"}>Pink</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({backgroundColor:"blue"})} active={this.state.backgroundColor === "blue"}>Blue</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                  </Col>
 
-              <Col>
-              <Dropdown className="dropdown-box">
-                <Dropdown.Toggle style={{color: this.state.color ==="white" ?"black":"white", background: this.state.color}} >
-                  Font Color
-                </Dropdown.Toggle>
+                  <Col>
+                  <Dropdown className="dropdown-box">
+                    <Dropdown.Toggle style={{color: this.state.color ==="white" ?"black":"white", background: this.state.color}} >
+                      Text Color
+                    </Dropdown.Toggle>
 
-                <Dropdown.Menu>
-                  <Dropdown.Item onClick={()=>this.setState({color:"black"})} active={this.state.color === "black"}>Black</Dropdown.Item>
-                  <Dropdown.Item onClick={()=>this.setState({color:"white"})} active={this.state.color === "white"}>White</Dropdown.Item>
-                  <Dropdown.Item onClick={()=>this.setState({color:"red"})} active={this.state.color === "red"}>Red</Dropdown.Item>
-                  <Dropdown.Item onClick={()=>this.setState({color:"orange"})} active={this.state.color === "orange"}>Orange</Dropdown.Item>
-                  <Dropdown.Item onClick={()=>this.setState({color:"pink"})} active={this.state.color === "pink"}>Pink</Dropdown.Item>
-                  <Dropdown.Item onClick={()=>this.setState({color:"blue"})} active={this.state.color === "blue"}>Blue</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-              </Col>
-              </>
-              :null
-            }
+                    <Dropdown.Menu>
+                      <Dropdown.Item onClick={()=>this.setState({color:"black"})} active={this.state.color === "black"}>Black</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({color:"white"})} active={this.state.color === "white"}>White</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({color:"red"})} active={this.state.color === "red"}>Red</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({color:"orange"})} active={this.state.color === "orange"}>Orange</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({color:"pink"})} active={this.state.color === "pink"}>Pink</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({color:"blue"})} active={this.state.color === "blue"}>Blue</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                  </Col>
+                  </Row>
+                  :null
+                }
 
-            </Row>
-
+            {/* Font selection */}
             <Row className='edit-button'>
-              <Button variant='secondary'>Edit Font</Button>  
+              <Button variant='secondary' onClick={this.handleShowHideFont}>Edit Font</Button>  
             </Row>
+    
+            {
+              this.state.showFont
+              ? <Row>
+
+                <Col>
+                  <Dropdown className="dropdown-box">
+                    <Dropdown.Toggle>
+                      Font
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                      <Dropdown.Item onClick={()=>this.setState({font:"helvetica"})} active={this.state.font === "helvetica"}>Helvetica</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({font:"times"})} active={this.state.font === "times"}>Times</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                  </Col>
+
+                <Col>
+                <Dropdown className="dropdown-box">
+                    <Dropdown.Toggle>
+                      Font Size
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                      <Dropdown.Item onClick={()=>this.setState({fontSize:1})} active={this.state.fontSize === 1}>1</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({fontSize:4})} active={this.state.fontSize === 4}>4</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({fontSize:8})} active={this.state.fontSize === 8}>8</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({fontSize:12})} active={this.state.fontSize === 12}>12</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({fontSize:20})} active={this.state.fontSize === 20}>20</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                  </Col>
+
+                  <Col>
+                  <Dropdown className="dropdown-box">
+                    <Dropdown.Toggle>
+                      Font Style
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                      <Dropdown.Item onClick={()=>this.setState({fontStyle:"bold"})} active={this.state.fontStyle === "bold"}>Bold</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({fontStyle:"normal"})} active={this.state.fontStyle === "normal"}>Normal</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                  </Col>
+                  </Row>
+                  :null
+                }
+
             <Row className='space'>
             </Row>
 
