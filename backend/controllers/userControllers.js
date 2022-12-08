@@ -21,38 +21,35 @@ exports.loginUser = asyncHandler(async(req, res) => {
 })
 
 exports.registerUser = asyncHandler(async(req, res) => {
-    const {name, email, password, passwordSecond} = req.body;
+    const {name, email, password, confirmedPassword} = req.body;
     
     if (!name || !email || !password) {
+        res.status(400);
         throw new Error("Invalid name or email or password!");
     }
 
-    if (password !== passwordSecond) {
+    if (password !== confirmedPassword) {
+        res.status(400);
         throw new Error('password does not match');
     }
 
     //  check email unique
-    const existUser = await user.findOne({'email': email});
+    const existUser = await User.findOne({'email': email});
     if (existUser) {
-        res.status(500);
+        res.status(400);
         throw new Error("Email Exists");
     }
 
-    const user = await User.insertMany([{
-        'name': name,
-        'email': email,
-        'password': password,
-        'dateCreated': Date.now()
-    }]);
+    const user = await User.create({name, email, password, dateCreated: Date.now()})
 
     if (user) {
         res.status(201);
         res.json({
             'message': 'OK',
-            'data': user[0]
+            'data': user
         });
     } else {
-        res.status(500);
+        res.status(400);
         throw new Error('Created user failed');
     }
 })
