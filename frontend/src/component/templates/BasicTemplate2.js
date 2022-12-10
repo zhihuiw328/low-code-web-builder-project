@@ -74,7 +74,16 @@ class BasicTemplate2 extends React.Component {
                     font:"Georgia",
                     fontSize:15,
                     fontStyle:"italic"
-
+                },
+                footer : {
+                    name: "footer",
+                    text:"email: cats@no-such-email.com",
+                    style: "div_hover",
+                    color: "black",
+                    backgroundColor: "white",
+                    font:"Georgia",
+                    fontSize:15,
+                    fontStyle:"italic"
                 }
             }
         };
@@ -112,6 +121,11 @@ class BasicTemplate2 extends React.Component {
                 },
                 subText2 : {
                     ...prevState.pageContent.subText2 ,
+                    style: "div_hover"
+
+                },
+                footer : {
+                    ...prevState.pageContent.footer ,
                     style: "div_hover"
 
                 }
@@ -284,7 +298,7 @@ class BasicTemplate2 extends React.Component {
                             className={this.state.pageContent.subText1.style}
                             style={{backgroundColor: this.state.backgroundColor,
                                 color: this.state.pageContent.subText1.color,
-                                height: "30vh",
+                                height: "33vh",
                                 fontFamily: this.state.pageContent.subText1.font,
                                 fontSize: this.state.pageContent.subText1.fontSize,
                                 fontWeight: this.state.pageContent.subText1.fontStyle}}>
@@ -317,7 +331,7 @@ class BasicTemplate2 extends React.Component {
                             className={this.state.pageContent.subText2.style}
                             style={{backgroundColor:this.state.backgroundColor,
                                 color: this.state.pageContent.subText2.color,
-                                height: "30vh",
+                                height: "33vh",
                                 fontFamily: this.state.pageContent.subText2.font,
                                 fontSize: this.state.pageContent.subText2.fontSize,
                                 fontWeight: this.state.pageContent.subText2.fontStyle}}>
@@ -326,6 +340,29 @@ class BasicTemplate2 extends React.Component {
                         </div>
                     </div>
                 </div>
+
+                <div onClick={(e) => this.handleSectionClick(e, "footer")} 
+                            className={this.state.pageContent.footer.style}
+                            style={{backgroundColor:this.state.backgroundColor,
+                                color: this.state.pageContent.footer.color,
+                                height: "10vh",
+                                fontFamily: this.state.pageContent.footer.font,
+                                fontSize: this.state.pageContent.footer.fontSize,
+                                fontWeight: this.state.pageContent.footer.fontStyle,
+                                verticalAlign:"middle",
+                                position:"relative",
+                                display: "flex",
+                                justifyContent:"center"}}
+                                >
+                            <div style={{
+                                position: "absolute",
+                                top: "50%",
+                                transform: "translateY(-50%)",
+                                margin:"auto"
+                                }}>
+                                <p>{this.state.pageContent.footer.text}</p>
+                            </div>
+                        </div>
             </div>
 
             </>
