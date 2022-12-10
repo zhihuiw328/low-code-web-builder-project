@@ -8,6 +8,7 @@ import FormContainer from '../component/FormContainer';
 import ControlledCarousel from '../component/Carousel/Carousel';
 import BasicTemplate1 from '../component/templates/BasicTemplate1';
 import BasicTemplate2 from '../component/templates/BasicTemplate2';
+import DetailScreen from './DetailScreen';
 import Card from 'react-bootstrap/Card';
 import * as ReactDOMServer from 'react-dom/server';
 import axios from 'axios'
@@ -34,7 +35,7 @@ class EditScreen extends React.Component {
       fontStyle: "normal",
       font:"times",
 
-      template: "",
+      template: BasicTemplate2,
       name:"",
       userId:"",
       templateState:{}
@@ -104,7 +105,8 @@ class EditScreen extends React.Component {
     this.setState(state => ({
       save : false
     }));
-//TO DO: backend put/push
+  //TODO: backend put/push
+  
   }
 
   handleCloseSave(){
@@ -165,8 +167,10 @@ class EditScreen extends React.Component {
   
 
   render() {
+
+    // const MyComponent = ( props ) => <div>{this.state.template}</div>
     var templatePart = 
-      <BasicTemplate2 
+      <this.state.template
         updateText={(update)=>this.setState(state => ({text: update}))}
         text={this.state.text}
 
@@ -189,7 +193,7 @@ class EditScreen extends React.Component {
         />
     return (
       <>
-      {/* HXY save here */}
+      {/* Save modal */}
       <Modal show={this.state.save} onHide={this.handleCloseSave}>
         <Modal.Header closeButton>
           <Modal.Title>Enter your template's name</Modal.Title>
@@ -208,9 +212,13 @@ class EditScreen extends React.Component {
           <Button variant="danger" onClick={this.handleClearSave}>
             Clear
           </Button>
-          <Button variant="success" onClick={this.handleUploadSave}>
-            Save
-          </Button>
+          
+          <Link to='/Detail' state={{name: "sss"}}>
+            <Button variant="success" onClick={this.handleUploadSave}>
+              Save
+            </Button>
+          </Link>
+          
         </Modal.Footer>
       </Modal>  
       {/* save */}
@@ -408,16 +416,18 @@ class EditScreen extends React.Component {
           </Col>
         </Row>
 
-        <Row className='edit-button'>
+        <Row className='space'>
         </Row>
 
         <Row  className='justify-content-md-center'>
           <Button variant='primary' style={{ width: '60rem'}} onClick={()=>{console.log(ReactDOMServer.renderToReadableStream(templatePart));console.log(templatePart)}}>Export Model as HTML/CSS</Button>  
         </Row>
+
+        <Row className='space'>
+        </Row>
         
-        {/* HXY */}
         <Row  className='justify-content-md-center'>
-          <Button variant='primary' style={{ width: '60rem'}} onClick={()=>{this.setState({save:!this.state.save})}}>Save</Button>  
+          <Button variant='primary' style={{ width: '60rem'}} onClick={()=>{this.setState({save:true})}}>Save</Button>  
         </Row>
 
         <Row className='space'>

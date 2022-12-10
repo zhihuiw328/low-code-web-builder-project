@@ -6,6 +6,7 @@ import RegisterScreen from './screen/RegisterScreen';
 import TemplateScreen from './screen/TemplateScreen';
 import EditScreen from './screen/EditScreen';
 import ProfileScreen from './screen/ProfileScreen';
+import DetailScreen from './screen/DetailScreen';
 import Header from './component/Header';
 import Footer from './component/Footer';
 
@@ -21,6 +22,7 @@ const App = () => {
               <Route path="/template" element={<TemplateScreen/>} />
               <Route path="/edit" element={<EditScreen/>} />
               <Route path="/profile" element={<ProfileScreen/>} />
+              <Route path="/detail" element={<DetailScreen/>} />
           </Routes>
         </div>
           
