@@ -371,8 +371,6 @@ class EditScreen extends React.Component {
                       <Dropdown.Item onClick={()=>this.setState({fontSize:20})} active={this.state.fontSize === 20}>20</Dropdown.Item>
                       <Dropdown.Item onClick={()=>this.setState({fontSize:30})} active={this.state.fontSize === 30}>30</Dropdown.Item>
                       <Dropdown.Item onClick={()=>this.setState({fontSize:40})} active={this.state.fontSize === 40}>40</Dropdown.Item>
-                      <Dropdown.Item onClick={()=>this.setState({fontSize:50})} active={this.state.fontSize === 50}>50</Dropdown.Item>
-                      <Dropdown.Item onClick={()=>this.setState({fontSize:60})} active={this.state.fontSize === 60}>60</Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
                   </Col>
