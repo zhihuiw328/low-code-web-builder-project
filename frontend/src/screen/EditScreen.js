@@ -344,12 +344,12 @@ class EditScreen extends React.Component {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
-                      <Dropdown.Item onClick={()=>this.setState({font:"helvetica"})} active={this.state.font === "helvetica"}>Helvetica</Dropdown.Item>
-                      <Dropdown.Item onClick={()=>this.setState({font:"times"})} active={this.state.font === "times"}>Times</Dropdown.Item>
-                      <Dropdown.Item onClick={()=>this.setState({font:"menlo"})} active={this.state.font === "menlo"}>Menlo</Dropdown.Item>
-                      <Dropdown.Item onClick={()=>this.setState({font:"rockwell"})} active={this.state.font === "rockwell"}>Rockwell</Dropdown.Item>
-                      <Dropdown.Item onClick={()=>this.setState({font:"impact"})} active={this.state.font === "impact"}>Impact</Dropdown.Item>
-                      <Dropdown.Item onClick={()=>this.setState({font:"impact"})} active={this.state.font === "impact"}>Impact</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({font:"helvetica"})} active={this.state.font === "helvetica"} style={{"font-family":this.state.font}}>Helvetica</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({font:"times"})} active={this.state.font === "times"} style={{"font-family":this.state.font}}>Times</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({font:"menlo"})} active={this.state.font === "menlo"} style={{"font-family":this.state.font}}>Menlo</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({font:"rockwell"})} active={this.state.font === "rockwell"} style={{"font-family":this.state.font}}>Rockwell</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({font:"impact"})} active={this.state.font === "impact"} style={{"font-family":this.state.font}}>Impact</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({font:"georgia"})} active={this.state.font === "georgia"} style={{"font-family":this.state.font}}>Georgia</Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
                   </Col>
@@ -379,9 +379,8 @@ class EditScreen extends React.Component {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
-                      <Dropdown.Item onClick={()=>this.setState({fontStyle:"bold"})} active={this.state.fontStyle === "bold"} style={{"font-weight":"bold"}}>Bold</Dropdown.Item>
-                      <Dropdown.Item onClick={()=>this.setState({fontStyle:"normal"})} active={this.state.fontStyle === "normal"}>Normal</Dropdown.Item>
-                      <Dropdown.Item onClick={()=>this.setState({fontStyle:"lighter"})} active={this.state.fontStyle === "lighter"} style={{"font-weight":"lighter"}}>Lighter</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({fontStyle:"bold"})} active={this.state.fontStyle === "bold"} style={{"font-weight":"bold", "font-family":this.state.font}}>Bold</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({fontStyle:"normal"})} active={this.state.fontStyle === "normal"} style={{"font-weight":"bold", "font-family":this.state.font}}>Normal</Dropdown.Item>
                       {/* <Dropdown.Item onClick={()=>this.setState({fontStyle:"italic"})} active={this.state.fontStyle === "italic"} style={{"font-style":"italic"}}>Italic</Dropdown.Item> */}
                     </Dropdown.Menu>
                   </Dropdown>
