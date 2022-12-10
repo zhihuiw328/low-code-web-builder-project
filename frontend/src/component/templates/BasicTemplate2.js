@@ -6,6 +6,7 @@ class BasicTemplate2 extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            templateName: "BasicTemplate2",
             currentSection : null,
             backgroundColor: "white",
             pageContent : {
@@ -220,6 +221,10 @@ class BasicTemplate2 extends React.Component {
         if (previousProps.imageLink !== this.props.imageLink) {
             this.setState((state, props) => ({imageLink: this.props.imageLink}))
         }
+        if (previousState.pageContent !== this.state.pageContent) {
+            // TODO: 
+            this.props.collectTemplateStates(this.state.pageContent)
+        }
     };
 
     render() {
@@ -227,6 +232,7 @@ class BasicTemplate2 extends React.Component {
             
             <>
             <div id='container' style={{textAlign:"center", 
+                        // display:"flex",
                         backgroundColor: this.state.backgroundColor}}>
                 
                 <div onClick={(e) => this.handleSectionClick(e, "pageTitle")} 
