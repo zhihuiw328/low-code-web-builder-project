@@ -17,8 +17,8 @@ class BasicTemplate1 extends React.Component {
                     color: "black",
                     backgroundColor: "white",
                     font:"Georgia",
-                    fontSize:"15",
-                    fontStyle:"italic"
+                    fontSize:40,
+                    fontStyle:"bold"
 
                 },
                 titleText : {
@@ -28,7 +28,7 @@ class BasicTemplate1 extends React.Component {
                     color: "black",
                     backgroundColor: "white",
                     font:"Georgia",
-                    fontSize:"15",
+                    fontSize:15,
                     fontStyle:"italic"
 
                 },
@@ -39,8 +39,8 @@ class BasicTemplate1 extends React.Component {
                     color: "black",
                     backgroundColor: "white",
                     font:"Georgia",
-                    fontSize:"15",
-                    fontStyle:"italic"
+                    fontSize:30,
+                    fontStyle:"bold"
 
                 },
                 subText1 : {
@@ -50,7 +50,7 @@ class BasicTemplate1 extends React.Component {
                     color: "black",
                     backgroundColor: "white",
                     font:"Georgia",
-                    fontSize:"15",
+                    fontSize:15,
                     fontStyle:"italic"
 
                 },
@@ -61,8 +61,8 @@ class BasicTemplate1 extends React.Component {
                     color: "black",
                     backgroundColor: "white",
                     font:"Georgia",
-                    fontSize:"15",
-                    fontStyle:"italic"
+                    fontSize:30,
+                    fontStyle:"bold"
 
                 },
                 subText2 : {
@@ -72,7 +72,7 @@ class BasicTemplate1 extends React.Component {
                     color: "black",
                     backgroundColor: "white",
                     font:"Georgia",
-                    fontSize:"15",
+                    fontSize:15,
                     fontStyle:"italic"
 
                 }
@@ -220,6 +220,10 @@ class BasicTemplate1 extends React.Component {
         console.log(this.state.imageLink)
         if (previousProps.imageLink !== this.props.imageLink) {
             this.setState((state, props) => ({imageLink: this.props.imageLink}))
+        }
+        if (previousState.pageContent !== this.state.pageContent) {
+            // TODO: 
+            this.props.collectTemplateStates(this.state.pageContent)
         }
     };
 
