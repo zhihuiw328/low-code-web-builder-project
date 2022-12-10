@@ -238,8 +238,8 @@ class BasicTemplate2 extends React.Component {
                         height: "10%",
                         fontFamily: this.state.pageContent.pageTitle.font,
                         fontSize: this.state.pageContent.pageTitle.fontSize,
-                        fontStyle: this.state.pageContent.pageTitle.fontStyle}}>
-                    <h1>{this.state.pageContent.pageTitle.text}</h1>
+                        fontWeight: this.state.pageContent.pageTitle.fontStyle}}>
+                    <p>{this.state.pageContent.pageTitle.text}</p>
                 </div>
 
                 <div onClick={(e) => this.handleSectionClick(e, "titleText")}
@@ -250,7 +250,7 @@ class BasicTemplate2 extends React.Component {
                         height: "20%",
                         fontFamily: this.state.pageContent.titleText.font,
                         fontSize: this.state.pageContent.titleText.fontSize,
-                        fontStyle: this.state.pageContent.titleText.fontStyle}}>
+                        fontWeight: this.state.pageContent.titleText.fontStyle}}>
                     <p>{this.state.pageContent.titleText.text}</p>
                     {this.state.pageContent.titleText.fontStyle}
                 </div>
@@ -262,8 +262,8 @@ class BasicTemplate2 extends React.Component {
                         height: "10%",
                         fontFamily: this.state.pageContent.subTitle1.font,
                         fontSize: this.state.pageContent.subTitle1.fontSize,
-                        fontStyle: this.state.pageContent.subTitle1.fontStyle}}>
-                    <h2>{this.state.pageContent.subTitle1.text}</h2>
+                        fontWeight: this.state.pageContent.subTitle1.fontStyle}}>
+                    <p>{this.state.pageContent.subTitle1.text}</p>
                 </div>
 
                 <div onClick={(e) => this.handleSectionClick(e, "subText1")}
@@ -273,9 +273,10 @@ class BasicTemplate2 extends React.Component {
                         height: "20%",
                         fontFamily: this.state.pageContent.subText1.font,
                         fontSize: this.state.pageContent.subText1.fontSize,
-                        fontStyle: this.state.pageContent.subText1.fontStyle}}>
+                        fontWeight: this.state.pageContent.subText1.fontStyle}}>
                     <p>{this.state.pageContent.subText1.text}</p>
                     {this.props.imageLink}
+                    {/* TODO:  */}
                     {this.props.imageLink != null
                         ?  <img src={this.props.imageLink}></img>
                         : <p>1</p>
@@ -289,8 +290,8 @@ class BasicTemplate2 extends React.Component {
                         height: "10%",
                         fontFamily: this.state.pageContent.subTitle2.font,
                         fontSize: this.state.pageContent.subTitle2.fontSize,
-                        fontStyle: this.state.pageContent.subTitle2.fontStyle}}>
-                    <h2>{this.state.pageContent.subTitle2.text}</h2>
+                        fontWeight: this.state.pageContent.subTitle2.fontStyle}}>
+                    <p>{this.state.pageContent.subTitle2.text}</p>
                 </div>
 
                 <div onClick={(e) => this.handleSectionClick(e, "subText2")} 
@@ -300,7 +301,7 @@ class BasicTemplate2 extends React.Component {
                         height: "20%",
                         fontFamily: this.state.pageContent.subText2.font,
                         fontSize: this.state.pageContent.subText2.fontSize,
-                        fontStyle: this.state.pageContent.subText2.fontStyle}}>
+                        fontWeight: this.state.pageContent.subText2.fontStyle}}>
                     <p>{this.state.pageContent.subText2.text}</p>
                 </div>
             </div>
