@@ -344,12 +344,15 @@ class EditScreen extends React.Component {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
-                      <Dropdown.Item onClick={()=>this.setState({font:"helvetica"})} active={this.state.font === "helvetica"} style={{"font-family":this.state.font}}>Helvetica</Dropdown.Item>
+                      
                       <Dropdown.Item onClick={()=>this.setState({font:"times"})} active={this.state.font === "times"} style={{"font-family":this.state.font}}>Times</Dropdown.Item>
                       <Dropdown.Item onClick={()=>this.setState({font:"menlo"})} active={this.state.font === "menlo"} style={{"font-family":this.state.font}}>Menlo</Dropdown.Item>
                       <Dropdown.Item onClick={()=>this.setState({font:"rockwell"})} active={this.state.font === "rockwell"} style={{"font-family":this.state.font}}>Rockwell</Dropdown.Item>
                       <Dropdown.Item onClick={()=>this.setState({font:"impact"})} active={this.state.font === "impact"} style={{"font-family":this.state.font}}>Impact</Dropdown.Item>
+                     
+                      <Dropdown.Item onClick={()=>this.setState({font:"arial"})} active={this.state.font === "arial"} style={{"font-family":this.state.font}}>Arial</Dropdown.Item>
                       <Dropdown.Item onClick={()=>this.setState({font:"georgia"})} active={this.state.font === "georgia"} style={{"font-family":this.state.font}}>Georgia</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({font:"helvetica"})} active={this.state.font === "helvetica"} style={{"font-family":this.state.font}}>Helvetica</Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
                   </Col>
@@ -366,8 +369,10 @@ class EditScreen extends React.Component {
                       <Dropdown.Item onClick={()=>this.setState({fontSize:8})} active={this.state.fontSize === 8}>8</Dropdown.Item>
                       <Dropdown.Item onClick={()=>this.setState({fontSize:12})} active={this.state.fontSize === 12}>12</Dropdown.Item>
                       <Dropdown.Item onClick={()=>this.setState({fontSize:20})} active={this.state.fontSize === 20}>20</Dropdown.Item>
-                      <Dropdown.Item onClick={()=>this.setState({fontSize:20})} active={this.state.fontSize === 30}>30</Dropdown.Item>
-                      <Dropdown.Item onClick={()=>this.setState({fontSize:20})} active={this.state.fontSize === 40}>40</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({fontSize:30})} active={this.state.fontSize === 30}>30</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({fontSize:40})} active={this.state.fontSize === 40}>40</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({fontSize:50})} active={this.state.fontSize === 50}>50</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({fontSize:60})} active={this.state.fontSize === 60}>60</Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
                   </Col>
