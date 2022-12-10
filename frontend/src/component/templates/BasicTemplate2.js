@@ -233,6 +233,7 @@ class BasicTemplate2 extends React.Component {
             <>
             <div id='container' style={{textAlign:"center", 
                         // display:"flex",
+                        flexDirection:"column",
                         backgroundColor: this.state.backgroundColor}}>
                 
                 <div onClick={(e) => this.handleSectionClick(e, "pageTitle")} 
@@ -247,7 +248,6 @@ class BasicTemplate2 extends React.Component {
                         fontWeight: this.state.pageContent.pageTitle.fontStyle}}>
                     <p>{this.state.pageContent.pageTitle.text}</p>
                 </div>
-
                 <div onClick={(e) => this.handleSectionClick(e, "titleText")}
                     className={this.state.pageContent.titleText.style}
                     style={{backgroundColor: this.state.backgroundColor, 
@@ -261,54 +261,70 @@ class BasicTemplate2 extends React.Component {
                     {this.state.pageContent.titleText.fontStyle}
                 </div>
 
-                <div onClick={(e) => this.handleSectionClick(e, "subTitle1")} 
-                    className={this.state.pageContent.subTitle1.style}
-                    style={{backgroundColor: this.state.backgroundColor,
-                        color: this.state.pageContent.subTitle1.color,
-                        height: "10%",
-                        fontFamily: this.state.pageContent.subTitle1.font,
-                        fontSize: this.state.pageContent.subTitle1.fontSize,
-                        fontWeight: this.state.pageContent.subTitle1.fontStyle}}>
-                    <p>{this.state.pageContent.subTitle1.text}</p>
-                </div>
+                <div style={{textAlign:"center", 
+                        display:"flex",
+                        justifyContent:"space-evenly",
+                        backgroundColor: this.state.backgroundColor}}>
 
-                <div onClick={(e) => this.handleSectionClick(e, "subText1")}
-                    className={this.state.pageContent.subText1.style}
-                    style={{backgroundColor: this.state.backgroundColor,
-                        color: this.state.pageContent.subText1.color,
-                        height: "20%",
-                        fontFamily: this.state.pageContent.subText1.font,
-                        fontSize: this.state.pageContent.subText1.fontSize,
-                        fontWeight: this.state.pageContent.subText1.fontStyle}}>
-                    <p>{this.state.pageContent.subText1.text}</p>
-                    {this.props.imageLink}
-                    {/* TODO:  */}
-                    {this.props.imageLink != null
-                        ?  <img src={this.props.imageLink}></img>
-                        : <p>1</p>
-                    }
-                </div>
+                    <div  style={{textAlign:"center", 
+                        flexDirection:"column",
+                        width: "45%"}}>
+                        <div onClick={(e) => this.handleSectionClick(e, "subTitle1")} 
+                            className={this.state.pageContent.subTitle1.style}
+                            style={{backgroundColor: this.state.backgroundColor,
+                                color: this.state.pageContent.subTitle1.color,
+                                height: "10vh",
+                                fontFamily: this.state.pageContent.subTitle1.font,
+                                fontSize: this.state.pageContent.subTitle1.fontSize,
+                                fontWeight: this.state.pageContent.subTitle1.fontStyle}}>
+                            <p>{this.state.pageContent.subTitle1.text}</p>
+                        </div>
 
-                <div onClick={(e) => this.handleSectionClick(e, "subTitle2")} 
-                    className={this.state.pageContent.subTitle2.style}
-                    style={{backgroundColor: this.state.backgroundColor,
-                        color: this.state.pageContent.subTitle2.color,
-                        height: "10%",
-                        fontFamily: this.state.pageContent.subTitle2.font,
-                        fontSize: this.state.pageContent.subTitle2.fontSize,
-                        fontWeight: this.state.pageContent.subTitle2.fontStyle}}>
-                    <p>{this.state.pageContent.subTitle2.text}</p>
-                </div>
+                        <div onClick={(e) => this.handleSectionClick(e, "subText1")}
+                            className={this.state.pageContent.subText1.style}
+                            style={{backgroundColor: this.state.backgroundColor,
+                                color: this.state.pageContent.subText1.color,
+                                height: "30vh",
+                                fontFamily: this.state.pageContent.subText1.font,
+                                fontSize: this.state.pageContent.subText1.fontSize,
+                                fontWeight: this.state.pageContent.subText1.fontStyle}}>
+                            <p>{this.state.pageContent.subText1.text}</p>
+                            {this.props.imageLink}
+                            {/* TODO:  */}
+                            {/* {this.props.imageLink != null
+                                ?  <img src={this.props.imageLink}></img>
+                                : <p>1</p>
+                            } */}
+                            <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbh_-7NSQ7J-RyYt42aP7R2ujOEvNUZtkKvGSX4DWMyA&s"}></img>
+                        </div>
+                    </div>
+                            
+                    <div  style={{textAlign:"center", 
+                        flexDirection:"column",
+                        width: "45%"}}>
+                        <div onClick={(e) => this.handleSectionClick(e, "subTitle2")} 
+                        className={this.state.pageContent.subTitle2.style}
+                        style={{backgroundColor: this.state.backgroundColor,
+                            color: this.state.pageContent.subTitle2.color,
+                            height: "10vh",
+                            fontFamily: this.state.pageContent.subTitle2.font,
+                            fontSize: this.state.pageContent.subTitle2.fontSize,
+                            fontWeight: this.state.pageContent.subTitle2.fontStyle}}>
+                        <p>{this.state.pageContent.subTitle2.text}</p>
+                        </div>
 
-                <div onClick={(e) => this.handleSectionClick(e, "subText2")} 
-                    className={this.state.pageContent.subText2.style}
-                    style={{backgroundColor:this.state.backgroundColor,
-                        color: this.state.pageContent.subText2.color,
-                        height: "20%",
-                        fontFamily: this.state.pageContent.subText2.font,
-                        fontSize: this.state.pageContent.subText2.fontSize,
-                        fontWeight: this.state.pageContent.subText2.fontStyle}}>
-                    <p>{this.state.pageContent.subText2.text}</p>
+                        <div onClick={(e) => this.handleSectionClick(e, "subText2")} 
+                            className={this.state.pageContent.subText2.style}
+                            style={{backgroundColor:this.state.backgroundColor,
+                                color: this.state.pageContent.subText2.color,
+                                height: "30vh",
+                                fontFamily: this.state.pageContent.subText2.font,
+                                fontSize: this.state.pageContent.subText2.fontSize,
+                                fontWeight: this.state.pageContent.subText2.fontStyle}}>
+                            <p>{this.state.pageContent.subText2.text}</p>
+                            <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbh_-7NSQ7J-RyYt42aP7R2ujOEvNUZtkKvGSX4DWMyA&s"}></img>
+                        </div>
+                    </div>
                 </div>
             </div>
 
