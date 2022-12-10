@@ -223,7 +223,7 @@ class BasicTemplate2 extends React.Component {
         }
         if (previousState.pageContent !== this.state.pageContent) {
             // TODO: 
-            this.props.collectTemplateStates(this.state.pageContent)
+            this.props.collectTemplateStates(this.state)
         }
     };
 
