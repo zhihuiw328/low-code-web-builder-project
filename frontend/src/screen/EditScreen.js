@@ -88,9 +88,8 @@ class EditScreen extends React.Component {
         }
       }
 
-      const { data } = await axios.post('/api/upload', formData, config)
+      const { image } = await axios.post('/api/upload', formData, config)
 
-      console.log(data)
     }catch (error){
       console.log(error)
     }

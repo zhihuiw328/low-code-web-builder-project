@@ -216,6 +216,10 @@ class BasicTemplate2 extends React.Component {
         if (previousProps.backgroundColor !== this.props.backgroundColor) {
             this.setState((state, props) => ({backgroundColor: this.props.backgroundColor}))
         }
+        console.log(this.state.imageLink)
+        if (previousProps.imageLink !== this.props.imageLink) {
+            this.setState((state, props) => ({imageLink: this.props.imageLink}))
+        }
     };
 
     render() {
@@ -248,6 +252,7 @@ class BasicTemplate2 extends React.Component {
                         fontSize: this.state.pageContent.titleText.fontSize,
                         fontStyle: this.state.pageContent.titleText.fontStyle}}>
                     <p>{this.state.pageContent.titleText.text}</p>
+                    {this.state.pageContent.titleText.fontStyle}
                 </div>
 
                 <div onClick={(e) => this.handleSectionClick(e, "subTitle1")} 
@@ -270,6 +275,11 @@ class BasicTemplate2 extends React.Component {
                         fontSize: this.state.pageContent.subText1.fontSize,
                         fontStyle: this.state.pageContent.subText1.fontStyle}}>
                     <p>{this.state.pageContent.subText1.text}</p>
+                    {this.props.imageLink}
+                    {this.props.imageLink != null
+                        ?  <img src={this.props.imageLink}></img>
+                        : <p>1</p>
+                    }
                 </div>
 
                 <div onClick={(e) => this.handleSectionClick(e, "subTitle2")} 
