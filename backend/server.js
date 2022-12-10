@@ -7,7 +7,7 @@ const mongoose = require('mongoose')
 const userRoutes = require('./routes/userRoutes')
 const secrets = require('./config/secrets')
 const uploadRoutes = require('./routes/uploadRoutes')
-
+const templateRoutes = require('./routes/templateRoutes')
 
 dotenv.config()
 
@@ -17,7 +17,7 @@ app.use(express.json())
 
 // routes
 app.use('/api/users', userRoutes)
-
+app.use('/api/template', templateRoutes)
 
 app.use('/api/upload', uploadRoutes)
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
