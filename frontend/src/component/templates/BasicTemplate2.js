@@ -179,11 +179,11 @@ class BasicTemplate2 extends React.Component {
 
     componentDidMount() {
         this.props.updateBackgroundColor(this.state.backgroundColor)
-        if (this.props.isDetailView === true) {
-            this.setState((state, props) => ({isDetailView: props.isDetailView}))
-        }
-        if (this.props.templateState !== null) {
-            this.setState((state, props) => (props.templateState))
+        if (this.props.templateState !== null &&  this.props.isDetailView === true) {
+            this.setState((state, props) => (
+                {isDetailView: props.isDetailView,
+                pageContent: props.templateState.pageContent
+            }))
         }
     }
     
