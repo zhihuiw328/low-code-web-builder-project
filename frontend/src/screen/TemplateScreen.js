@@ -12,6 +12,9 @@ const TemplateScreen = () => {
     const [c_templates, setCTemplates] = useState([]);
     const [d_templates, setDTemplates] = useState([]);
     const [e_templates, setETemplates] = useState([]);
+
+    
+
     const getBasicTemplates = () => {
 
         var data = [];
