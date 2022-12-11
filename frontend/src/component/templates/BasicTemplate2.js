@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { StyleSheet, View } from "react-native";
+import React from 'react';
 import './BasicTemplate.css';
 
 class BasicTemplate2 extends React.Component {
@@ -157,7 +156,7 @@ class BasicTemplate2 extends React.Component {
 
     handleSectionClick(e, section) {
         this.resetSection()
-        if (this.state.currentSection == section) {
+        if (this.state.currentSection === section) {
             this.setState({currentSection:null})
         } else {
             this.updateClickedSection(section)
@@ -230,7 +229,7 @@ class BasicTemplate2 extends React.Component {
     }
     
     componentDidUpdate(previousProps, previousState) {
-        if (this.state.isDetailView === true) {
+        if (this.state.isDetailView !== true) {
                 
             if (this.state.currentSection !== null) {
                 if (previousProps.text !== this.props.text) {
