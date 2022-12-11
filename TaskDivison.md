@@ -9,6 +9,11 @@
 ### Xinyi He
 
 ### Carol Song
-- Responsible for implementing the front-end for EditScreen Page
-    - 
+- Implementing the front-end for EditScreen Page.
+    - Add buttons for adjust text, color, and font.
+    - Allow save template to backend.
+- Implementing DetailScreen Page. 
+    - Interact with different templates and display output.
+- Implementing Saved Page. 
+- Fix bug on Template backend. 
 

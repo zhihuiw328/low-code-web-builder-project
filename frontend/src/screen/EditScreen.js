@@ -245,12 +245,11 @@ class EditScreen extends React.Component {
             Clear
           </Button>
   
-          
+          <Link to={`/save`}>
             <Button variant="success" onClick={this.handleUploadSave}>
-              {/* <Link to={`/Detail/${this.state.idd}`}> */}
               Save
-              {/* </Link> */}
             </Button>
+          </Link>
           
           
         </Modal.Footer>
