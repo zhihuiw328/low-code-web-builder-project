@@ -92,62 +92,66 @@ class BasicTemplate2 extends React.Component {
 
 
     resetSection = () => {
-        // Reset hover status for all sections
-        this.setState((prevState, props) => {
-            let newPageContent = {
-                pageTitle : {
-                    ...prevState.pageContent.pageTitle ,
-                    style: "div_hover"
+        if (this.state.isDetailView === false) {
+                // Reset hover status for all sections
+                this.setState((prevState, props) => {
+                    let newPageContent = {
+                        pageTitle : {
+                            ...prevState.pageContent.pageTitle ,
+                            style: "div_hover"
 
-                },
-                titleText : {
-                    ...prevState.pageContent.titleText ,
-                    style: "div_hover"
+                        },
+                        titleText : {
+                            ...prevState.pageContent.titleText ,
+                            style: "div_hover"
 
-                },
-                subTitle1 : {
-                    ...prevState.pageContent.subTitle1 ,
-                    style: "div_hover"
+                        },
+                        subTitle1 : {
+                            ...prevState.pageContent.subTitle1 ,
+                            style: "div_hover"
 
-                },
-                subText1 : {
-                    ...prevState.pageContent.subText1 ,
-                    style: "div_hover"
+                        },
+                        subText1 : {
+                            ...prevState.pageContent.subText1 ,
+                            style: "div_hover"
 
-                },
-                subTitle2 : {
-                    ...prevState.pageContent.subTitle2 ,
-                    style: "div_hover"
+                        },
+                        subTitle2 : {
+                            ...prevState.pageContent.subTitle2 ,
+                            style: "div_hover"
 
-                },
-                subText2 : {
-                    ...prevState.pageContent.subText2 ,
-                    style: "div_hover"
+                        },
+                        subText2 : {
+                            ...prevState.pageContent.subText2 ,
+                            style: "div_hover"
 
-                },
-                footer : {
-                    ...prevState.pageContent.footer ,
-                    style: "div_hover"
+                        },
+                        footer : {
+                            ...prevState.pageContent.footer ,
+                            style: "div_hover"
 
-                }
-            }
-            return {pageContent:newPageContent}
-        })
+                        }
+                    }
+                    return {pageContent:newPageContent}
+            })
 
-        // Pass empty strings and texts to parent
-        this.props.updateText("")
-        this.props.updateColor("")
+            // Pass empty strings and texts to parent
+            this.props.updateText("")
+            this.props.updateColor("")
+        }
     };
 
     updateClickedSection = (section) => {
-        this.setState(prevState => {
-            let newPageContent = Object.assign({}, prevState.pageContent)
-            newPageContent[section] = {
-                ...prevState.pageContent[section],
-                style: "div_clicked"
-            }
-            return {currentSection:section, pageContent:newPageContent}
-        })
+        if (this.state.isDetailView === false) {
+            this.setState(prevState => {
+                let newPageContent = Object.assign({}, prevState.pageContent)
+                newPageContent[section] = {
+                    ...prevState.pageContent[section],
+                    style: "div_clicked"
+                }
+                return {currentSection:section, pageContent:newPageContent}
+            })
+        }
     };
 
 
@@ -179,72 +183,113 @@ class BasicTemplate2 extends React.Component {
 
     componentDidMount() {
         this.props.updateBackgroundColor(this.state.backgroundColor)
+        console.log()
         if (this.props.templateState !== null &&  this.props.isDetailView === true) {
-            this.setState((state, props) => (
-                {isDetailView: props.isDetailView,
-                pageContent: props.templateState.pageContent
-            }))
+
+            this.setState((prevState, props) => {
+                let newPageContent = {
+                    pageTitle : {
+                        ...props.templateState.pageContent.pageTitle ,
+                        style: "none"
+
+                    },
+                    titleText : {
+                        ...props.templateState.pageContent.titleText ,
+                        style: "none"
+
+                    },
+                    subTitle1 : {
+                        ...props.templateState.pageContent.subTitle1 ,
+                        style: "none"
+
+                    },
+                    subText1 : {
+                        ...props.templateState.pageContent.subText1 ,
+                        style: "none"
+
+                    },
+                    subTitle2 : {
+                        ...props.templateState.pageContent.subTitle2 ,
+                        style: "none"
+
+                    },
+                    subText2 : {
+                        ...props.templateState.pageContent.subText2 ,
+                        style: "none"
+
+                    },
+                    footer : {
+                        ...props.templateState.pageContent.footer ,
+                        style: "none"
+
+                    }
+                }
+                return {pageContent:newPageContent, isDetailView: props.isDetailView, backgroundColor: props.templateState.backgroundColor}
+        })
         }
     }
     
     componentDidUpdate(previousProps, previousState) {
-        if (this.state.currentSection !== null) {
-            if (previousProps.text !== this.props.text) {
-                this.updateSectionInfo(this.state.currentSection,
-                    this.props.text,
-                    this.state.pageContent[this.state.currentSection].color,
-                    this.state.pageContent[this.state.currentSection].font,
-                    this.state.pageContent[this.state.currentSection].fontSize,
-                    this.state.pageContent[this.state.currentSection].fontStyle
-                )
+        if (this.state.isDetailView === true) {
+                
+            if (this.state.currentSection !== null) {
+                if (previousProps.text !== this.props.text) {
+                    this.updateSectionInfo(this.state.currentSection,
+                        this.props.text,
+                        this.state.pageContent[this.state.currentSection].color,
+                        this.state.pageContent[this.state.currentSection].font,
+                        this.state.pageContent[this.state.currentSection].fontSize,
+                        this.state.pageContent[this.state.currentSection].fontStyle
+                    )
+                }
+                if (previousProps.color !== this.props.color) {
+                    this.updateSectionInfo(this.state.currentSection,
+                        this.state.pageContent[this.state.currentSection].text,
+                        this.props.color,
+                        this.state.pageContent[this.state.currentSection].font,
+                        this.state.pageContent[this.state.currentSection].fontSize,
+                        this.state.pageContent[this.state.currentSection].fontStyle
+                    )
+                }
+                if (previousProps.font !== this.props.font) {
+                    this.updateSectionInfo(this.state.currentSection,
+                        this.state.pageContent[this.state.currentSection].text,
+                        this.state.pageContent[this.state.currentSection].color,
+                        this.props.font,
+                        this.state.pageContent[this.state.currentSection].fontSize,
+                        this.state.pageContent[this.state.currentSection].fontStyle
+                    )
+                }
+                if (previousProps.fontSize !== this.props.fontSize) {
+                    this.updateSectionInfo(this.state.currentSection,
+                        this.state.pageContent[this.state.currentSection].text,
+                        this.state.pageContent[this.state.currentSection].color,
+                        this.state.pageContent[this.state.currentSection].font,
+                        this.props.fontSize,
+                        this.state.pageContent[this.state.currentSection].fontStyle
+                    )
+                }
+                if (previousProps.fontStyle !== this.props.fontStyle) {
+                    this.updateSectionInfo(this.state.currentSection,
+                        this.state.pageContent[this.state.currentSection].text,
+                        this.state.pageContent[this.state.currentSection].color,
+                        this.state.pageContent[this.state.currentSection].font,
+                        this.state.pageContent[this.state.currentSection].fontSize,
+                        this.props.fontStyle
+                    )
+                }
             }
-            if (previousProps.color !== this.props.color) {
-                this.updateSectionInfo(this.state.currentSection,
-                    this.state.pageContent[this.state.currentSection].text,
-                    this.props.color,
-                    this.state.pageContent[this.state.currentSection].font,
-                    this.state.pageContent[this.state.currentSection].fontSize,
-                    this.state.pageContent[this.state.currentSection].fontStyle
-                )
+            if (previousProps.backgroundColor !== this.props.backgroundColor) {
+                this.setState((state, props) => ({backgroundColor: this.props.backgroundColor}))
             }
-            if (previousProps.font !== this.props.font) {
-                this.updateSectionInfo(this.state.currentSection,
-                    this.state.pageContent[this.state.currentSection].text,
-                    this.state.pageContent[this.state.currentSection].color,
-                    this.props.font,
-                    this.state.pageContent[this.state.currentSection].fontSize,
-                    this.state.pageContent[this.state.currentSection].fontStyle
-                )
+            console.log(this.state.imageLink)
+            if (previousProps.imageLink !== this.props.imageLink) {
+                this.setState((state, props) => ({imageLink: this.props.imageLink}))
             }
-            if (previousProps.fontSize !== this.props.fontSize) {
-                this.updateSectionInfo(this.state.currentSection,
-                    this.state.pageContent[this.state.currentSection].text,
-                    this.state.pageContent[this.state.currentSection].color,
-                    this.state.pageContent[this.state.currentSection].font,
-                    this.props.fontSize,
-                    this.state.pageContent[this.state.currentSection].fontStyle
-                )
+            if (previousState.pageContent !== this.state.pageContent) {
+                // TODO: 
+                this.props.collectTemplateStates(this.state)
             }
-            if (previousProps.fontStyle !== this.props.fontStyle) {
-                this.updateSectionInfo(this.state.currentSection,
-                    this.state.pageContent[this.state.currentSection].text,
-                    this.state.pageContent[this.state.currentSection].color,
-                    this.state.pageContent[this.state.currentSection].font,
-                    this.state.pageContent[this.state.currentSection].fontSize,
-                    this.props.fontStyle
-                )
-            }
-        }
-        if (previousProps.backgroundColor !== this.props.backgroundColor) {
-            this.setState((state, props) => ({backgroundColor: this.props.backgroundColor}))
-        }
-        console.log(this.state.imageLink)
-        if (previousProps.imageLink !== this.props.imageLink) {
-            this.setState((state, props) => ({imageLink: this.props.imageLink}))
-        }
-        if (previousState.pageContent !== this.state.pageContent) {
-            // TODO: 
-            this.props.collectTemplateStates(this.state)
         }
     };
 

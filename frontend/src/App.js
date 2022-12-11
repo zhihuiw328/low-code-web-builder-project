@@ -22,8 +22,8 @@ const App = () => {
               <Route path="/template" element={<TemplateScreen/>} />
               <Route path="/edit" element={<EditScreen/>} />
               <Route path="/profile" element={<ProfileScreen/>} />
-              <Route path="/detail" element={<DetailScreen/>} />
-              {/* <Route path="/detail/:id" element={<DetailScreen/>} /> */}
+              {/* <Route path="/detail" element={<DetailScreen/>} /> */}
+              <Route path="/detail/:id" element={<DetailScreen/>} />
           </Routes>
         </div>
           
