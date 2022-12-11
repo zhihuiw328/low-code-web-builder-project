@@ -4,6 +4,8 @@ import Image from 'react-bootstrap/Image'
 import { Form, Button, Row, Col,Modal } from 'react-bootstrap'
 import {Link, useNavigate} from "react-router-dom";
 import axios from 'axios'
+import EditScreen from '../screen/EditScreen'
+import {Routes, Route } from 'react-router-dom';
 
 const TemplateList = (props) =>{
   const [showLogin, setShowLogin] = useState(false);
@@ -23,9 +25,7 @@ const TemplateList = (props) =>{
     const { data } = await axios.post('/api/users/login', {email, password}, config)
     localStorage.setItem('userInfo', JSON.stringify(data))
     setShowLogin(false);
-    navigate('/edit');
-    
-
+    navigate('/edit')
   }
 
 
@@ -34,7 +34,8 @@ const TemplateList = (props) =>{
     if(!userLogin){
       setShowLogin(true);
     } else {
-      navigate('/edit');
+    
+    navigate('/edit')
     }
     
 
