@@ -36,8 +36,8 @@ class EditScreen extends React.Component {
       font:"times",
 
       template: BasicTemplate2,
-      name:"",
-      userId:"",
+      nameTemplate:"",
+      userId:"639514eb078f1356e86471fa",
       templateState:{}
     };
 
@@ -105,8 +105,17 @@ class EditScreen extends React.Component {
     this.setState(state => ({
       save : false
     }));
-  //TODO: backend put/push
-  
+    //TODO: backend put/push
+    const userLogin = JSON.parse(localStorage.getItem('userInfo'));
+    const config = {
+      headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userLogin.token}`
+      }
+    }
+    console.log(this.state.templateState.templateName)
+    // console.log({ name:this.state.nameTemplate,template:this.state.template.templateName, templateState:this.state.templateState})
+    const { data } = await axios.post('/api/template', { name:this.state.nameTemplate,template:this.state.templateState.templateName, templateState:this.state.templateState}, config)
   }
 
   handleCloseSave(){
@@ -144,7 +153,7 @@ class EditScreen extends React.Component {
 
   handleChangeName(event) {
     this.setState(state => ({
-      name: event.target.value
+      nameTemplate: event.target.value
     }));
   }
 
@@ -169,6 +178,7 @@ class EditScreen extends React.Component {
   render() {
 
     // const MyComponent = ( props ) => <div>{this.state.template}</div>
+    console.log(this.state.templateState)
     var templatePart = 
       <this.state.template
         updateText={(update)=>this.setState(state => ({text: update}))}
@@ -202,8 +212,8 @@ class EditScreen extends React.Component {
           <Form onSubmit={this.handleSubmit}>
               <Form.Control
                 type="txt"
-                placeholder={this.state.name}
-                value={this.state.name}
+                placeholder={this.state.nameTemplate}
+                value={this.state.nameTemplate}
                 onChange={this.handleChangeName}
               />
           </Form>

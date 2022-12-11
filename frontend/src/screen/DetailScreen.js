@@ -33,6 +33,7 @@ class DetailScreen extends React.Component {
  
     return(<div>
       {/* <BasicTemplate2/> */}
+      
 
     </div>)
   }
