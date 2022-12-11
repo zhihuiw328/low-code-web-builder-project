@@ -221,7 +221,7 @@ class BasicTemplate2 extends React.Component {
 
                     }
                 }
-                return {pageContent:newPageContent, isDetailView: props.isDetailView,}
+                return {pageContent:newPageContent, isDetailView: props.isDetailView, backgroundColor: props.pageContent.backgroundColor}
         })
         }
     }
