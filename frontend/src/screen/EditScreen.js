@@ -198,6 +198,10 @@ class EditScreen extends React.Component {
     // console.log(this.state.templateState)
     var templatePart = 
       <this.state.template
+        isDetailView={false}
+        
+        templateState={null}
+
         updateText={(update)=>this.setState(state => ({text: update}))}
         text={this.state.text}
 
