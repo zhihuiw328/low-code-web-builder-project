@@ -29,7 +29,6 @@ class DetailScreen extends React.Component {
 
   }
   componentDidMount() {
-    // console.log(window.location.href.slice(29))
     const userLogin = JSON.parse(localStorage.getItem('userInfo'));
     const config = {
       headers: {
@@ -37,7 +36,6 @@ class DetailScreen extends React.Component {
           Authorization: `Bearer ${userLogin.token}`
       }
     }
-    console.log(window.location.href.slice(29))
     axios.get(`/api/template/${window.location.href.slice(29)}`, config)
       .then((response)=>{
         if (response.data) {
