@@ -21,7 +21,7 @@ class DetailScreen extends React.Component {
       name:"w",
       userId:"aa",
       templateState:{},
-      websiteId:"639517dc133b78c26ac36cd5"
+      websiteId:"63955d7dc4056b5825ff62ed"
     };
 
   }
@@ -36,16 +36,34 @@ class DetailScreen extends React.Component {
     const { data } = await axios.get(`/api/template/${this.state.websiteId}`, config)
     // TODO: Need to convert string to template here
     console.log(data)
+    if (data.template == "BasicTemplate2") {
+      // this.setState()
+    }
   }
 
  
 
   render() {
-    
-    // const MyComponent =
+    const MyComponent = ""
+    // if 
  
     return(<div>
-       <BasicTemplate2 pageContent = {this.state.templateState.pageContent}/>
+       <BasicTemplate2 
+      //  allStates
+       
+      //  pageContent = {this.state.templateState.pageContent}
+      //                 templateName = {this.state.templateState.templateName}
+      //                 backgroundColor = {this.state.templateState.backgroundColor}
+                      templateState={this.state.templateState}
+                      isDetailView={false}
+                      updateBackgroundColor={(update)=>this.setState(state => ({backgroundColor: update}))}
+                      updateText={()=>({})}
+                      updateColor={()=>({})}
+                      updatefont={()=>({})}
+                      updatefontSize={()=>({})}
+                      updatefontStyle={()=>({})}
+                      collectTemplateStates={()=>({})}
+                      />
       
 
     </div>)
