@@ -12,6 +12,7 @@ const ControlledCarousel = ({children}) => {
     };
 
     return (
+        <div className='carousel-outer'>
         <Carousel activeIndex={index} onSelect={handleSelect}>
         <Carousel.Item>
             {/* <img
@@ -58,6 +59,7 @@ const ControlledCarousel = ({children}) => {
             </Carousel.Caption>
         </Carousel.Item>
         </Carousel>
+        </div>
     );
 }
 

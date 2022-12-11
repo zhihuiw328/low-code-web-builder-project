@@ -33,9 +33,8 @@ exports.CreateTemplate = asyncHandler(async(req, res) => {
 })
 
 exports.GetTemplate = asyncHandler(async(req, res) => {
-    const { name } = req.body
 
-    const template = await Template.findOne({'name': name, 'userId': req.user._id})
+    const template = await Template.findOne({'userId': req.user._id})
     if(template){
         res.json({
             userId: template.userId,
@@ -45,7 +44,7 @@ exports.GetTemplate = asyncHandler(async(req, res) => {
         })
     }else{
         res.status(401)
-        throw new Error('Invalid name or userId')
+        throw new Error('Invalid userId')
     }
 })
 
