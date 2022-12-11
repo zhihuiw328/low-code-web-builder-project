@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './EditScreen.css';
 import Figure from 'react-bootstrap/Figure';
 import Container from 'react-bootstrap/Container';
-import { Link, redirect } from 'react-router-dom'
+import { Link, redirect, useParams } from 'react-router-dom'
 import { Form, Button, Col, Row, Badge, Modal, Dropdown} from 'react-bootstrap'
 import FormContainer from '../component/FormContainer';
 import ControlledCarousel from '../component/Carousel/Carousel';
@@ -18,6 +18,7 @@ import axios from 'axios'
 class EditScreen extends React.Component {
   constructor(props) {
     super(props);
+    const TemplateList = [[BasicTemplate1, BasicTemplate2]]
     this.state = {
       pageTitle : '12345',
       text : '',
@@ -35,8 +36,8 @@ class EditScreen extends React.Component {
       fontStyle: "normal",
       font:"times",
 
-      template: BasicTemplate2,
-      templateStr: "",
+      templateStr :JSON.parse(localStorage.getItem('templateStr')).templateStr,
+      template: TemplateList[JSON.parse(localStorage.getItem('templateStr')).type][JSON.parse(localStorage.getItem('templateStr')).id],
       nameTemplate:"",
       userId:"639514eb078f1356e86471fa",
       templateState:{},
@@ -44,7 +45,12 @@ class EditScreen extends React.Component {
       idd:"999",
       idUpdated:false
     };
-  
+    // const TemplateList = [[BasicTemplate1, BasicTemplate2]]
+    // if (this.state.templateType == "Basic"){
+    //    this.setState(state => ({
+    //     template : 
+    //   }));
+    // }
 
     this.handleClick = this.handleClick.bind(this);
 
@@ -180,6 +186,7 @@ class EditScreen extends React.Component {
       showColor : !this.state.showColor
     }));
   }
+  
 
   handleShowHideFont(event) {
     this.setState(state => ({
@@ -194,9 +201,7 @@ class EditScreen extends React.Component {
   
 
   render() {
-    console.log(this.state.templateStr);
-    // const MyComponent = ( props ) => <div>{this.state.template}</div>
-    // console.log(this.state.templateState)
+    // console.log(this.state.templateStr)
     var templatePart = 
       <this.state.template
         isDetailView={false}

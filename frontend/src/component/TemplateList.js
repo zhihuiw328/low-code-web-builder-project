@@ -1,11 +1,12 @@
-import React, {useState , useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import './TemplateList.css';
 import Image from 'react-bootstrap/Image'
 import { Form, Button, Row, Col,Modal } from 'react-bootstrap'
 import {Link, useNavigate} from "react-router-dom";
 import axios from 'axios'
-import EditScreen from '../screen/EditScreen'
-import {Routes, Route } from 'react-router-dom';
+import BasicTemplate1 from './templates/BasicTemplate1';
+import BasicTemplate2 from './templates/BasicTemplate2';
+
 
 const TemplateList = (props) =>{
   const [showLogin, setShowLogin] = useState(false);
@@ -14,6 +15,8 @@ const TemplateList = (props) =>{
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [template, setTemplate] = useState('');
+  const [templateId, setTemplateId] = useState();
+  const [templateStr, setTemplateStr] = useState();
 
   const submitHandler = async(e) => {
     e.preventDefault()
@@ -25,16 +28,20 @@ const TemplateList = (props) =>{
     const { data } = await axios.post('/api/users/login', {email, password}, config)
     localStorage.setItem('userInfo', JSON.stringify(data))
     setShowLogin(false);
+    localStorage.setItem('templateStr', JSON.stringify({type: template, id: templateId, templateStr: templateStr}));
     navigate('/edit')
   }
 
 
-  const HandleClick = (event, message) =>{
-    setTemplate(message)
+  const HandleClick = (event, type, id, str) =>{
+
+    setTemplate(type);
+    setTemplateId(id);
+    setTemplateStr(str);
     if(!userLogin){
       setShowLogin(true);
     } else {
-    
+    localStorage.setItem('templateStr', JSON.stringify({type: type, id: id, templateStr: str}));
     navigate('/edit')
     }
     
@@ -80,7 +87,7 @@ const TemplateList = (props) =>{
       {props.templates?.map((template, index) => (
         <div className='image-container m-3'>
          <div style = {{padding:20, fontSize:20, float:'left', margin: 'auto', height:500, width:400}}>
-         <Image src={require("./template_image/" + template.image_path)} width="300" height="400" onClick={(event) => HandleClick(event, template.template_name)}>
+         <Image src={require("./template_image/" + template.image_path)} width="300" height="400" onClick={(event) => HandleClick(event, template.template_type, template.template_id, template.template_str)}>
           </Image>
          </div>
         </div>

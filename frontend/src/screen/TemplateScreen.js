@@ -18,10 +18,11 @@ const TemplateScreen = () => {
     const getBasicTemplates = () => {
 
         var data = [];
-        for (var i = 1; i < 3; i++) {
+        for (var i = 0; i < 2; i++) {
             data[i] = {};
-            data[i]["template_name"] = "BasicTemplate" + i;
-            data[i]["template_file"] = "../component/templates/BasicTemplate" + i + ".js";
+            data[i]["template_type"] = 0;
+            data[i]["template_id"] = i;
+            data[i]["template_str"] = "BasicTemplate" + (i+1);
             data[i]["image_path"] = "IMG_2188.JPG"; //"BasicTemplate" + i + ".JPG";
           }
         setBasicTemplates(data);
