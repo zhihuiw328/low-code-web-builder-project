@@ -44,9 +44,8 @@ class DetailScreen extends React.Component {
         })
         }
       }
-       
-        
     )
+    
     // TODO: Need to convert string to template here
     // console.log(data)
     // if (data.template == "BasicTemplate2") {
@@ -57,13 +56,15 @@ class DetailScreen extends React.Component {
  
 
   render() {
-    // console.log(this.state.loaded)
+    console.log(this.state.loaded)
     const MyComponent = ""
+    console.log(this.state.templateState)
     if (!this.state.loaded) {
-      return <div className="word3"> Loading  </div> ;
+      return <div> Loading  </div> ;
+
     } else {
- 
     return(<div>
+      
        <BasicTemplate2 
       //  allStates
        
@@ -71,7 +72,7 @@ class DetailScreen extends React.Component {
       //                 templateName = {this.state.templateState.templateName}
       //                 backgroundColor = {this.state.templateState.backgroundColor}
                       templateState={this.state.templateState}
-                      isDetailView={false}
+                      isDetailView={true}
                       updateBackgroundColor={(update)=>this.setState(state => ({backgroundColor: update}))}
                       updateText={()=>({})}
                       updateColor={()=>({})}
