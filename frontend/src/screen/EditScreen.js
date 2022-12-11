@@ -40,7 +40,7 @@ class EditScreen extends React.Component {
       userId:"639514eb078f1356e86471fa",
       templateState:{},
 
-      id:"999"
+      idd:"999"
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -107,7 +107,6 @@ class EditScreen extends React.Component {
     this.setState(state => ({
       save : false
     }));
-    //TODO: backend put/push
     const userLogin = JSON.parse(localStorage.getItem('userInfo'));
     const config = {
       headers: {
@@ -115,10 +114,15 @@ class EditScreen extends React.Component {
           Authorization: `Bearer ${userLogin.token}`
       }
     }
+    // TODO: couldn't modify idd at this part
     // console.log({ name:this.state.nameTemplate,template:this.state.template.templateName, templateState:this.state.templateState})
-    const { data } = await axios.post('/api/template', { name:this.state.nameTemplate,template:this.state.templateState.templateName, templateState:this.state.templateState}, config)
-    console.log(data.data.id)
-    this.setState({id:data.data.id})
+    const {data} = await axios.post('/api/template', { name:this.state.nameTemplate,template:this.state.templateState.templateName, templateState:this.state.templateState}, config)
+    console.log(data)
+    console.log(data.data._id)
+    console.log(this.state.idd)
+    const dataId = await data.data._id;
+    this.setState({idd:dataId})
+    console.log(this.state.idd)
   }
 
   handleCloseSave(){
@@ -225,12 +229,16 @@ class EditScreen extends React.Component {
           <Button variant="danger" onClick={this.handleClearSave}>
             Clear
           </Button>
-          {console.log(this.state.id)}
-          <Link to={`/Detail/${this.state.id}`}>
+  
+          
             <Button variant="success" onClick={this.handleUploadSave}>
+            <Link to={`/Detail/${this.state.idd}`}>
+            {/* {console.log("ccc")}
+            {console.log(this.state.id)} */}
               Save
+              </Link>
             </Button>
-          </Link>
+          
           
         </Modal.Footer>
       </Modal>  
@@ -393,7 +401,7 @@ class EditScreen extends React.Component {
                       <Dropdown.Item onClick={()=>this.setState({fontSize:30})} active={this.state.fontSize === 30}>30</Dropdown.Item>
                       <Dropdown.Item onClick={()=>this.setState({fontSize:40})} active={this.state.fontSize === 40}>40</Dropdown.Item>
                     </Dropdown.Menu>
-                  </Dropdown>state
+                  </Dropdown>
                   </Col>
 
                   <Col>

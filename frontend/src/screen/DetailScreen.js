@@ -32,7 +32,7 @@ class DetailScreen extends React.Component {
           Authorization: `Bearer ${userLogin.token}`
       }
     }
-    const { data } = await axios.get('/api/template', config)
+    const { data } = await axios.get('/api/template', config).data
     // TODO: Need to convert string to template here
     console.log(data)
   }
