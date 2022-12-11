@@ -21,11 +21,12 @@ class DetailScreen extends React.Component {
       name:"w",
       userId:"aa",
       templateState:{},
-      websiteId:"63955d7dc4056b5825ff62ed"
+      websiteId:"63955d7dc4056b5825ff62ed",
+      loaded: false
     };
 
   }
-  async componentDidMount() {
+  componentDidMount() {
     const userLogin = JSON.parse(localStorage.getItem('userInfo'));
     const config = {
       headers: {
@@ -33,19 +34,34 @@ class DetailScreen extends React.Component {
           Authorization: `Bearer ${userLogin.token}`
       }
     }
-    const { data } = await axios.get(`/api/template/${this.state.websiteId}`, config)
+    axios.get(`/api/template/${this.state.websiteId}`, config)
+      .then((response)=>{
+        if (response.data) {
+          console.log(response.data)
+          this.setState({
+            templateState: response.data.templateState,
+            loaded: true
+        })
+        }
+      }
+       
+        
+    )
     // TODO: Need to convert string to template here
-    console.log(data)
-    if (data.template == "BasicTemplate2") {
-      // this.setState()
-    }
+    // console.log(data)
+    // if (data.template == "BasicTemplate2") {
+    //   // this.setState()
+    // }
   }
 
  
 
   render() {
+    // console.log(this.state.loaded)
     const MyComponent = ""
-    // if 
+    if (!this.state.loaded) {
+      return <div className="word3"> Loading  </div> ;
+    } else {
  
     return(<div>
        <BasicTemplate2 
@@ -67,6 +83,7 @@ class DetailScreen extends React.Component {
       
 
     </div>)
+    }
   }
 }
 
