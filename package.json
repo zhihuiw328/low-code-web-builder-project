@@ -12,6 +12,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "aws-sdk": "^2.1272.0",
     "axios": "^1.2.1",
     "bcryptjs": "^2.4.3",
     "concurrently": "^7.6.0",
