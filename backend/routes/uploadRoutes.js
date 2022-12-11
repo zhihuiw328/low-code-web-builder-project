@@ -1,7 +1,7 @@
 const express = require('express')
 const multer = require('multer')
 const path = require('path')
-
+const {uploadFile} = require('../s3')
 const router = express.Router()
 
 const storage = multer.diskStorage({
@@ -32,8 +32,12 @@ const upload = multer({
     }
 })
 
-router.post('/', upload.single('image'), (req, res) => {
+router.post('/', upload.single('image'), async (req, res) => {
+    console.log("inside uploadRoutes")
     res.send(`/${req.file.path}`) // path
+    const result = await uploadFile(req.file)
+    console.log(result)
+
 })
 
 

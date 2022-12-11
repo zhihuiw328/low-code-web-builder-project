@@ -181,47 +181,48 @@ class BasicTemplate2 extends React.Component {
 
     componentDidMount() {
         this.props.updateBackgroundColor(this.state.backgroundColor)
+        console.log()
         if (this.props.templateState !== null &&  this.props.isDetailView === true) {
 
             this.setState((prevState, props) => {
                 let newPageContent = {
                     pageTitle : {
-                        ...props.pageContent.pageTitle ,
+                        ...props.templateState.pageContent.pageTitle ,
                         style: "none"
 
                     },
                     titleText : {
-                        ...props.pageContent.titleText ,
+                        ...props.templateState.pageContent.titleText ,
                         style: "none"
 
                     },
                     subTitle1 : {
-                        ...props.pageContent.subTitle1 ,
+                        ...props.templateState.pageContent.subTitle1 ,
                         style: "none"
 
                     },
                     subText1 : {
-                        ...props.pageContent.subText1 ,
+                        ...props.templateState.pageContent.subText1 ,
                         style: "none"
 
                     },
                     subTitle2 : {
-                        ...props.pageContent.subTitle2 ,
+                        ...props.templateState.pageContent.subTitle2 ,
                         style: "none"
 
                     },
                     subText2 : {
-                        ...props.pageContent.subText2 ,
+                        ...props.templateState.pageContent.subText2 ,
                         style: "none"
 
                     },
                     footer : {
-                        ...props.pageContent.footer ,
+                        ...props.templateState.pageContent.footer ,
                         style: "none"
 
                     }
                 }
-                return {pageContent:newPageContent, isDetailView: props.isDetailView, backgroundColor: props.pageContent.backgroundColor}
+                return {pageContent:newPageContent, isDetailView: props.isDetailView, backgroundColor: props.templateState.backgroundColor}
         })
         }
     }
