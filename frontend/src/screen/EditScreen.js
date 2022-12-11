@@ -41,7 +41,9 @@ class EditScreen extends React.Component {
       templateState:{},
 
       idd:"999"
+
     };
+  
 
     this.handleClick = this.handleClick.bind(this);
 
@@ -70,7 +72,7 @@ class EditScreen extends React.Component {
       text : 'ssssssseqws'
     }));
   }
-
+  
   handleShowImage() {
     this.setState(state => ({
       showImage : true
