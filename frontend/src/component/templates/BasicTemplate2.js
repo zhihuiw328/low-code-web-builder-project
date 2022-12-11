@@ -7,6 +7,7 @@ class BasicTemplate2 extends React.Component {
         super(props);
         this.state = {
             templateName: "BasicTemplate2",
+            isDetailView: false,
             currentSection : null,
             backgroundColor: "white",
             pageContent : {
@@ -178,6 +179,12 @@ class BasicTemplate2 extends React.Component {
 
     componentDidMount() {
         this.props.updateBackgroundColor(this.state.backgroundColor)
+        if (this.props.isDetailView === true) {
+            this.setState((state, props) => ({isDetailView: props.isDetailView}))
+        }
+        if (this.props.templateState !== null) {
+            this.setState((state, props) => (props.templateState))
+        }
     }
     
     componentDidUpdate(previousProps, previousState) {
