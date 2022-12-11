@@ -24,11 +24,23 @@ class DetailScreen extends React.Component {
     };
 
   }
+  async componentDidMount() {
+    const userLogin = JSON.parse(localStorage.getItem('userInfo'));
+    const config = {
+      headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${userLogin.token}`
+      }
+    }
+    const { data } = await axios.get('/api/template', config)
+    // TODO: Need to convert string to template here
+    console.log(data)
+  }
 
  
 
   render() {
-
+    
     // const MyComponent = ( props ) => <div>{this.state.template}</div>
  
     return(<div>

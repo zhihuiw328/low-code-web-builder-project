@@ -38,7 +38,9 @@ class EditScreen extends React.Component {
       template: BasicTemplate2,
       nameTemplate:"",
       userId:"639514eb078f1356e86471fa",
-      templateState:{}
+      templateState:{},
+
+      id:"999"
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -113,9 +115,10 @@ class EditScreen extends React.Component {
           Authorization: `Bearer ${userLogin.token}`
       }
     }
-    console.log(this.state.templateState.templateName)
     // console.log({ name:this.state.nameTemplate,template:this.state.template.templateName, templateState:this.state.templateState})
     const { data } = await axios.post('/api/template', { name:this.state.nameTemplate,template:this.state.templateState.templateName, templateState:this.state.templateState}, config)
+    console.log(data.data.id)
+    this.setState({id:data.data.id})
   }
 
   handleCloseSave(){
@@ -178,7 +181,7 @@ class EditScreen extends React.Component {
   render() {
 
     // const MyComponent = ( props ) => <div>{this.state.template}</div>
-    console.log(this.state.templateState)
+    // console.log(this.state.templateState)
     var templatePart = 
       <this.state.template
         updateText={(update)=>this.setState(state => ({text: update}))}
@@ -222,8 +225,8 @@ class EditScreen extends React.Component {
           <Button variant="danger" onClick={this.handleClearSave}>
             Clear
           </Button>
-          
-          <Link to='/Detail' state={{name: "sss"}}>
+          {console.log(this.state.id)}
+          <Link to={`/Detail/${this.state.id}`}>
             <Button variant="success" onClick={this.handleUploadSave}>
               Save
             </Button>
@@ -390,7 +393,7 @@ class EditScreen extends React.Component {
                       <Dropdown.Item onClick={()=>this.setState({fontSize:30})} active={this.state.fontSize === 30}>30</Dropdown.Item>
                       <Dropdown.Item onClick={()=>this.setState({fontSize:40})} active={this.state.fontSize === 40}>40</Dropdown.Item>
                     </Dropdown.Menu>
-                  </Dropdown>
+                  </Dropdown>state
                   </Col>
 
                   <Col>
@@ -430,7 +433,7 @@ class EditScreen extends React.Component {
         </Row>
 
         <Row  className='justify-content-md-center'>
-          <Button variant='primary' style={{ width: '60rem'}} onClick={()=>{console.log(ReactDOMServer.renderToReadableStream(templatePart));console.log(templatePart)}}>Export Model as HTML/CSS</Button>  
+          <Button variant='primary' style={{ width: '60rem'}} onClick={()=>{}}>Export Model as HTML/CSS</Button>  
         </Row>
 
         <Row className='space'>
