@@ -20,3 +20,10 @@
     height: 200px;
     background-color: blue;
 }
+
+.carousel-outer {   
+    margin-bottom: 5%;
+    padding-top: 5%;
+    padding-left: 2%;
+    padding-right: 2%;
+}

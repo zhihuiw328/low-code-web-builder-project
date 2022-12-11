@@ -33,7 +33,6 @@ exports.CreateTemplate = asyncHandler(async(req, res) => {
 })
 
 exports.GetTemplate = asyncHandler(async(req, res) => {
-    const { name } = req.body
 
     const template = await Template.findOne({'userId': req.user._id})
     if(template){
