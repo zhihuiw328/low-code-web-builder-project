@@ -20,7 +20,8 @@ class DetailScreen extends React.Component {
       template: BasicTemplate2,
       name:"w",
       userId:"aa",
-      templateState:{}
+      templateState:{},
+      websiteId:"639517dc133b78c26ac36cd5"
     };
 
   }
@@ -32,7 +33,7 @@ class DetailScreen extends React.Component {
           Authorization: `Bearer ${userLogin.token}`
       }
     }
-    const { data } = await axios.get('/api/template', config).data
+    const { data } = await axios.get(`/api/template/${this.state.websiteId}`, config)
     // TODO: Need to convert string to template here
     console.log(data)
   }
@@ -41,10 +42,10 @@ class DetailScreen extends React.Component {
 
   render() {
     
-    // const MyComponent = ( props ) => <div>{this.state.template}</div>
+    // const MyComponent =
  
     return(<div>
-      {/* <BasicTemplate2/> */}
+       <BasicTemplate2 pageContent = {this.state.templateState.pageContent}/>
       
 
     </div>)
