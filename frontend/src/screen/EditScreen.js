@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import './EditScreen.css';
-import { useLocation } from 'react-router-dom'
 import Figure from 'react-bootstrap/Figure';
 import Container from 'react-bootstrap/Container';
 import { Link, redirect } from 'react-router-dom'
@@ -37,12 +36,13 @@ class EditScreen extends React.Component {
       font:"times",
 
       template: BasicTemplate2,
+      templateStr: "",
       nameTemplate:"",
       userId:"639514eb078f1356e86471fa",
       templateState:{},
 
-      idd:"999"
-
+      idd:"999",
+      idUpdated:false
     };
   
 
@@ -67,7 +67,8 @@ class EditScreen extends React.Component {
 
     this.handleExport = this.handleExport.bind(this);
   }
-
+  
+  
   handleClick() {
     this.setState(state => ({
       text : 'ssssssseqws'
@@ -121,13 +122,20 @@ class EditScreen extends React.Component {
     // console.log({ name:this.state.nameTemplate,template:this.state.template.templateName, templateState:this.state.templateState})
     const {data} = await axios.post('/api/template', { name:this.state.nameTemplate,template:this.state.templateState.templateName, templateState:this.state.templateState}, config)
     console.log(data)
-    console.log(data.data._id)
-    console.log(this.state.idd)
-    const dataId = await data.data._id;
-    this.setState({idd:dataId})
-    console.log(this.state.idd)
-  }
+  //   console.log(data.data._id)
+  //   console.log(this.state.idd)
+  //   const dataId = await data.data._id;
+  //   this.setState(state => ({idd:dataId}), () => {
+  //     this.props.idReceived()
+  // })
+}
+  // console.log(this.state.save)
+  //   console.log(this.state.idd)
+  // }
 
+  // idReceived () {
+  //   this.setState({idUpdated: true})
+  // }
   handleCloseSave(){
     this.setState(state => ({
       save : false
@@ -186,11 +194,15 @@ class EditScreen extends React.Component {
   
 
   render() {
-
+    console.log(this.state.templateStr);
     // const MyComponent = ( props ) => <div>{this.state.template}</div>
     // console.log(this.state.templateState)
     var templatePart = 
       <this.state.template
+        isDetailView={false}
+        
+        templateState={null}
+
         updateText={(update)=>this.setState(state => ({text: update}))}
         text={this.state.text}
 
@@ -233,14 +245,11 @@ class EditScreen extends React.Component {
             Clear
           </Button>
   
-          
+          <Link to={`/save`}>
             <Button variant="success" onClick={this.handleUploadSave}>
-            <Link to={`/Detail/${this.state.idd}`}>
-            {/* {console.log("ccc")}
-            {console.log(this.state.id)} */}
               Save
-              </Link>
             </Button>
+          </Link>
           
           
         </Modal.Footer>
@@ -414,8 +423,8 @@ class EditScreen extends React.Component {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
-                      <Dropdown.Item onClick={()=>this.setState({fontStyle:"bold"})} active={this.state.fontStyle === "bold"} style={{"font-weight":"bold", "font-family":this.state.font}}>Bold</Dropdown.Item>
-                      <Dropdown.Item onClick={()=>this.setState({fontStyle:"normal"})} active={this.state.fontStyle === "normal"} style={{"font-weight":"normal", "font-family":this.state.font}}>Normal</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({fontStyle:"bold"})} active={this.state.fontStyle === "bold"} style={{"fontWeight":"bold", "font-family":this.state.font}}>Bold</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({fontStyle:"normal"})} active={this.state.fontStyle === "normal"} style={{"fontWeight":"normal", "font-family":this.state.font}}>Normal</Dropdown.Item>
                       {/* <Dropdown.Item onClick={()=>this.setState({fontStyle:"italic"})} active={this.state.fontStyle === "italic"} style={{"font-style":"italic"}}>Italic</Dropdown.Item> */}
                     </Dropdown.Menu>
                   </Dropdown>
@@ -440,12 +449,12 @@ class EditScreen extends React.Component {
           </Col>
         </Row>
 
-        <Row className='space'>
-        </Row>
+        {/* <Row className='space'>
+        </Row> */}
 
-        <Row  className='justify-content-md-center'>
+        {/* <Row  className='justify-content-md-center'>
           <Button variant='primary' style={{ width: '60rem'}} onClick={()=>{}}>Export Model as HTML/CSS</Button>  
-        </Row>
+        </Row> */}
 
         <Row className='space'>
         </Row>
