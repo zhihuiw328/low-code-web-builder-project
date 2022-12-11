@@ -194,6 +194,9 @@ class EditScreen extends React.Component {
         updateText={(update)=>this.setState(state => ({text: update}))}
         text={this.state.text}
 
+        templateState={null}
+        isDetailView={false}
+
         updateColor={(update)=>this.setState(state => ({color: update}))}
         color ={this.state.color}
 

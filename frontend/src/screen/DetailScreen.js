@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Figure from 'react-bootstrap/Figure';
 import Container from 'react-bootstrap/Container';
 import { Link, redirect } from 'react-router-dom'
-import { Form, Button, Col, Row, Badge, Modal, Dropdown} from 'react-bootstrap'
+import { Form, Button, Col, Row, Badge, Modal, Dropdown, Alert} from 'react-bootstrap'
 import FormContainer from '../component/FormContainer';
 import ControlledCarousel from '../component/Carousel/Carousel';
 import BasicTemplate1 from '../component/templates/BasicTemplate1';
@@ -18,6 +18,8 @@ class DetailScreen extends React.Component {
     super(props);
     this.state = {
       template: BasicTemplate2,
+      templateName: "BasicTemplate2",
+      // current website name
       name:"w",
       userId:"aa",
       templateState:{},
@@ -27,6 +29,7 @@ class DetailScreen extends React.Component {
 
   }
   componentDidMount() {
+    // console.log(window.location.href.slice(29))
     const userLogin = JSON.parse(localStorage.getItem('userInfo'));
     const config = {
       headers: {
@@ -34,44 +37,40 @@ class DetailScreen extends React.Component {
           Authorization: `Bearer ${userLogin.token}`
       }
     }
-    axios.get(`/api/template/${this.state.websiteId}`, config)
+    console.log(window.location.href.slice(29))
+    axios.get(`/api/template/${window.location.href.slice(29)}`, config)
       .then((response)=>{
         if (response.data) {
           console.log(response.data)
           this.setState({
             templateState: response.data.templateState,
+            templateName: response.data.template,
             loaded: true
         })
         }
       }
     )
-    
-    // TODO: Need to convert string to template here
-    // console.log(data)
-    // if (data.template == "BasicTemplate2") {
-    //   // this.setState()
-    // }
   }
 
  
 
   render() {
-    console.log(this.state.loaded)
-    const MyComponent = ""
-    console.log(this.state.templateState)
+    const MyComponent = BasicTemplate2;
+    if (this.state.templateName == "BasicTemplate1") {
+      MyComponent = BasicTemplate1;
+    }
+    // TODO: ADD here if more module added
+
     if (!this.state.loaded) {
-      return <div> Loading  </div> ;
+      return <Alert variant="secondary">
+      Loading
+    </Alert> ;
 
     } else {
-    return(<div>
+    return(
+      <div>
       
-       <BasicTemplate2 
-      //  allStates
-       
-      //  pageContent = {this.state.templateState.pageContent}
-      //                 templateName = {this.state.templateState.templateName}
-      //                 backgroundColor = {this.state.templateState.backgroundColor}
-                      templateState={this.state.templateState}
+       <MyComponent templateState={this.state.templateState}
                       isDetailView={true}
                       updateBackgroundColor={(update)=>this.setState(state => ({backgroundColor: update}))}
                       updateText={()=>({})}
@@ -81,9 +80,7 @@ class DetailScreen extends React.Component {
                       updatefontStyle={()=>({})}
                       collectTemplateStates={()=>({})}
                       />
-      
-
-    </div>)
+      </div>)
     }
   }
 }
