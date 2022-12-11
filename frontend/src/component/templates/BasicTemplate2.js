@@ -142,14 +142,16 @@ class BasicTemplate2 extends React.Component {
     };
 
     updateClickedSection = (section) => {
-        this.setState(prevState => {
-            let newPageContent = Object.assign({}, prevState.pageContent)
-            newPageContent[section] = {
-                ...prevState.pageContent[section],
-                style: "div_clicked"
-            }
-            return {currentSection:section, pageContent:newPageContent}
-        })
+        if (this.state.isDetailView === false) {
+            this.setState(prevState => {
+                let newPageContent = Object.assign({}, prevState.pageContent)
+                newPageContent[section] = {
+                    ...prevState.pageContent[section],
+                    style: "div_clicked"
+                }
+                return {currentSection:section, pageContent:newPageContent}
+            })
+        }
     };
 
 
