@@ -62,7 +62,6 @@ class UserTemplateScreen extends React.Component {
         }
       })
     }
-
     render(){
         console.log(this.state.nameList)
         if (!this.state.loaded) {
@@ -78,7 +77,6 @@ class UserTemplateScreen extends React.Component {
                         {/* <Badge> */}
                         <Container fluid="md">
                             <Row>
-
                                 <Card className='preview' border="dark">
                                     {template}
                                 </Card>  
@@ -95,6 +93,4 @@ class UserTemplateScreen extends React.Component {
     }
 }
 }
-
-
 export default UserTemplateScreen
