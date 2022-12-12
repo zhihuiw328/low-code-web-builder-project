@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './EditScreen.css';
 import Figure from 'react-bootstrap/Figure';
 import Container from 'react-bootstrap/Container';
-import { Link, redirect, useParams } from 'react-router-dom'
+import { Link, redirect, useNavigate } from 'react-router-dom'
 import { Form, Button, Col, Row, Badge, Modal, Dropdown} from 'react-bootstrap'
 import FormContainer from '../component/FormContainer';
 import ControlledCarousel from '../component/Carousel/Carousel';
@@ -18,7 +18,12 @@ import axios from 'axios'
 class EditScreen extends React.Component {
   constructor(props) {
     super(props);
-    const TemplateList = [[BasicTemplate1, BasicTemplate2]]
+    const TemplateList = [[BasicTemplate1, BasicTemplate2]];
+    const templateInfo = JSON.parse(localStorage.getItem('templateStr'));
+    const userLogin = localStorage.getItem("userInfo")
+    if (!userLogin || !templateInfo){
+      window.location.href = '/template';
+    }
     this.state = {
       pageTitle : '12345',
       text : '',
@@ -36,8 +41,8 @@ class EditScreen extends React.Component {
       fontStyle: "normal",
       font:"times",
 
-      templateStr :JSON.parse(localStorage.getItem('templateStr')).templateStr,
-      template: TemplateList[JSON.parse(localStorage.getItem('templateStr')).type][JSON.parse(localStorage.getItem('templateStr')).id],
+      templateStr :templateInfo.templateStr,
+      template: TemplateList[templateInfo.type][templateInfo.id],
       nameTemplate:"",
       userId:"639514eb078f1356e86471fa",
       templateState:{},
@@ -45,13 +50,6 @@ class EditScreen extends React.Component {
       idd:"999",
       idUpdated:false
     };
-    // const TemplateList = [[BasicTemplate1, BasicTemplate2]]
-    // if (this.state.templateType == "Basic"){
-    //    this.setState(state => ({
-    //     template : 
-    //   }));
-    // }
-
     this.handleClick = this.handleClick.bind(this);
 
     this.handleShowHideText = this.handleShowHideText.bind(this);
@@ -456,7 +454,7 @@ class EditScreen extends React.Component {
                   :null
                 }
 
-            <Row className='space'>
+            <Row className='space' alt="cat">
             </Row>
 
             {/* Return buttons */}

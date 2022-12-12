@@ -14,6 +14,7 @@ const Header = () => {
   const navigate  = useNavigate()
   const signoutHandler = () => {
     localStorage.removeItem('userInfo')
+    localStorage.removeItem('templateStr')
     navigate('/')
   }
 
