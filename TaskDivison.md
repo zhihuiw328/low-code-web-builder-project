@@ -14,6 +14,9 @@
     - Allow save template to backend.
 - Implementing DetailScreen Page. 
     - Interact with different templates and display output.
+    - Implement Linking and copy to clipboard buttons.
 - Implementing Saved Page. 
+- Help on My template Page.
 - Fix bug on Template backend. 
+- Fix bug on alerts at frontend.
 

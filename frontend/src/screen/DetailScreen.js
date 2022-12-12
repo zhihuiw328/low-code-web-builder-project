@@ -56,7 +56,7 @@ class DetailScreen extends React.Component {
  
 
   render() {
-    const MyComponent = BasicTemplate2;
+    let MyComponent = BasicTemplate2;
     if (this.state.templateName == "BasicTemplate1") {
       MyComponent = BasicTemplate1;
     }
@@ -83,6 +83,7 @@ class DetailScreen extends React.Component {
                       collectTemplateStates={()=>({})}
                       />
         <Link to={`/template/${this.state.userId}`}><Button className="center-box">Back to Your templates</Button></Link>
+        <Button className="center-box" onClick={() => {navigator.clipboard.writeText(window.location.href)}}>Copy your website into your clipboard</Button>
       </div>)
     }
   }
