@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './EditScreen.css';
 import Figure from 'react-bootstrap/Figure';
 import Container from 'react-bootstrap/Container';
-import { Link, redirect, useNavigate } from 'react-router-dom'
+import { Link, redirect } from 'react-router-dom'
 import { Form, Button, Col, Row, Badge, Modal, Dropdown} from 'react-bootstrap'
 import FormContainer from '../component/FormContainer';
 import ControlledCarousel from '../component/Carousel/Carousel';
@@ -18,12 +18,6 @@ import axios from 'axios'
 class EditScreen extends React.Component {
   constructor(props) {
     super(props);
-    const TemplateList = [[BasicTemplate1, BasicTemplate2]];
-    const templateInfo = JSON.parse(localStorage.getItem('templateStr'));
-    const userLogin = localStorage.getItem("userInfo")
-    if (!userLogin || !templateInfo){
-      window.location.href = '/template';
-    }
     this.state = {
       pageTitle : '12345',
       text : '',
@@ -36,13 +30,13 @@ class EditScreen extends React.Component {
 
       color: 'black',
       backgroundColor: 'white',
-      currentSection:"",
+
       fontSize: 1,
       fontStyle: "normal",
       font:"times",
 
-      templateStr :templateInfo.templateStr,
-      template: TemplateList[templateInfo.type][templateInfo.id],
+      template: BasicTemplate2,
+      templateStr: "",
       nameTemplate:"",
       userId:"639514eb078f1356e86471fa",
       templateState:{},
@@ -51,6 +45,8 @@ class EditScreen extends React.Component {
       idUpdated:false,
       setTemplateUpdated:false
     };
+  
+
     this.handleClick = this.handleClick.bind(this);
 
     this.handleShowHideText = this.handleShowHideText.bind(this);
@@ -81,16 +77,11 @@ class EditScreen extends React.Component {
   }
   
   handleShowImage() {
-    if (this.state.currentSection === "" || !this.state.currentSection) {
-      alert("Please choose a section!")
-      return;
-    }
     this.setState(state => ({
       showImage : true
     }));
   }
   handleUploadImage = async(e) =>{
-    
     // this.setState(state => ({
     //   showImage : true
     // }));
@@ -171,10 +162,6 @@ class EditScreen extends React.Component {
     }));
   }
   handleShowHideText(event) {
-    if (this.state.currentSection === "" || !this.state.currentSection) {
-      alert("Please choose a section!")
-      return;
-    }
     this.setState(state => ({
       showText : !this.state.showText
     }));
@@ -192,21 +179,12 @@ class EditScreen extends React.Component {
   }
 
   handleShowHideColor(event) {
-    if (this.state.currentSection === "" || !this.state.currentSection) {
-      alert("Please choose a section!")
-      return;
-    }
     this.setState(state => ({
       showColor : !this.state.showColor
     }));
   }
-  
 
   handleShowHideFont(event) {
-    if (this.state.currentSection === "" || !this.state.currentSection) {
-      alert("Please choose a section!")
-      return;
-    }
     this.setState(state => ({
       showFont : !this.state.showFont
     }));
@@ -219,13 +197,14 @@ class EditScreen extends React.Component {
   
 
   render() {
-    // console.log(this.state.templateStr)
+    console.log(this.state.templateStr);
+    // const MyComponent = ( props ) => <div>{this.state.template}</div>
+    // console.log(this.state.templateState)
     var templatePart = 
       <this.state.template
         isDetailView={false}
         setTemplateUpdated={(update)=>this.setState(state => ({templateUpdated: update}))}
         templateState={null}
-        setCurrentSection={(update)=>this.setState(state => ({currentSection: update}))}
 
         updateText={(update)=>this.setState(state => ({text: update}))}
         text={this.state.text}
@@ -457,7 +436,7 @@ class EditScreen extends React.Component {
                   :null
                 }
 
-            <Row className='space' alt="cat">
+            <Row className='space'>
             </Row>
 
             {/* Return buttons */}
