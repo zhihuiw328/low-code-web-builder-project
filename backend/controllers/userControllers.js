@@ -32,10 +32,10 @@ exports.registerUser = asyncHandler(async(req, res) => {
         res.status(400);
         throw new Error('password does not match');
     }
-    console.log(name, email, password, confirmedPassword)
+    // console.log(name, email, password, confirmedPassword)
     //  check email unique
     const existUser = await User.findOne({'email': email});
-    console.log(existUser)
+    // console.log(existUser)
     if (existUser) {
         res.status(400)
         res.json({

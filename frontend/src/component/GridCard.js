@@ -1,25 +1,22 @@
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import CardGroup from 'react-bootstrap/CardGroup';
 
-function GridCard() {
+const GridCard = (props) => {
   return (
-    <Row xs={1} md={3} className="g-4" style={{paddingLeft: '2%', paddingRight: '2%', paddingBottom: '2%'}}>
-      {Array.from({ length: 9 }).map((_, idx) => (
-        <Col key={idx}>
+    <Row xs={1} md={1} className="g-1" style={{paddingLeft: '2%', paddingRight: '2%', paddingBottom: '2%'}}>
+        <Col >
           <Card>
             {/* <Card.Img variant="top" src="holder.js/100px160" /> */}
             <Card.Body >
-              <Card.Title>Card title</Card.Title>
+              <Card.Title className='fs-2 text-center border-bottom border-3 border-info'>{props.title}</Card.Title>
               <Card.Text>
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
+                {props.text}
               </Card.Text>
             </Card.Body>
           </Card>
         </Col>
-      ))}
     </Row>
   );
 }

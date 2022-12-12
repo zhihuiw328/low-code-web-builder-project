@@ -49,7 +49,7 @@ class EditScreen extends React.Component {
 
       idd:"999",
       idUpdated:false,
-
+      
       userLogin: null
     };
   
@@ -125,6 +125,8 @@ class EditScreen extends React.Component {
     }));
   }
   handleUploadSave= async() =>{
+    console.log(this.state.setTemplateUpdated)
+
     this.setState(state => ({
       save : false
     }));
@@ -237,7 +239,7 @@ handleSubmitSave(){
     var templatePart = 
       <this.state.template
         isDetailView={false}
-        
+        setTemplateUpdated={(update)=>this.setState(state => ({templateUpdated: update}))}
         templateState={null}
 
         updateText={(update)=>this.setState(state => ({text: update}))}
