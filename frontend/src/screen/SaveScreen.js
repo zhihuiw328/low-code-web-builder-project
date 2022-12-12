@@ -16,6 +16,13 @@ import axios from 'axios'
 
 
 class SaveScreen extends React.Component {
+  constructor(props){
+    super(props)
+    const userLogin = JSON.parse(localStorage.getItem('userInfo'));
+    this.state={
+      userName:userLogin.name
+    }
+  }
   render(){
     return (
       <Card style={{"textAlign":"center", "margin":"20%"}}>
@@ -24,8 +31,8 @@ class SaveScreen extends React.Component {
         <Card.Text>
         You can now go to your profile page to view and share your created websites!
         </Card.Text>
-        <Link to='/Template'><Button variant='primary'>Home Page</Button></Link>
-        <Link to='/profile'><Button variant='primary'>Profile Page</Button></Link>
+        <Link to='/'><Button variant='primary'>Home Page</Button></Link>
+        <Link to={'/template/' + this.state.userName}><Button variant='primary'>My Templates</Button></Link>
       </Card.Body>
       <Card.Footer>Thanks for using our website!</Card.Footer>
       </Card>
