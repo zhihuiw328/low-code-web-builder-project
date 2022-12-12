@@ -56,7 +56,7 @@ class DetailScreen extends React.Component {
  
 
   render() {
-    const MyComponent = BasicTemplate2;
+    let MyComponent = BasicTemplate2;
     if (this.state.templateName == "BasicTemplate1") {
       MyComponent = BasicTemplate1;
     }
