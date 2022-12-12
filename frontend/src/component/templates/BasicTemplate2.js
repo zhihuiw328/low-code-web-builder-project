@@ -158,10 +158,12 @@ class BasicTemplate2 extends React.Component {
         this.resetSection()
         if (this.state.currentSection === section) {
             this.setState({currentSection:null})
+            this.props.setCurrentSection(null)
         } else {
             this.updateClickedSection(section)
             this.props.updateText(this.state.pageContent[section].text)
             this.props.updateColor(this.state.pageContent[section].color)
+            this.props.setCurrentSection(this.state.currentSection)
         }
     };
     
