@@ -42,7 +42,9 @@ class EditScreen extends React.Component {
       templateState:{},
 
       idd:"999",
-      idUpdated:false
+      idUpdated:false,
+
+      userLogin: null
     };
   
 
@@ -67,6 +69,8 @@ class EditScreen extends React.Component {
 
     this.handleExport = this.handleExport.bind(this);
   }
+
+  
   
   
   handleClick() {
@@ -191,7 +195,10 @@ class EditScreen extends React.Component {
     // console.log(ReactDOMServer.renderToString(templatePart))
     /* {TODO: Need backend first */
   }
-  
+
+  componentDidMount = () => {
+    this.setState({userLogin: JSON.parse(localStorage.getItem('userInfo'))})
+  }
 
   render() {
     console.log(this.state.templateStr);
@@ -223,6 +230,11 @@ class EditScreen extends React.Component {
 
         collectTemplateStates={(update)=>this.setState(state => ({templateState: update}))}
         />
+    if (this.state.userLogin === null) {
+      return (<>
+        <h1>Please Login to unlock this function!</h1>
+      </>)
+    }else{
     return (
       <>
       {/* Save modal */}
@@ -470,6 +482,7 @@ class EditScreen extends React.Component {
       </Container>
       </>
     )
+      }
   }
 }
 
