@@ -191,6 +191,10 @@ class BasicTemplate2 extends React.Component {
     componentDidMount() {
         this.props.updateBackgroundColor(this.state.backgroundColor)
         console.log()
+
+        console.log("here")
+        console.log(this.props.templateState)
+        console.log(this.props.isDetailView)
         if (this.props.templateState !== null &&  this.props.isDetailView === true) {
 
             this.setState((prevState, props) => {
@@ -410,6 +414,7 @@ class BasicTemplate2 extends React.Component {
                                 fontWeight: this.state.pageContent.subText2.fontStyle}}>
                             <p>{this.state.pageContent.subText2.text}</p>
                             {this.state.pageContent.subText2.imageLink != null
+                                // ? <>{this.state.pageContent.subText2.imageLink}</>
                                 ?  <img style={{ height: "20vh"}} src={this.state.pageContent.subText2.imageLink}></img>
                                 : <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbh_-7NSQ7J-RyYt42aP7R2ujOEvNUZtkKvGSX4DWMyA&s"}></img>
                             }

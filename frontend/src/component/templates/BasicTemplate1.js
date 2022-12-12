@@ -175,9 +175,11 @@ class BasicTemplate1 extends React.Component {
     componentDidMount() {
         this.props.collectTemplateStates(this.state)
         this.props.updateBackgroundColor(this.state.backgroundColor)
-        console.log()
+        console.log("here")
+        console.log(this.props.templateState)
+        console.log(this.props.isDetailView)
         if (this.props.templateState !== null &&  this.props.isDetailView === true) {
-
+            console.log("here")
             this.setState((prevState, props) => {
                 let newPageContent = {
                     pageTitle : {
