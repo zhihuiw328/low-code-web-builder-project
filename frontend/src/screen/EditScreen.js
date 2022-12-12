@@ -18,6 +18,12 @@ import axios from 'axios'
 class EditScreen extends React.Component {
   constructor(props) {
     super(props);
+    const TemplateList = [[BasicTemplate1, BasicTemplate2]];
+    const templateInfo = JSON.parse(localStorage.getItem('templateStr'));
+    const userLogin = localStorage.getItem("userInfo")
+    if (!userLogin || !templateInfo){
+      window.location.href = '/template';
+    }
     this.state = {
       pageTitle : '12345',
       text : '',
@@ -35,8 +41,8 @@ class EditScreen extends React.Component {
       fontStyle: "normal",
       font:"times",
 
-      template: BasicTemplate2,
-      templateStr: "",
+      templateStr :templateInfo.templateStr,
+      template: TemplateList[templateInfo.type][templateInfo.id],
       nameTemplate:"",
       userId:"639514eb078f1356e86471fa",
       templateState:{},
@@ -46,6 +52,7 @@ class EditScreen extends React.Component {
 
       userLogin: null
     };
+  
   
 
     this.handleClick = this.handleClick.bind(this);
@@ -129,7 +136,7 @@ class EditScreen extends React.Component {
     }
     // TODO: couldn't modify idd at this part
     // console.log({ name:this.state.nameTemplate,template:this.state.template.templateName, templateState:this.state.templateState})
-    const {data} = await axios.post('/api/template', { name:this.state.nameTemplate,template:this.state.templateState.templateName, templateState:this.state.templateState}, config)
+    const {data} = await axios.post('/api/template', { name:this.state.nameTemplate,template:this.state.templateStr, templateState:this.state.templateState}, config)
     console.log(data)
   //   console.log(data.data._id)
   //   console.log(this.state.idd)
