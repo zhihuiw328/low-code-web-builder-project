@@ -4,8 +4,6 @@ import Image from 'react-bootstrap/Image'
 import { Form, Button, Row, Col,Modal } from 'react-bootstrap'
 import {Link, useNavigate} from "react-router-dom";
 import axios from 'axios'
-import BasicTemplate1 from './templates/BasicTemplate1';
-import BasicTemplate2 from './templates/BasicTemplate2';
 
 
 const TemplateList = (props) =>{

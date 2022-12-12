@@ -10,6 +10,7 @@ import DetailScreen from './screen/DetailScreen';
 import SaveScreen from './screen/SaveScreen';
 import Header from './component/Header';
 import Footer from './component/Footer';
+import UserTemplateScreen from './screen/UserTemplateScreen';
 
 const App = () => {
   return(
@@ -25,6 +26,7 @@ const App = () => {
               <Route path="/profile" element={<ProfileScreen/>} />
               {/* <Route path="/detail" element={<DetailScreen/>} /> */}
               <Route path="/detail/:id" element={<DetailScreen/>} />
+              <Route path="/template/:id" element={<UserTemplateScreen/>} />
               <Route path="/save" element={<SaveScreen/>} />
           </Routes>
         </div>

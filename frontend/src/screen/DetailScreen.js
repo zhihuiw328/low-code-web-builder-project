@@ -71,6 +71,7 @@ class DetailScreen extends React.Component {
        <MyComponent templateState={this.state.templateState}
                       isDetailView={true}
                       updateBackgroundColor={(update)=>this.setState(state => ({backgroundColor: update}))}
+                      setCurrentSection={()=>({})}
                       updateText={()=>({})}
                       updateColor={()=>({})}
                       updatefont={()=>({})}
