@@ -6,20 +6,22 @@ const Template = require('../models/template');
 exports.CreateTemplate = asyncHandler(async(req, res) => {
     const {name, template, templateState} = req.body;
     const userId = req.user._id;
+    console.log(name, template)
     if (!name || !template) {
         res.status(400);
-        throw new Error("Invalid userId or name or template!");
+        throw new Error("Invalid name and template!");
     }
-
+    
     //  check name unique
     const existName = await Template.findOne({'name': name, 'userId':req.user._id});
+    console.log("helloworld")
     if (existName) {
         res.status(400);
         throw new Error("template name Exists");
     }
-
+    console.log(userId, name, template, templateState)
     const created_template = await Template.create({userId, name, template, templateState})
-
+    console.log("helloworld")
     if (created_template) {
         res.status(201);
         res.json({
@@ -49,7 +51,7 @@ exports.GetTemplate = asyncHandler(async(req, res) => {
 })
 
 exports.GetAllTemplate = asyncHandler(async(req, res) => {
-    console.log(req.user._id)
+    // console.log(req.user._id)
     const templates = await Template.find({'userId': req.user._id})
 
     res.status(200)

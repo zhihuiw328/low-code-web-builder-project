@@ -18,7 +18,7 @@ import axios from 'axios'
 class SaveScreen extends React.Component {
   render(){
     return (
-      <Card style={{"text-align":"center", "margin":"20%"}}>
+      <Card style={{"textAlign":"center", "margin":"20%"}}>
         <Card.Body>
         <Card.Title>Save your website successfully!</Card.Title>
         <Card.Text>

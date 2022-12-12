@@ -43,7 +43,8 @@ class EditScreen extends React.Component {
       templateState:{},
 
       idd:"999",
-      idUpdated:false
+      idUpdated:false,
+      setTemplateUpdated:false
     };
     // const TemplateList = [[BasicTemplate1, BasicTemplate2]]
     // if (this.state.templateType == "Basic"){
@@ -119,6 +120,8 @@ class EditScreen extends React.Component {
     }));
   }
   handleUploadSave= async() =>{
+    console.log(this.state.setTemplateUpdated)
+
     this.setState(state => ({
       save : false
     }));
@@ -222,7 +225,7 @@ class EditScreen extends React.Component {
     var templatePart = 
       <this.state.template
         isDetailView={false}
-        
+        setTemplateUpdated={(update)=>this.setState(state => ({templateUpdated: update}))}
         templateState={null}
         setCurrentSection={(update)=>this.setState(state => ({currentSection: update}))}
 
