@@ -158,12 +158,10 @@ class BasicTemplate2 extends React.Component {
         this.resetSection()
         if (this.state.currentSection === section) {
             this.setState({currentSection:null})
-            this.props.setCurrentSection(null)
         } else {
             this.updateClickedSection(section)
             this.props.updateText(this.state.pageContent[section].text)
             this.props.updateColor(this.state.pageContent[section].color)
-            this.props.setCurrentSection(this.state.currentSection)
         }
     };
     
@@ -325,7 +323,6 @@ class BasicTemplate2 extends React.Component {
                         fontSize: this.state.pageContent.titleText.fontSize,
                         fontWeight: this.state.pageContent.titleText.fontStyle}}>
                     <p>{this.state.pageContent.titleText.text}</p>
-                    {this.state.pageContent.titleText.fontStyle}
                 </div>
 
                 <div style={{textAlign:"center", 
@@ -356,13 +353,12 @@ class BasicTemplate2 extends React.Component {
                                 fontSize: this.state.pageContent.subText1.fontSize,
                                 fontWeight: this.state.pageContent.subText1.fontStyle}}>
                             <p>{this.state.pageContent.subText1.text}</p>
-                            {this.props.imageLink}
                             {/* TODO:  */}
-                            {/* {this.props.imageLink != null
-                                ?  <img src={this.props.imageLink}></img>
-                                : <p>1</p>
-                            } */}
-                            <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbh_-7NSQ7J-RyYt42aP7R2ujOEvNUZtkKvGSX4DWMyA&s"}></img>
+                            {this.props.imageLink != null
+                                ? <img src={this.props.imageLink}></img>
+                                : <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbh_-7NSQ7J-RyYt42aP7R2ujOEvNUZtkKvGSX4DWMyA&s"}></img>
+                            }
+                            
                         </div>
                     </div>
                             
@@ -389,7 +385,10 @@ class BasicTemplate2 extends React.Component {
                                 fontSize: this.state.pageContent.subText2.fontSize,
                                 fontWeight: this.state.pageContent.subText2.fontStyle}}>
                             <p>{this.state.pageContent.subText2.text}</p>
-                            <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbh_-7NSQ7J-RyYt42aP7R2ujOEvNUZtkKvGSX4DWMyA&s"}></img>
+                            {this.props.imageLink != null
+                                ?  <img src={this.props.imageLink}></img>
+                                : <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbh_-7NSQ7J-RyYt42aP7R2ujOEvNUZtkKvGSX4DWMyA&s"}></img>
+                            }
                         </div>
                     </div>
                 </div>

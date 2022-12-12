@@ -150,12 +150,10 @@ class BasicTemplate1 extends React.Component {
         this.resetSection()
         if (this.state.currentSection === section) {
             this.setState({currentSection:null})
-            this.props.setCurrentSection(null)
         } else {
             this.updateClickedSection(section)
             this.props.updateText(this.state.pageContent[section].text)
             this.props.updateColor(this.state.pageContent[section].color)
-            this.props.setCurrentSection(this.state.currentSection)
         }
     };
     
@@ -317,7 +315,6 @@ class BasicTemplate1 extends React.Component {
                         fontSize: this.state.pageContent.titleText.fontSize,
                         fontWeight: this.state.pageContent.titleText.fontStyle}}>
                     <p>{this.state.pageContent.titleText.text}</p>
-                    {this.state.pageContent.titleText.fontStyle}
                 </div>
 
                 <div onClick={(e) => this.handleSectionClick(e, "subTitle1")} 
@@ -340,12 +337,6 @@ class BasicTemplate1 extends React.Component {
                         fontSize: this.state.pageContent.subText1.fontSize,
                         fontWeight: this.state.pageContent.subText1.fontStyle}}>
                     <p>{this.state.pageContent.subText1.text}</p>
-                    {this.props.imageLink}
-                    {/* TODO:  */}
-                    {this.props.imageLink != null
-                        ?  <img src={this.props.imageLink}></img>
-                        : <p>1</p>
-                    }
                 </div>
 
                 <div onClick={(e) => this.handleSectionClick(e, "subTitle2")} 
