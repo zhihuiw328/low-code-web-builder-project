@@ -1,15 +1,15 @@
 const express = require('express')
 const multer = require('multer')
 const path = require('path')
-const {uploadFile} = require('../s3')
+
 const router = express.Router()
 
 const storage = multer.diskStorage({
     destination(req, file, callback){
-        callback(null, 'uploads/')
+        callback(null, 'frontend/public/')
     },
     filename(req, file, callback){
-        callback(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`)
+        callback(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`) // format the file name
     }
 })
 
@@ -19,9 +19,9 @@ function checkFileType(file, callback){
     const mimetype = filetypes.test(file.mimetype)
 
     if(extname && mimetype){
-        return callback(null, true)
+        return callback(null, true) // null error
     }else{
-        callback('Images only!')
+        callback('Images only!') // return an error
     }
 }
 
@@ -32,12 +32,8 @@ const upload = multer({
     }
 })
 
-router.post('/', upload.single('image'), async (req, res) => {
-    console.log("inside uploadRoutes")
+router.post('/', upload.single('image'), (req, res) => {
     res.send(`/${req.file.path}`) // path
-    const result = await uploadFile(req.file)
-    console.log(result)
-
 })
 
 

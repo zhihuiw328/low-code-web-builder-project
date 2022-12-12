@@ -62,6 +62,7 @@ class EditScreen extends React.Component {
     this.handleCloseSave = this.handleCloseSave.bind(this);
     this.handleUploadSave = this.handleUploadSave.bind(this);
     this.handleUploadImage = this.handleUploadImage.bind(this);
+    this.handleImageLink = this.handleImageLink.bind(this);
 
     this.handleShowHideColor = this.handleShowHideColor.bind(this);
 
@@ -95,11 +96,13 @@ class EditScreen extends React.Component {
     try {
       const config = {
         headers: {
-          'Content-Type': 'multipart/form'
+          'Content-Type': 'multipart/form-data'
         }
       }
 
-      const { image } = await axios.post('/api/upload', formData, config)
+      const { data } = await axios.post('/api/upload', formData, config)
+
+      this.setState({imageLink: data.split('/')[3]})
 
     }catch (error){
       console.log(error)
@@ -173,6 +176,13 @@ class EditScreen extends React.Component {
     }));
   }
 
+  handleImageLink(event) {
+    console.log("here")
+    this.setState(state => ({
+      imageLink: event.target.value
+    }));
+  }
+
   handleChangeName(event) {
     this.setState(state => ({
       nameTemplate: event.target.value
@@ -229,6 +239,8 @@ class EditScreen extends React.Component {
         fontStyle ={this.state.fontStyle}
 
         collectTemplateStates={(update)=>this.setState(state => ({templateState: update}))}
+
+        imageLink={this.state.imageLink}
         />
     if (this.state.userLogin === null) {
       return (<>
@@ -287,7 +299,7 @@ class EditScreen extends React.Component {
             type='text'
             placeholder='Enter an URL for your picture'
             value={this.state.imageLink}
-            onChange={(e) => {this.setState(state => ({imageLink: e.target.value}))}}
+            onChange={this.handleImageLink}
           />
         </Modal.Body>
         <Modal.Footer>

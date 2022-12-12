@@ -21,7 +21,6 @@ app.use('/api/users', userRoutes)
 app.use('/api/template', templateRoutes)
 
 app.use('/api/upload', uploadRoutes)
-app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 
 app.use('/api/images', uploadRoutes)
 
