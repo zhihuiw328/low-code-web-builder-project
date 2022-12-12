@@ -173,6 +173,7 @@ class BasicTemplate1 extends React.Component {
     }
 
     componentDidMount() {
+        this.props.collectTemplateStates(this.state)
         this.props.updateBackgroundColor(this.state.backgroundColor)
         console.log()
         if (this.props.templateState !== null &&  this.props.isDetailView === true) {
@@ -277,7 +278,8 @@ class BasicTemplate1 extends React.Component {
             if (previousProps.imageLink !== this.props.imageLink) {
                 this.setState((state, props) => ({imageLink: this.props.imageLink}))
             }
-            if (previousState.pageContent !== this.state.pageContent) {
+            if (previousState.pageContent !== this.state.pageContent ||
+                previousState.backgroundColor !== this.state.backgroundColor ) {
                 // TODO: 
                 this.props.collectTemplateStates(this.state)
             }

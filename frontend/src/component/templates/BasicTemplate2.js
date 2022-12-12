@@ -308,7 +308,8 @@ class BasicTemplate2 extends React.Component {
             if (previousProps.imageLink !== this.props.imageLink) {
                 this.setState((state, props) => ({imageLink: this.props.imageLink}))
             }
-            if (previousState.pageContent !== this.state.pageContent) {
+            if (previousState.pageContent !== this.state.pageContent ||
+                previousState.backgroundColor !== this.state.backgroundColor ) {
                 // TODO: 
                 this.props.collectTemplateStates(this.state)
             }

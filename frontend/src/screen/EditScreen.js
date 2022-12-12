@@ -77,6 +77,7 @@ class EditScreen extends React.Component {
 
     this.handleExport = this.handleExport.bind(this);
     this.handleChangeText = this.handleChangeText.bind(this);
+    this.handleSubmitSave = this.handleSubmitSave.bind(this);
   }
 
   
@@ -144,6 +145,16 @@ class EditScreen extends React.Component {
   //   this.setState(state => ({idd:dataId}), () => {
   //     this.props.idReceived()
   // })
+    
+}
+
+handleSubmitSave(){
+  if (Object.keys(this.state.templateState ).length == 0){
+    console.log(this.state.templateState);
+    alert("You haven't change anything!");
+  } else {
+    this.setState({save:true});
+  }
 }
   // console.log(this.state.save)
   //   console.log(this.state.idd)
@@ -502,7 +513,7 @@ class EditScreen extends React.Component {
         </Row>
         
         <Row  className='justify-content-md-center'>
-          <Button variant='primary' style={{ width: '60rem'}} onClick={()=>{this.setState({save:true})}}>Save</Button>  
+          <Button variant='primary' style={{ width: '60rem'}} onClick={this.handleSubmitSave}>Save</Button>  
         </Row>
 
         <Row className='space'>
