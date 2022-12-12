@@ -6,7 +6,7 @@ function GridCard() {
   return (
     <Row xs={1} md={3} className="g-4" style={{paddingLeft: '2%', paddingRight: '2%', paddingBottom: '2%'}}>
       {Array.from({ length: 9 }).map((_, idx) => (
-        <Col>
+        <Col key={idx}>
           <Card>
             {/* <Card.Img variant="top" src="holder.js/100px160" /> */}
             <Card.Body >

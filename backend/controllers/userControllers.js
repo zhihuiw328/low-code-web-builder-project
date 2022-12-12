@@ -32,16 +32,21 @@ exports.registerUser = asyncHandler(async(req, res) => {
         res.status(400);
         throw new Error('password does not match');
     }
-
+    console.log(name, email, password, confirmedPassword)
     //  check email unique
     const existUser = await User.findOne({'email': email});
+    console.log(existUser)
     if (existUser) {
-        res.status(400);
-        throw new Error("Email Exists");
+        res.status(400)
+        res.json({
+            'message': 'Email Exists',
+            'data': existUser
+        });
+        return;
     }
 
     const user = await User.create({name, email, password, dateCreated: Date.now()})
-
+    
     if (user) {
         res.status(201);
         res.json({

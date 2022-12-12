@@ -31,7 +31,7 @@ class EditScreen extends React.Component {
 
       color: 'black',
       backgroundColor: 'white',
-
+      currentSection:"",
       fontSize: 1,
       fontStyle: "normal",
       font:"times",
@@ -82,11 +82,16 @@ class EditScreen extends React.Component {
   }
   
   handleShowImage() {
+    if (this.state.currentSection === "" || !this.state.currentSection) {
+      alert("Please choose a section!")
+      return;
+    }
     this.setState(state => ({
       showImage : true
     }));
   }
   handleUploadImage = async(e) =>{
+    
     // this.setState(state => ({
     //   showImage : true
     // }));
@@ -165,6 +170,10 @@ class EditScreen extends React.Component {
     }));
   }
   handleShowHideText(event) {
+    if (this.state.currentSection === "" || !this.state.currentSection) {
+      alert("Please choose a section!")
+      return;
+    }
     this.setState(state => ({
       showText : !this.state.showText
     }));
@@ -182,6 +191,10 @@ class EditScreen extends React.Component {
   }
 
   handleShowHideColor(event) {
+    if (this.state.currentSection === "" || !this.state.currentSection) {
+      alert("Please choose a section!")
+      return;
+    }
     this.setState(state => ({
       showColor : !this.state.showColor
     }));
@@ -189,6 +202,10 @@ class EditScreen extends React.Component {
   
 
   handleShowHideFont(event) {
+    if (this.state.currentSection === "" || !this.state.currentSection) {
+      alert("Please choose a section!")
+      return;
+    }
     this.setState(state => ({
       showFont : !this.state.showFont
     }));
@@ -207,6 +224,7 @@ class EditScreen extends React.Component {
         isDetailView={false}
         
         templateState={null}
+        setCurrentSection={(update)=>this.setState(state => ({currentSection: update}))}
 
         updateText={(update)=>this.setState(state => ({text: update}))}
         text={this.state.text}

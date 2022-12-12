@@ -22,11 +22,18 @@ export const LoginScreen = () => {
             'Content-Type': 'application/json',
         }
       }
-      const { data } = await axios.post('/api/users/login', {email, password}, config)
-      localStorage.setItem('userInfo', JSON.stringify(data))
-      navigate('/')
+      try {
+        const { data } = await axios.post('/api/users/login', {email, password}, config)
+        localStorage.setItem('userInfo', JSON.stringify(data))
+        navigate('/')
+      } catch(err) {
+        alert(err.response.data.message)
+      }
+      // const { data } = await axios.post('/api/users/login', {email, password}, config)
+      // localStorage.setItem('userInfo', JSON.stringify(data))
+      // navigate('/')
     }
-
+    
 
   return (
     <FormContainer>

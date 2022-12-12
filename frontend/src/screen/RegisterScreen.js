@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Form, Button, Row, Col } from 'react-bootstrap'
 import FormContainer from '../component/FormContainer';
 import axios from 'axios'
+// import { listenerCount } from '../../../backend/models/user';
 
 export const LoginScreen = () => {
 
@@ -25,8 +26,18 @@ export const LoginScreen = () => {
                     'Content-Type': 'application/json',
                 }
             }
-            await axios.post('/api/users', { email, name, password, confirmedPassword }, config)
-            navigate('/login')
+
+            // const data = await axios.post('/api/users', { email, name, password, confirmedPassword }, config)
+            // console.log(data.data.message)
+ 
+            try {
+              await axios.post('/api/users', { email, name, password, confirmedPassword }, config)
+              alert("Register Successed!")
+              navigate('/login')
+            } catch(error) {
+              alert(error.response.data.message)
+            }
+            
         }
     }
 
