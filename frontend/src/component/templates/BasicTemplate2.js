@@ -18,7 +18,8 @@ class BasicTemplate2 extends React.Component {
                     backgroundColor: "white",
                     font:"Georgia",
                     fontSize:40,
-                    fontStyle:"bold"
+                    fontStyle:"bold",
+                    imageLink:null
 
                 },
                 titleText : {
@@ -29,7 +30,8 @@ class BasicTemplate2 extends React.Component {
                     backgroundColor: "white",
                     font:"Georgia",
                     fontSize:15,
-                    fontStyle:"italic"
+                    fontStyle:"italic",
+                    imageLink:null
 
                 },
                 subTitle1 : {
@@ -40,7 +42,8 @@ class BasicTemplate2 extends React.Component {
                     backgroundColor: "white",
                     font:"Georgia",
                     fontSize:30,
-                    fontStyle:"bold"
+                    fontStyle:"bold",
+                    imageLink:null
 
                 },
                 subText1 : {
@@ -51,7 +54,8 @@ class BasicTemplate2 extends React.Component {
                     backgroundColor: "white",
                     font:"Georgia",
                     fontSize:15,
-                    fontStyle:"italic"
+                    fontStyle:"italic",
+                    imageLink:null
 
                 },
                 subTitle2 : {
@@ -62,7 +66,8 @@ class BasicTemplate2 extends React.Component {
                     backgroundColor: "white",
                     font:"Georgia",
                     fontSize:30,
-                    fontStyle:"bold"
+                    fontStyle:"bold",
+                    imageLink:null
 
                 },
                 subText2 : {
@@ -73,7 +78,8 @@ class BasicTemplate2 extends React.Component {
                     backgroundColor: "white",
                     font:"Georgia",
                     fontSize:15,
-                    fontStyle:"italic"
+                    fontStyle:"italic",
+                    imageLink:null
                 },
                 footer : {
                     name: "footer",
@@ -83,7 +89,8 @@ class BasicTemplate2 extends React.Component {
                     backgroundColor: "white",
                     font:"Georgia",
                     fontSize:15,
-                    fontStyle:"italic"
+                    fontStyle:"italic",
+                    imageLink:null
                 }
             }
         };
@@ -165,7 +172,7 @@ class BasicTemplate2 extends React.Component {
         }
     };
     
-    updateSectionInfo = (section, newText, newColor, newFont, newFontSize, newFontStyle) => {
+    updateSectionInfo = (section, newText, newColor, newFont, newFontSize, newFontStyle, newImageLink) => {
         this.setState(prevState => {
             let newPageContent = Object.assign({}, prevState.pageContent)
             newPageContent[section] = {
@@ -174,7 +181,8 @@ class BasicTemplate2 extends React.Component {
                 color: newColor,
                 font: newFont,
                 fontSize: newFontSize,
-                fontStyle: newFontStyle
+                fontStyle: newFontStyle,
+                imageLink:newImageLink
             }
             return {currentSection:section, pageContent:newPageContent}
         })
@@ -238,7 +246,8 @@ class BasicTemplate2 extends React.Component {
                         this.state.pageContent[this.state.currentSection].color,
                         this.state.pageContent[this.state.currentSection].font,
                         this.state.pageContent[this.state.currentSection].fontSize,
-                        this.state.pageContent[this.state.currentSection].fontStyle
+                        this.state.pageContent[this.state.currentSection].fontStyle,
+                        this.state.pageContent[this.state.currentSection].imageLink
                     )
                 }
                 if (previousProps.color !== this.props.color) {
@@ -247,7 +256,8 @@ class BasicTemplate2 extends React.Component {
                         this.props.color,
                         this.state.pageContent[this.state.currentSection].font,
                         this.state.pageContent[this.state.currentSection].fontSize,
-                        this.state.pageContent[this.state.currentSection].fontStyle
+                        this.state.pageContent[this.state.currentSection].fontStyle,
+                        this.state.pageContent[this.state.currentSection].imageLink
                     )
                 }
                 if (previousProps.font !== this.props.font) {
@@ -256,7 +266,8 @@ class BasicTemplate2 extends React.Component {
                         this.state.pageContent[this.state.currentSection].color,
                         this.props.font,
                         this.state.pageContent[this.state.currentSection].fontSize,
-                        this.state.pageContent[this.state.currentSection].fontStyle
+                        this.state.pageContent[this.state.currentSection].fontStyle,
+                        this.state.pageContent[this.state.currentSection].imageLink
                     )
                 }
                 if (previousProps.fontSize !== this.props.fontSize) {
@@ -274,7 +285,18 @@ class BasicTemplate2 extends React.Component {
                         this.state.pageContent[this.state.currentSection].color,
                         this.state.pageContent[this.state.currentSection].font,
                         this.state.pageContent[this.state.currentSection].fontSize,
-                        this.props.fontStyle
+                        this.props.fontStyle,
+                        this.state.pageContent[this.state.currentSection].imageLink
+                    )
+                }
+                if (previousProps.imageLink !== this.props.imageLink) {
+                    this.updateSectionInfo(this.state.currentSection,
+                        this.state.pageContent[this.state.currentSection].text,
+                        this.state.pageContent[this.state.currentSection].color,
+                        this.state.pageContent[this.state.currentSection].font,
+                        this.state.pageContent[this.state.currentSection].fontSize,
+                        this.state.pageContent[this.state.currentSection].fontStyle,
+                        this.props.imageLink
                     )
                 }
             }
@@ -354,8 +376,8 @@ class BasicTemplate2 extends React.Component {
                                 fontWeight: this.state.pageContent.subText1.fontStyle}}>
                             <p>{this.state.pageContent.subText1.text}</p>
                             {/* TODO:  */}
-                            {this.props.imageLink != null
-                                ? <img src={this.props.imageLink}></img>
+                            {this.state.pageContent.subText1.imageLink != null
+                                ? <img style={{ height: "20vh"}} src={this.state.pageContent.subText1.imageLink}></img>
                                 : <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbh_-7NSQ7J-RyYt42aP7R2ujOEvNUZtkKvGSX4DWMyA&s"}></img>
                             }
                             
@@ -385,8 +407,8 @@ class BasicTemplate2 extends React.Component {
                                 fontSize: this.state.pageContent.subText2.fontSize,
                                 fontWeight: this.state.pageContent.subText2.fontStyle}}>
                             <p>{this.state.pageContent.subText2.text}</p>
-                            {this.props.imageLink != null
-                                ?  <img src={this.props.imageLink}></img>
+                            {this.state.pageContent.subText2.imageLink != null
+                                ?  <img style={{ height: "20vh"}} src={this.state.pageContent.subText2.imageLink}></img>
                                 : <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbh_-7NSQ7J-RyYt42aP7R2ujOEvNUZtkKvGSX4DWMyA&s"}></img>
                             }
                         </div>

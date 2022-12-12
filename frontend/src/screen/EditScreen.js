@@ -18,6 +18,12 @@ import axios from 'axios'
 class EditScreen extends React.Component {
   constructor(props) {
     super(props);
+    const TemplateList = [[BasicTemplate1, BasicTemplate2]];
+    const templateInfo = JSON.parse(localStorage.getItem('templateStr'));
+    const userLogin = localStorage.getItem("userInfo")
+    if (!userLogin || !templateInfo){
+      window.location.href = '/template';
+    }
     this.state = {
       pageTitle : '12345',
       text : '',
@@ -35,16 +41,18 @@ class EditScreen extends React.Component {
       fontStyle: "normal",
       font:"times",
 
-      template: BasicTemplate2,
-      templateStr: "",
+      templateStr :templateInfo.templateStr,
+      template: TemplateList[templateInfo.type][templateInfo.id],
       nameTemplate:"",
       userId:"639514eb078f1356e86471fa",
       templateState:{},
 
       idd:"999",
       idUpdated:false,
-      setTemplateUpdated:false
+      
+      userLogin: null
     };
+  
   
 
     this.handleClick = this.handleClick.bind(this);
@@ -55,19 +63,23 @@ class EditScreen extends React.Component {
     this.handleChangeName = this.handleChangeName.bind(this);
     this.handleClearText = this.handleClearText.bind(this);
     this.handleClearSave = this.handleClearSave.bind(this);
-
+    
     this.handleShowImage = this.handleShowImage.bind(this);
     this.handleCloseImage = this.handleCloseImage.bind(this);
     this.handleCloseSave = this.handleCloseSave.bind(this);
     this.handleUploadSave = this.handleUploadSave.bind(this);
     this.handleUploadImage = this.handleUploadImage.bind(this);
+    this.handleImageLink = this.handleImageLink.bind(this);
 
     this.handleShowHideColor = this.handleShowHideColor.bind(this);
 
     this.handleShowHideFont = this.handleShowHideFont.bind(this);
 
     this.handleExport = this.handleExport.bind(this);
+    this.handleChangeText = this.handleChangeText.bind(this);
   }
+
+  
   
   
   handleClick() {
@@ -103,6 +115,7 @@ class EditScreen extends React.Component {
     }
 
   }
+
   handleCloseImage() {
     this.setState(state => ({
       showImage : false
@@ -123,7 +136,7 @@ class EditScreen extends React.Component {
     }
     // TODO: couldn't modify idd at this part
     // console.log({ name:this.state.nameTemplate,template:this.state.template.templateName, templateState:this.state.templateState})
-    const {data} = await axios.post('/api/template', { name:this.state.nameTemplate,template:this.state.templateState.templateName, templateState:this.state.templateState}, config)
+    const {data} = await axios.post('/api/template', { name:this.state.nameTemplate,template:this.state.templateStr, templateState:this.state.templateState}, config)
     console.log(data)
   //   console.log(data.data._id)
   //   console.log(this.state.idd)
@@ -172,6 +185,13 @@ class EditScreen extends React.Component {
     }));
   }
 
+  handleImageLink(event) {
+    console.log("here")
+    this.setState(state => ({
+      imageLink: event.target.value
+    }));
+  }
+
   handleChangeName(event) {
     this.setState(state => ({
       nameTemplate: event.target.value
@@ -194,7 +214,10 @@ class EditScreen extends React.Component {
     // console.log(ReactDOMServer.renderToString(templatePart))
     /* {TODO: Need backend first */
   }
-  
+
+  componentDidMount = () => {
+    this.setState({userLogin: JSON.parse(localStorage.getItem('userInfo'))})
+  }
 
   render() {
     console.log(this.state.templateStr);
@@ -225,7 +248,17 @@ class EditScreen extends React.Component {
         fontStyle ={this.state.fontStyle}
 
         collectTemplateStates={(update)=>this.setState(state => ({templateState: update}))}
+
+        imageLink={this.state.imageLink}
         />
+    if (this.state.userLogin === null) {
+      return (<>
+        <Container>
+          <h3>You have no authority to access this page.</h3>
+          <h3>Please <Link to='/login'>login</Link> to unlock this function!</h3>
+        </Container>
+      </>)
+    }else{
     return (
       <>
       {/* Save modal */}
@@ -271,6 +304,12 @@ class EditScreen extends React.Component {
             type='file'
             onChange={this.handleUploadImage}
             />
+          <Form.Control
+            type='text'
+            placeholder='Enter an URL for your picture'
+            value={this.state.imageLink}
+            onChange={this.handleImageLink}
+          />
         </Modal.Body>
         <Modal.Footer>
           <Button variant='success' onClick={this.handleCloseImage}>
@@ -473,6 +512,7 @@ class EditScreen extends React.Component {
       </Container>
       </>
     )
+      }
   }
 }
 
