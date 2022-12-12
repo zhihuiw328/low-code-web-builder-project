@@ -232,7 +232,10 @@ class EditScreen extends React.Component {
         />
     if (this.state.userLogin === null) {
       return (<>
-        <h1>Please Login to unlock this function!</h1>
+        <Container>
+          <h3>You have no authority to access this page.</h3>
+          <h3>Please <Link to='/login'>login</Link> to unlock this function!</h3>
+        </Container>
       </>)
     }else{
     return (
@@ -280,6 +283,12 @@ class EditScreen extends React.Component {
             type='file'
             onChange={this.handleUploadImage}
             />
+          <Form.Control
+            type='text'
+            placeholder='Enter an URL for your picture'
+            value={this.state.imageLink}
+            onChange={(e) => {this.setState(state => ({imageLink: e.target.value}))}}
+          />
         </Modal.Body>
         <Modal.Footer>
           <Button variant='success' onClick={this.handleCloseImage}>
