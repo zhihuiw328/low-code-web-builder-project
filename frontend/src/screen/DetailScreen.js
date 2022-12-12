@@ -10,6 +10,8 @@ import BasicTemplate2 from '../component/templates/BasicTemplate2';
 import Card from 'react-bootstrap/Card';
 import * as ReactDOMServer from 'react-dom/server';
 import axios from 'axios'
+import './SaveScreen.css';
+
 
 
 
@@ -43,6 +45,7 @@ class DetailScreen extends React.Component {
           this.setState({
             templateState: response.data.templateState,
             templateName: response.data.template,
+            userId:response.data.userId,
             loaded: true
         })
         }
@@ -79,6 +82,7 @@ class DetailScreen extends React.Component {
                       updatefontStyle={()=>({})}
                       collectTemplateStates={()=>({})}
                       />
+        <Link to={`/template/${this.state.userId}`}><Button className="center-box">Back to Your templates</Button></Link>
       </div>)
     }
   }
