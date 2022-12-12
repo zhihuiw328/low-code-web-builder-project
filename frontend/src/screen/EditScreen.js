@@ -56,7 +56,7 @@ class EditScreen extends React.Component {
     this.handleChangeName = this.handleChangeName.bind(this);
     this.handleClearText = this.handleClearText.bind(this);
     this.handleClearSave = this.handleClearSave.bind(this);
-
+    
     this.handleShowImage = this.handleShowImage.bind(this);
     this.handleCloseImage = this.handleCloseImage.bind(this);
     this.handleCloseSave = this.handleCloseSave.bind(this);
@@ -69,6 +69,7 @@ class EditScreen extends React.Component {
     this.handleShowHideFont = this.handleShowHideFont.bind(this);
 
     this.handleExport = this.handleExport.bind(this);
+    this.handleChangeText = this.handleChangeText.bind(this);
   }
 
   
@@ -109,6 +110,7 @@ class EditScreen extends React.Component {
     }
 
   }
+
   handleCloseImage() {
     this.setState(state => ({
       showImage : false
