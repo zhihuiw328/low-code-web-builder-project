@@ -22,6 +22,10 @@ const Header = () => {
     navigate('/profile')
   }
 
+  const templateHandler = () => {
+    navigate('/template/'+ JSON.parse(localStorage.getItem('userInfo')).name)
+  }
+
   return (
     <>
       <Navbar style={{backgroundColor:'#0c2852'}} fixed="top" >
@@ -37,6 +41,7 @@ const Header = () => {
             {userLogin ? (
               <NavDropdown title={userLogin.name} id="basic-nav-dropdown" style={{color: 'white', fontSize: '60%'}}>
                 <NavDropdown.Item onClick = {profileHandler}>User profile</NavDropdown.Item>
+                <NavDropdown.Item onClick = {templateHandler}>My Templates</NavDropdown.Item>
                 <NavDropdown.Item onClick = {signoutHandler}>Sign Out</NavDropdown.Item>
               </NavDropdown>
             ) : (
