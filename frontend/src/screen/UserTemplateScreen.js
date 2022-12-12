@@ -10,6 +10,7 @@ import * as ReactDOMServer from 'react-dom/server';
 import axios from 'axios'
 import React, { useState } from 'react'
 import { Link, redirect } from 'react-router-dom'
+import TemplateList from '../component/TemplateList';
 
 class UserTemplateScreen extends React.Component {
     constructor(props) {
@@ -76,8 +77,16 @@ class UserTemplateScreen extends React.Component {
             Loading
           </Alert> ;
       
-          } else {
-        return(
+          } 
+          else if(this.state.templateList === []){
+            return(
+                <Container>
+                    <h3>You have no project.</h3>
+                    <h3>Go to <Link to='/template'>create your project from scratch</Link> !</h3>
+                </Container>
+            )
+          }else {
+            return(
             <div>
                 {this.state.templateList?.map((template, index) => (
                     <div>
@@ -85,7 +94,7 @@ class UserTemplateScreen extends React.Component {
                         <Container fluid="md">
                             <Row>
                             <Link to={`/detail/${this.state.idList[index].toString()}`} style={{ textDecoration: 'none' }}>
-                                <Card className='preview' border="dark">
+                                <Card className='preview' border="dark" style={{width: '50%', height: '50%'}}>
                                         {console.log(`/detail/${this.state.idList[index].toString()}`)}
                                         {template}
                                     

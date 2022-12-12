@@ -194,6 +194,7 @@ class BasicTemplate2 extends React.Component {
         if (this.props.templateState !== null &&  this.props.isDetailView === true) {
 
             this.setState((prevState, props) => {
+                console.log(props.templateState)
                 let newPageContent = {
                     pageTitle : {
                         ...props.templateState.pageContent.pageTitle ,
