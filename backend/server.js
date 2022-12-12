@@ -23,7 +23,8 @@ app.use('/api/template', templateRoutes)
 app.use('/api/upload', uploadRoutes)
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 
-app.use('/api/images', uploadRoutes)
+app.use('/api/images', uploadS3Routes)
+
 
 app.use(errorHandler)
 app.use(notFound)
