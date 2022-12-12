@@ -56,18 +56,20 @@ class EditScreen extends React.Component {
     this.handleChangeName = this.handleChangeName.bind(this);
     this.handleClearText = this.handleClearText.bind(this);
     this.handleClearSave = this.handleClearSave.bind(this);
-
+    
     this.handleShowImage = this.handleShowImage.bind(this);
     this.handleCloseImage = this.handleCloseImage.bind(this);
     this.handleCloseSave = this.handleCloseSave.bind(this);
     this.handleUploadSave = this.handleUploadSave.bind(this);
     this.handleUploadImage = this.handleUploadImage.bind(this);
+    this.handleImageLink = this.handleImageLink.bind(this);
 
     this.handleShowHideColor = this.handleShowHideColor.bind(this);
 
     this.handleShowHideFont = this.handleShowHideFont.bind(this);
 
     this.handleExport = this.handleExport.bind(this);
+    this.handleChangeText = this.handleChangeText.bind(this);
   }
 
   
@@ -106,6 +108,7 @@ class EditScreen extends React.Component {
     }
 
   }
+
   handleCloseImage() {
     this.setState(state => ({
       showImage : false
@@ -173,6 +176,13 @@ class EditScreen extends React.Component {
     }));
   }
 
+  handleImageLink(event) {
+    console.log("here")
+    this.setState(state => ({
+      imageLink: event.target.value
+    }));
+  }
+
   handleChangeName(event) {
     this.setState(state => ({
       nameTemplate: event.target.value
@@ -229,6 +239,8 @@ class EditScreen extends React.Component {
         fontStyle ={this.state.fontStyle}
 
         collectTemplateStates={(update)=>this.setState(state => ({templateState: update}))}
+
+        imageLink={this.state.imageLink}
         />
     if (this.state.userLogin === null) {
       return (<>
@@ -287,7 +299,7 @@ class EditScreen extends React.Component {
             type='text'
             placeholder='Enter an URL for your picture'
             value={this.state.imageLink}
-            onChange={(e) => {this.setState(state => ({imageLink: e.target.value}))}}
+            onChange={this.handleImageLink}
           />
         </Modal.Body>
         <Modal.Footer>
