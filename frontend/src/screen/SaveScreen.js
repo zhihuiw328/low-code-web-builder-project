@@ -25,17 +25,19 @@ class SaveScreen extends React.Component {
   }
   render(){
     return (
+
       <Card style={{"textAlign":"center", "margin":"20%"}}>
         <Card.Body>
         <Card.Title>Save your website successfully!</Card.Title>
         <Card.Text>
         You can now go to your profile page to view and share your created websites!
         </Card.Text>
-        <Link to='/'><Button variant='primary'>Home Page</Button></Link>
-        <Link to={'/template/' + this.state.userName}><Button variant='primary'>My Templates</Button></Link>
+        <Link to='/'><Button variant='primary' style={{margin:"1rem"}}>Home Page</Button></Link>
+        <Link to={'/template/' + this.state.userName}><Button variant='primary' style={{margin:"1rem"}}>My Templates</Button></Link>
       </Card.Body>
       <Card.Footer>Thanks for using our website!</Card.Footer>
       </Card>
+
     )
   }
  

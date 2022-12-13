@@ -44,7 +44,7 @@ const TemplateScreen = () => {
       },[]);
 
     return (
-      <div style={{backgroundColor:"lightgray"}}>
+      <div style={{backgroundColor:"lightgray", fontFamily:"Roboto"}}>
         <Container className='stack' gap={0}>
           <Row>
           <div style={{margin: '0 0 3% 0'}}>
