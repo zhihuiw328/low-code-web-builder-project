@@ -36,7 +36,10 @@ export const LoginScreen = () => {
     
 
   return (
+    <div style={{marginTop:"5rem", marginBottom:"20rem"}}>
+      <p></p>
     <FormContainer>
+
       <h1>Sign In</h1>
       <Form onSubmit={submitHandler}>
         <Form.Group controlId='email'>
@@ -59,6 +62,7 @@ export const LoginScreen = () => {
         </Col>
       </Row>
     </FormContainer>
+    </div>
   )
 }
 
