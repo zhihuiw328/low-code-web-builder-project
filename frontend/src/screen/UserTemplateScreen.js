@@ -44,7 +44,7 @@ class UserTemplateScreen extends React.Component {
                 idList.push(template._id)
                 console.log(template.name)
                 let MyComponent = BasicTemplate1;
-                if (template.template == "BasicTemplate2"){
+                if (template.template === "BasicTemplate2"){
                     MyComponent = BasicTemplate2;
                 }
                 let templatePart =  <MyComponent templateState={template.templateState}

@@ -68,9 +68,10 @@ class DetailScreen extends React.Component {
     </Alert> ;
 
     } else {
+      console.log(this.state.templateState)
     return(
       <div>
-      {/* {this.state.templateState.pageContent} */}
+        
        <MyComponent templateState={this.state.templateState}
                       isDetailView={true}
                       updateBackgroundColor={(update)=>this.setState(state => ({backgroundColor: update}))}
