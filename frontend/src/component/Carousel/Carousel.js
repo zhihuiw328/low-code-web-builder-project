@@ -12,11 +12,11 @@ const ControlledCarousel = ({children}) => {
     };
 
     return (
-        <div className='carousel-outer'>
-        <Carousel activeIndex={index} onSelect={handleSelect}>
+        // <div className='carousel-outer'>
+        <Carousel activeIndex={index} onSelect={handleSelect} >
         <Carousel.Item>
             <Image
-            className="d-block w-100 h-100"
+            className="d-block w-100"
             src={require("../component_image/mainscreen_img1.png")}
             alt="First slide"
             />
@@ -30,7 +30,7 @@ const ControlledCarousel = ({children}) => {
         </Carousel.Item>
         <Carousel.Item>
             <Image
-            className="d-block w-100 h-100"
+            className="d-block w-100"
             src={require("../component_image/mainscreen_img2.png")}
             alt="Second slide"
             />
@@ -41,7 +41,7 @@ const ControlledCarousel = ({children}) => {
         </Carousel.Item>
         <Carousel.Item>
         <Image
-            className="d-block w-100 h-100"
+            className="d-block w-100"
             src={require("../component_image/mainscreen_img3.png")}
             alt="Third slide"
             />
@@ -54,7 +54,7 @@ const ControlledCarousel = ({children}) => {
             </Carousel.Caption> */}
         </Carousel.Item>
         </Carousel>
-        </div>
+        // </div>
     );
 }
 
