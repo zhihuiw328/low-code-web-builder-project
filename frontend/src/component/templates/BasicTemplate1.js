@@ -13,7 +13,7 @@ class BasicTemplate1 extends React.Component {
             pageContent : {
                 pageTitle : {
                     name: "pageTitle",
-                    text: "USER INPUT PAGE TITLE",
+                    text: "My Website",
                     style: "div_hover",
                     color: "black",
                     backgroundColor: "white",
@@ -24,7 +24,7 @@ class BasicTemplate1 extends React.Component {
                 },
                 titleText : {
                     name: "titleText",
-                    text: "TITLE TEXT",
+                    text: "Hi, Welcome to my Website! My name is _________.",
                     style: "div_hover",
                     color: "black",
                     backgroundColor: "white",
@@ -35,7 +35,7 @@ class BasicTemplate1 extends React.Component {
                 },
                 subTitle1 : {
                     name: "subTitle1",
-                    text:"SUB TITLE 1",
+                    text:"Enter subtitle 1 here!",
                     style: "div_hover",
                     color: "black",
                     backgroundColor: "white",
@@ -46,7 +46,7 @@ class BasicTemplate1 extends React.Component {
                 },
                 subText1 : {
                     name: "subText1",
-                    text:"SUB TITLE TEXT 1",
+                    text:"You can click each section to change it's text, font, size and text color!",
                     style: "div_hover",
                     color: "black",
                     backgroundColor: "white",
@@ -57,7 +57,7 @@ class BasicTemplate1 extends React.Component {
                 },
                 subTitle2 : {
                     name: "subTitle2",
-                    text:"SUB TITLE TEXT 2",
+                    text:"Subtitle 2 here!",
                     style: "div_hover",
                     color: "black",
                     backgroundColor: "white",
@@ -68,7 +68,7 @@ class BasicTemplate1 extends React.Component {
                 },
                 subText2 : {
                     name: "subText2",
-                    text:"SUBTEXT TEXT 2",
+                    text:"You can also change the background color of your page by selecting \"Edit Color\"",
                     style: "div_hover",
                     color: "black",
                     backgroundColor: "white",

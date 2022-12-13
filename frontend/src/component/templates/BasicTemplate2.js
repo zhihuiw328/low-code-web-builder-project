@@ -12,7 +12,7 @@ class BasicTemplate2 extends React.Component {
             pageContent : {
                 pageTitle : {
                     name: "pageTitle",
-                    text: "USER INPUT PAGE TITLE",
+                    text: "My Website",
                     style: "div_hover",
                     color: "black",
                     backgroundColor: "white",
@@ -24,7 +24,7 @@ class BasicTemplate2 extends React.Component {
                 },
                 titleText : {
                     name: "titleText",
-                    text: "TITLE TEXT",
+                    text: "Hi, Welcome to my Website! My name is _________.",
                     style: "div_hover",
                     color: "black",
                     backgroundColor: "white",
@@ -36,7 +36,7 @@ class BasicTemplate2 extends React.Component {
                 },
                 subTitle1 : {
                     name: "subTitle1",
-                    text:"SUB TITLE 1",
+                    text:"Section 1",
                     style: "div_hover",
                     color: "black",
                     backgroundColor: "white",
@@ -48,7 +48,7 @@ class BasicTemplate2 extends React.Component {
                 },
                 subText1 : {
                     name: "subText1",
-                    text:"SUB TITLE TEXT 1",
+                    text:"Click a section to edit it's text and image!",
                     style: "div_hover",
                     color: "black",
                     backgroundColor: "white",
@@ -60,7 +60,7 @@ class BasicTemplate2 extends React.Component {
                 },
                 subTitle2 : {
                     name: "subTitle2",
-                    text:"SUB TITLE TEXT 2",
+                    text:"Section 2",
                     style: "div_hover",
                     color: "black",
                     backgroundColor: "white",
@@ -72,7 +72,7 @@ class BasicTemplate2 extends React.Component {
                 },
                 subText2 : {
                     name: "subText2",
-                    text:"SUBTEXT TEXT 2",
+                    text:"You can upload images locally or using an online url.",
                     style: "div_hover",
                     color: "black",
                     backgroundColor: "white",
@@ -83,7 +83,7 @@ class BasicTemplate2 extends React.Component {
                 },
                 footer : {
                     name: "footer",
-                    text:"email: cats@no-such-email.com",
+                    text:"email: your_email@or-something-else.com",
                     style: "div_hover",
                     color: "black",
                     backgroundColor: "white",

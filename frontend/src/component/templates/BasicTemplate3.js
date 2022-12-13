@@ -12,7 +12,7 @@ class BasicTemplate3 extends React.Component {
             pageContent : {
                 pageTitle : {
                     name: "pageTitle",
-                    text: "BasicTemplate333333",
+                    text: "Profolio Template",
                     style: "div_hover",
                     color: "black",
                     backgroundColor: "white",
@@ -24,7 +24,7 @@ class BasicTemplate3 extends React.Component {
                 },
                 subTitle1 : {
                     name: "subTitle1",
-                    text:"SUB TITLE 1",
+                    text:"Project 1",
                     style: "div_hover",
                     color: "black",
                     backgroundColor: "white",
@@ -36,7 +36,7 @@ class BasicTemplate3 extends React.Component {
                 },
                 subText1 : {
                     name: "subText1",
-                    text:"SUB TITLE TEXT 1",
+                    text:"Click on any section to start editing!",
                     style: "div_hover",
                     color: "black",
                     backgroundColor: "white",
@@ -48,7 +48,7 @@ class BasicTemplate3 extends React.Component {
                 },
                 subTitle2 : {
                     name: "subTitle2",
-                    text:"SUB TITLE TEXT 2",
+                    text:"Project 2",
                     style: "div_hover",
                     color: "black",
                     backgroundColor: "white",
@@ -60,7 +60,7 @@ class BasicTemplate3 extends React.Component {
                 },
                 subText2 : {
                     name: "subText2",
-                    text:"SUBTEXT TEXT 2",
+                    text:"You can upload an image or use an online url!",
                     style: "div_hover",
                     color: "black",
                     backgroundColor: "white",
@@ -71,7 +71,7 @@ class BasicTemplate3 extends React.Component {
                 },
                 subTitle3 : {
                     name: "subTitle3",
-                    text:"SUB TITLE TEXT 3",
+                    text:"Project 3",
                     style: "div_hover",
                     color: "black",
                     backgroundColor: "white",
@@ -83,7 +83,7 @@ class BasicTemplate3 extends React.Component {
                 },
                 subText3 : {
                     name: "subText3",
-                    text:"SUBTEXT TEXT 3",
+                    text:"Date: 09-09-2019",
                     style: "div_hover",
                     color: "black",
                     backgroundColor: "white",
@@ -94,7 +94,7 @@ class BasicTemplate3 extends React.Component {
                 },
                 subTitle4 : {
                     name: "subTitle4",
-                    text:"SUB TITLE TEXT 4",
+                    text:"Project 4",
                     style: "div_hover",
                     color: "black",
                     backgroundColor: "white",
@@ -106,7 +106,7 @@ class BasicTemplate3 extends React.Component {
                 },
                 subText4 : {
                     name: "subText4",
-                    text:"SUBTEXT TEXT 4",
+                    text:"Date: 08-03-2013",
                     style: "div_hover",
                     color: "black",
                     backgroundColor: "white",

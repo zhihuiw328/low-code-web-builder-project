@@ -9,7 +9,7 @@ const GridCard = (props) => {
           <Card>
             {/* <Card.Img variant="top" src="holder.js/100px160" /> */}
             <Card.Body >
-                <Card.Title className='fs-2 text-center border-bottom border-3 border-info'>
+                <Card.Title className='fs-2 text-center border-bottom border-3'>
                   {props.title}
                 </Card.Title>
               <Card.Text>

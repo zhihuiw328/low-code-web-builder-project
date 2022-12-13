@@ -10,7 +10,7 @@ const Exhibition = (props) => {
             <Card>
               {/* <Card.Img variant="top" src="holder.js/100px160" /> */}
               <Card.Body >
-                <Card.Title className='fs-2 text-center border-bottom border-3 border-info'>{props.title}</Card.Title>
+                <Card.Title className='fs-2 text-center border-bottom border-3'>{props.title}</Card.Title>
                 {/* <CardGroup className='d-flex flex-wrap'> */}
 
                 <Row xs={1} md={3} className="g-2">
