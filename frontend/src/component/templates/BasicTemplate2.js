@@ -190,15 +190,9 @@ class BasicTemplate2 extends React.Component {
 
     componentDidMount() {
         this.props.updateBackgroundColor(this.state.backgroundColor)
-        console.log()
-
-        console.log("here")
-        console.log(this.props.templateState)
-        console.log(this.props.isDetailView)
         if (this.props.templateState !== null &&  this.props.isDetailView === true) {
 
             this.setState((prevState, props) => {
-                console.log(props.templateState)
                 let newPageContent = {
                     pageTitle : {
                         ...props.templateState.pageContent.pageTitle ,
@@ -308,7 +302,6 @@ class BasicTemplate2 extends React.Component {
             if (previousProps.backgroundColor !== this.props.backgroundColor) {
                 this.setState((state, props) => ({backgroundColor: this.props.backgroundColor}))
             }
-            console.log(this.state.imageLink)
             if (previousProps.imageLink !== this.props.imageLink) {
                 this.setState((state, props) => ({imageLink: this.props.imageLink}))
             }
