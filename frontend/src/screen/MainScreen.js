@@ -3,8 +3,9 @@ import ControlledCarousel from '../component/Carousel/Carousel';
 import GridCard, {Groupexample} from '../component/GridCard';
 import PageTitle from '../component/PageTitle';
 import GroupCard from '../component/GroupCard';
-import Exhibition from '../component/exhibition';
+import Exhibition from '../component/Exhibition';
 import Button from 'react-bootstrap/Button';
+import './MainScreen.css';
 
 
 
@@ -15,18 +16,18 @@ const MainScreen = () => {
         setIndex(selectedIndex);
     };
     return (
-        <div>
+        <div style={{backgroundColor:"lightgrey"}}>
         <ControlledCarousel />
         {/* <PageTitle /> */}
         <div className='text-center'>
-        <Button href="/template" className="mb-1" size='lg'>Get started!</Button>
+        <Button href="/template" className="mb-1" style={{border:"none",height:"15vh", width:"25ch", fontSize:"50px",backgroundColor:"orange", padding:"1%", fontStyle:"bold"}}>GET STARTED!</Button>
         </div>
-        
-        <GridCard  title="Introduction" text="Build your website without any code in our visual canvas - try today for absolutely free. Building a site doesn't need to involve coding - design and build with our visual canvas. Get started with one of our best-in-class website templates and customize it to fit your needs."/>
-        
-        <Exhibition title="Exhibition" />
 
-        <GroupCard title="Develop Group" />
+        <GridCard  title="What are we?" text="Building a site doesn't need to involve coding - design and build with our visual canvas. Get started with one of our best-in-class website templates and customize it to fit your needs."/>
+        
+        <Exhibition title="EXHIBITION" />
+
+        <GroupCard title="DEVELOP GROUP" className="no-border" />
 
         </div>
     )
