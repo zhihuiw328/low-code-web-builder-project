@@ -45,6 +45,7 @@ export const ProfileScreen = () => {
 
   return (
         <FormContainer>
+            <div style={{marginTop: '10%'}}></div>
             <h1>User Info</h1>
             {userLogin ? (
                 <Form onSubmit={updateHandler}>
@@ -71,6 +72,7 @@ export const ProfileScreen = () => {
             ) : (
                 <h3>Please <Link to='/login'>login</Link> to see user info </h3>
             )}
+            <div style={{marginBottom: '15%'}}></div>
         </FormContainer>
   )
 }
