@@ -51,7 +51,6 @@ const Header = () => {
         </Navbar.Collapse>
       </Container>
     </Navbar>
-    <div style={{margin: '0 0 10% 0'}}></div>
     </>
   )
 }

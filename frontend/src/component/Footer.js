@@ -5,7 +5,6 @@ import { Row, Col } from 'react-bootstrap'
 export const Footer = () => {
   return (
     <>
-      <div style={{margin: '10% 0 0 0'}}></div>
       <footer style={{backgroundColor: '#0c2852'}}>
         <Container>
           <Row>

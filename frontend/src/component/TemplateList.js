@@ -83,11 +83,10 @@ const TemplateList = (props) =>{
       </Modal>  
       {/* save */}
       {props.templates?.map((template, index) => (
-        <div className='image-container m-3'>
-         <div style = {{padding:20, fontSize:20, float:'left', margin: 'auto', height:500, width:400}}>
-         <Image src={require("./template_image/" + template.image_path)} width="300" height="400" onClick={(event) => HandleClick(event, template.template_type, template.template_id, template.template_str)}>
+        <div className='image-container m-3' style = {{padding:20, fontSize:20, float:'left', margin: 'auto', height:500, width:"auto"}}>
+         <Image className ="image" src={require("./template_image/" + template.image_path)} width="auto" height="70%" onClick={(event) => HandleClick(event, template.template_type, template.template_id, template.template_str)}>
           </Image>
-         </div>
+         
         </div>
        ))}
      </>

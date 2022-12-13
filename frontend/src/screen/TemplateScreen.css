@@ -7,3 +7,9 @@
     flex-wrap: no-wrap;
     overflow-x: scroll;
   }
+.Text{
+  text-align: center;
+}
+  .stack{
+    background-color: lightgray;
+  }
