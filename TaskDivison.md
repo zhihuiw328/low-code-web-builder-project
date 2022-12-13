@@ -16,6 +16,13 @@ Our team of 5 worked together and helped eachother out on most pages.
 - Worked with DetailScreen & EditScreen so that templates can take input from users and uploads
 
 ### Xinyi He
+- Implemented the front-end for TemplateScreen
+    - Add link between Edit page and Template page
+    - Implemented list component which shows the templates in scrollable roll.
+- UserTemplateScreen
+    - Fetch user designed templates from backend
+    - render all templates
+Fixed bugs on pages front-end and back-end, adjusted UI.
 
 ### Carol Song
 
