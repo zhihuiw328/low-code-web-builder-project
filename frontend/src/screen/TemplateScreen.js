@@ -1,10 +1,7 @@
 import React, { useState , useEffect} from 'react';
 import TemplateList from '../component/TemplateList';
 import './TemplateScreen.scss';
-import Stack from 'react-bootstrap/Stack';
-import FormContainer from '../component/FormContainer';
-import { Form, Button, Container, Row, Col } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import {Container, Row} from 'react-bootstrap'
 
 const TemplateScreen = () => {
     const [Basic_templates, setBasicTemplates] = useState([]);
