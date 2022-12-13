@@ -24,10 +24,10 @@ const MainScreen = () => {
         </div>
 
         <GridCard  title="What are we?" text="Building a site doesn't need to involve coding - design and build with our visual canvas. Get started with one of our best-in-class website templates and customize it to fit your needs."/>
-        
-        <Exhibition title="GALLERY" />
-
-        <GroupCard title="DEVELOP GROUP" className="no-border" />
+        <p></p>
+        <Exhibition title="Example" />
+        <p></p>
+        <GroupCard title="Develop Group" className="no-border" />
 
         </div>
     )
