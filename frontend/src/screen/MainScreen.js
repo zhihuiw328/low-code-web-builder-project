@@ -20,12 +20,12 @@ const MainScreen = () => {
         <ControlledCarousel />
         {/* <PageTitle /> */}
         <div className='text-center'>
-        <Button href="/template" className="mb-1" style={{border:"none",height:"15vh", width:"25ch", fontSize:"50px",backgroundColor:"orange", padding:"1%", fontStyle:"bold"}}>GET STARTED!</Button>
+        <Button href="/template" className="mb-1" style={{border:"none",height:"15vh", width:"25ch", fontSize:"50px",backgroundColor:"#25274D", padding:"1%", fontStyle:"bold"}}>GET STARTED!</Button>
         </div>
 
         <GridCard  title="What are we?" text="Building a site doesn't need to involve coding - design and build with our visual canvas. Get started with one of our best-in-class website templates and customize it to fit your needs."/>
         
-        <Exhibition title="EXHIBITION" />
+        <Exhibition title="GALLERY" />
 
         <GroupCard title="DEVELOP GROUP" className="no-border" />
 
