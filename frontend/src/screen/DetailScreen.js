@@ -1,18 +1,10 @@
-import React, { useState } from 'react'
-import Figure from 'react-bootstrap/Figure';
-import Container from 'react-bootstrap/Container';
-import { Link, redirect } from 'react-router-dom'
-import { Form, Button, Col, Row, Badge, Modal, Dropdown, Alert} from 'react-bootstrap'
-import FormContainer from '../component/FormContainer';
-import ControlledCarousel from '../component/Carousel/Carousel';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { Button, Alert} from 'react-bootstrap'
 import BasicTemplate1 from '../component/templates/BasicTemplate1';
 import BasicTemplate2 from '../component/templates/BasicTemplate2';
-import Card from 'react-bootstrap/Card';
-import * as ReactDOMServer from 'react-dom/server';
 import axios from 'axios'
 import './SaveScreen.css';
-
-
 
 
 class DetailScreen extends React.Component {
@@ -71,7 +63,7 @@ class DetailScreen extends React.Component {
       console.log(this.state.templateState)
     return(
       <div>
-        
+        <div style={{marginTop: '10%'}}></div>
        <MyComponent templateState={this.state.templateState}
                       isDetailView={true}
                       updateBackgroundColor={(update)=>this.setState(state => ({backgroundColor: update}))}
@@ -83,8 +75,9 @@ class DetailScreen extends React.Component {
                       updatefontStyle={()=>({})}
                       collectTemplateStates={()=>({})}
                       />
-        <Link to={`/template/${this.state.userId}`}><Button className="center-box">Back to Your templates</Button></Link>
-        <Button className="center-box" onClick={() => {navigator.clipboard.writeText(window.location.href)}}>Copy your website into your clipboard</Button>
+        <Link to={`/template/${this.state.userId}`}><Button style={{marginLeft: '30%'}}>Back to Your templates</Button></Link>
+        <Button style={{marginLeft: '5%'}} onClick={() => {window.confirm(`Share the link to your friend now: http://localhost:3000/shared/${window.location.href.slice(29)}`)}}>Copy your website into your clipboard</Button>
+        <div style={{marginBottom: '10%'}}></div>
       </div>)
     }
   }

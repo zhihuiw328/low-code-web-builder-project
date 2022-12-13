@@ -1,18 +1,18 @@
 import React from 'react';
 import './BasicTemplate.css';
 
-class BasicTemplate2 extends React.Component {
+class BasicTemplate4 extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            templateName: "BasicTemplate2",
+            templateName: "BasicTemplate4",
             isDetailView: false,
             currentSection : null,
             backgroundColor: "white",
             pageContent : {
                 pageTitle : {
                     name: "pageTitle",
-                    text: "USER INPUT PAGE TITLE",
+                    text: "Profolio Template",
                     style: "div_hover",
                     color: "black",
                     backgroundColor: "white",
@@ -24,7 +24,7 @@ class BasicTemplate2 extends React.Component {
                 },
                 titleText : {
                     name: "titleText",
-                    text: "TITLE TEXT",
+                    text: "Type whatever you want here.",
                     style: "div_hover",
                     color: "black",
                     backgroundColor: "white",
@@ -36,7 +36,7 @@ class BasicTemplate2 extends React.Component {
                 },
                 subTitle1 : {
                     name: "subTitle1",
-                    text:"SUB TITLE 1",
+                    text:"Project 1",
                     style: "div_hover",
                     color: "black",
                     backgroundColor: "white",
@@ -48,7 +48,7 @@ class BasicTemplate2 extends React.Component {
                 },
                 subText1 : {
                     name: "subText1",
-                    text:"SUB TITLE TEXT 1",
+                    text:"Click on any section to start editing!",
                     style: "div_hover",
                     color: "black",
                     backgroundColor: "white",
@@ -60,7 +60,7 @@ class BasicTemplate2 extends React.Component {
                 },
                 subTitle2 : {
                     name: "subTitle2",
-                    text:"SUB TITLE TEXT 2",
+                    text:"Project 2",
                     style: "div_hover",
                     color: "black",
                     backgroundColor: "white",
@@ -72,7 +72,30 @@ class BasicTemplate2 extends React.Component {
                 },
                 subText2 : {
                     name: "subText2",
-                    text:"SUBTEXT TEXT 2",
+                    text:"Upload an image or use an online url.",
+                    style: "div_hover",
+                    color: "black",
+                    backgroundColor: "white",
+                    font:"Georgia",
+                    fontSize:15,
+                    fontStyle:"italic",
+                    imageLink:null
+                },
+                subTitle3 : {
+                    name: "subTitle3",
+                    text:"Project 3",
+                    style: "div_hover",
+                    color: "black",
+                    backgroundColor: "white",
+                    font:"Georgia",
+                    fontSize:30,
+                    fontStyle:"bold",
+                    imageLink:null
+
+                },
+                subText3 : {
+                    name: "subText4",
+                    text:"You can also choose color, font, size",
                     style: "div_hover",
                     color: "black",
                     backgroundColor: "white",
@@ -129,6 +152,16 @@ class BasicTemplate2 extends React.Component {
                         },
                         subText2 : {
                             ...prevState.pageContent.subText2 ,
+                            style: "div_hover"
+
+                        },
+                        subTitle3 : {
+                            ...prevState.pageContent.subTitle3 ,
+                            style: "div_hover"
+
+                        },
+                        subText3 : {
+                            ...prevState.pageContent.subText3 ,
                             style: "div_hover"
 
                         },
@@ -227,6 +260,16 @@ class BasicTemplate2 extends React.Component {
                     },
                     subText2 : {
                         ...props.templateState.pageContent.subText2 ,
+                        style: "none"
+
+                    },
+                    subTitle3 : {
+                        ...props.templateState.pageContent.subTitle3 ,
+                        style: "none"
+
+                    },
+                    subText3 : {
+                        ...props.templateState.pageContent.subText3 ,
                         style: "none"
 
                     },
@@ -420,6 +463,37 @@ class BasicTemplate2 extends React.Component {
                             }
                         </div>
                     </div>
+                    
+                    <div  style={{textAlign:"center", 
+                        flexDirection:"column",
+                        width: "45%"}}>
+                        <div onClick={(e) => this.handleSectionClick(e, "subTitle3")} 
+                        className={this.state.pageContent.subTitle3.style}
+                        style={{backgroundColor: this.state.backgroundColor,
+                            color: this.state.pageContent.subTitle3.color,
+                            height: "10vh",
+                            fontFamily: this.state.pageContent.subTitle3.font,
+                            fontSize: this.state.pageContent.subTitle3.fontSize,
+                            fontWeight: this.state.pageContent.subTitle3.fontStyle}}>
+                        <p>{this.state.pageContent.subTitle3.text}</p>
+                        </div>
+
+                        <div onClick={(e) => this.handleSectionClick(e, "subText3")} 
+                            className={this.state.pageContent.subText3.style}
+                            style={{backgroundColor:this.state.backgroundColor,
+                                color: this.state.pageContent.subText3.color,
+                                height: "33vh",
+                                fontFamily: this.state.pageContent.subText3.font,
+                                fontSize: this.state.pageContent.subText3.fontSize,
+                                fontWeight: this.state.pageContent.subText3.fontStyle}}>
+                            <p>{this.state.pageContent.subText3.text}</p>
+                            {this.state.pageContent.subText3.imageLink != null
+                                // ? <>{this.state.pageContent.subText2.imageLink}</>
+                                ?  <img style={{ height: "20vh"}} src={this.state.pageContent.subText3.imageLink}></img>
+                                : <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbh_-7NSQ7J-RyYt42aP7R2ujOEvNUZtkKvGSX4DWMyA&s"}></img>
+                            }
+                        </div>
+                    </div>
                 </div>
 
                 <div onClick={(e) => this.handleSectionClick(e, "footer")} 
@@ -453,4 +527,4 @@ class BasicTemplate2 extends React.Component {
 
 
 
-export default BasicTemplate2;
+export default BasicTemplate4;

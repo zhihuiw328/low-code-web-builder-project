@@ -3,6 +3,10 @@ import ControlledCarousel from '../component/Carousel/Carousel';
 import GridCard, {Groupexample} from '../component/GridCard';
 import PageTitle from '../component/PageTitle';
 import GroupCard from '../component/GroupCard';
+import Exhibition from '../component/exhibition';
+import Button from 'react-bootstrap/Button';
+
+
 
 const MainScreen = () => {
     const [index, setIndex] = useState(0);
@@ -14,7 +18,14 @@ const MainScreen = () => {
         <div>
         <ControlledCarousel />
         {/* <PageTitle /> */}
+        <div className='text-center'>
+        <Button href="/template" className="mb-1" size='lg'>Get started!</Button>
+        </div>
+        
         <GridCard  title="Introduction" text="Build your website without any code in our visual canvas - try today for absolutely free. Building a site doesn't need to involve coding - design and build with our visual canvas. Get started with one of our best-in-class website templates and customize it to fit your needs."/>
+        
+        <Exhibition title="Exhibition" />
+
         <GroupCard title="Develop Group" />
 
         </div>
