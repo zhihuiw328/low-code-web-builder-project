@@ -20,12 +20,14 @@ class UserTemplateScreen extends React.Component {
         templateList:[],
         nameList:[],
         idList:[],
-        loaded:false
+        loaded:false,
+        userName: "",
       }
     }
 
     componentDidMount() {
         const userLogin = JSON.parse(localStorage.getItem('userInfo'));
+
       const config = {
         headers: {
             'Content-Type': 'application/json',
@@ -64,7 +66,8 @@ class UserTemplateScreen extends React.Component {
                 templateList:templateList,
                 nameList:nameList,
                 idList:idList,
-                loaded:true
+                loaded:true,
+                userName: userLogin.name,
             })
 
         }
@@ -87,13 +90,13 @@ class UserTemplateScreen extends React.Component {
             )
           }else {
             return(
-            <div className='templatePage'>
+            <div className='templatePage' style={{backgroundcolor:"lightgray"}}>
             <Container fluid="md">
                 <Row>
                 <div style={{margin: '0 0 3% 0'}}>
                         </div>
                 <div  id='Text' style={{ fontSize: 30, textAlign: 'center', marginLeft: 30, marginTop:20 }}>
-                    <h1> My Own Templates  </h1>
+                    <h1> {this.state.userName + "'s Own Websites"}  </h1>
                     </div>
                     <div style={{margin: '0 0 3% 0'}}>
                         </div>

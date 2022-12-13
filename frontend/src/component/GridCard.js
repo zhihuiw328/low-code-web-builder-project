@@ -1,24 +1,31 @@
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import Image from 'react-bootstrap/Image'
+import Container from 'react-bootstrap/Container';
 
 const GridCard = (props) => {
   return (
-    <Row xs={1} md={1} className="g-1" style={{paddingLeft: '2%', paddingRight: '2%', paddingBottom: '2%'}}>
+    <Container  fluid>
+    <Row style={{paddingLeft: '2%', paddingRight: '2%', paddingBottom: '2%', paddingTop: '3%'}}>
         <Col >
-          <Card>
+          <Card style={{border:"none",height:"15rem"}}>
             {/* <Card.Img variant="top" src="holder.js/100px160" /> */}
-            <Card.Body >
-                <Card.Title className='fs-2 text-center border-bottom border-3'>
+            <Card.Body style={{border:"none"}}>
+                <Card.Title className='fs-1  border-bottom border-3' style={{fontSize:"20px", color:"#29648A"}}>
                   {props.title}
                 </Card.Title>
-              <Card.Text>
+              <Card.Text className='fs-5'>
                 {props.text}
               </Card.Text>
             </Card.Body>
           </Card>
         </Col>
+        <Col>
+          <Image fluid style={{height:"15rem",width:"40rem", margin:"auto"}} src={require("./component_image/logo.jpg")} />
+        </Col>
     </Row>
+    </Container>
   );
 }
 
