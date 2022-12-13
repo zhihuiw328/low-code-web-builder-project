@@ -92,14 +92,18 @@ class UserTemplateScreen extends React.Component {
                     <div>
                         {/* <Badge> */}
                         <Container fluid="md">
-                            <Row>
-                            <Link to={`/detail/${this.state.idList[index].toString()}`} style={{ textDecoration: 'none' }}>
-                                <Card className='preview' border="dark" style={{width: '50%', height: '50%'}}>
+                            <Row className='no-gutters'>
+                                <Col>
+
+                                <Link to={`/detail/${this.state.idList[index].toString()}`} style={{ textDecoration: 'none' }}>
+                                <Card className='preview' border="dark" >
                                         {console.log(`/detail/${this.state.idList[index].toString()}`)}
                                         {template}
                                     
                                 </Card>  
                             </Link>
+                                </Col>
+                            
                        
                             </Row>
                             <Row className='justify-content-center'>

@@ -3,6 +3,13 @@
 	transition: transform 0.2s;
 	display: flex;
 	justify-content: flex-start;
+	height: 60%;
+	width: auto;
+	padding:20;
+}
+.image{
+	width:auto;
+	height: 50vh;
 }
 
 .image-container:hover {

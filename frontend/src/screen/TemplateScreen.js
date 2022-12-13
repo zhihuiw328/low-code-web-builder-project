@@ -18,7 +18,7 @@ const TemplateScreen = () => {
     const getBasicTemplates = () => {
 
         var data = [];
-        for (var i = 0; i < 2; i++) {
+        for (var i = 0; i < 4; i++) {
             data[i] = {};
             data[i]["template_type"] = 0;
             data[i]["template_id"] = i;
@@ -33,22 +33,23 @@ const TemplateScreen = () => {
       },[]);
 
     return (
-        <Stack gap={0}>
-            <div id='Text' style={{ fontSize: 30, textAlign: 'left', marginLeft: 30, marginTop:20 }}>
-            <h1> Template A </h1>
+        <Stack className='stack' gap={0}>
+                
+            <div id='Text' style={{ fontSize: 30, textAlign: 'center', marginLeft: 30, marginTop:20 }}>
+            <h1> Basic Templates </h1>
                 </div><div className='templates'>
                 <TemplateList templates= {Basic_templates}></TemplateList>
             </div>
-            <div id='Text' style={{ fontSize: 30, textAlign: 'left', marginLeft: 30 }}>
+            {/* <div id='Text' style={{ fontSize: 30, textAlign: 'center', marginLeft: 30 }}>
             <h1> Template B </h1>
         </div><div className='templates'>
                 <TemplateList templates= {Basic_templates}></TemplateList>
-            </div>
-            <div id='Text' style={{ fontSize: 30, textAlign: 'left', marginLeft: 30 }}>
+            </div> */}
+            {/* <div id='Text' style={{ fontSize: 30, textAlign: 'center', marginLeft: 30 }}>
             <h1> Template C </h1>
         </div><div className='templates'>
                 <TemplateList templates= {Basic_templates}></TemplateList>
-            </div>
+            </div> */}
         </Stack>
     )
 }

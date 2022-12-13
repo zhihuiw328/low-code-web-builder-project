@@ -8,6 +8,8 @@ import FormContainer from '../component/FormContainer';
 import ControlledCarousel from '../component/Carousel/Carousel';
 import BasicTemplate1 from '../component/templates/BasicTemplate1';
 import BasicTemplate2 from '../component/templates/BasicTemplate2';
+import BasicTemplate3 from '../component/templates/BasicTemplate3';
+import BasicTemplate4 from '../component/templates/BasicTemplate4';
 import DetailScreen from './DetailScreen';
 import Card from 'react-bootstrap/Card';
 import * as ReactDOMServer from 'react-dom/server';
@@ -18,7 +20,7 @@ import axios from 'axios'
 class EditScreen extends React.Component {
   constructor(props) {
     super(props);
-    const TemplateList = [[BasicTemplate1, BasicTemplate2]];
+    const TemplateList = [[BasicTemplate1, BasicTemplate2, BasicTemplate3, BasicTemplate4]];
     const templateInfo = JSON.parse(localStorage.getItem('templateStr'));
     const userLogin = localStorage.getItem("userInfo")
     if (!userLogin || !templateInfo){
