@@ -15,6 +15,9 @@ import Card from 'react-bootstrap/Card';
 import * as ReactDOMServer from 'react-dom/server';
 import axios from 'axios'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBrush, faPalette, faUpload, faFont } from '@fortawesome/free-solid-svg-icons'
+
 
 
 class EditScreen extends React.Component {
@@ -339,6 +342,8 @@ handleSubmitSave(){
       <Container fluid="md">
         <Row className='space'>
         </Row>
+        <Row className='space'>
+        </Row>
 
         <Row>
           {/* Template */}
@@ -349,17 +354,16 @@ handleSubmitSave(){
           </Col>
 
           {/* Buttons for editing */}
-          <Col>
-            <Row className='space'>
-            </Row>
-
+          <Col  style={{margin:"auto", height: "20rem"}}>
+            <div>
+          
             <Row className='edit-button'>
-              <Button variant='secondary' onClick={this.handleShowImage}>Upload Image</Button>  
+              <Button variant='secondary' onClick={this.handleShowImage}> <FontAwesomeIcon icon={faUpload}/> Upload Image</Button>  
             </Row>
 
             {/* Text edit */}
             <Row className='edit-button'>
-              <Button variant='secondary' onClick={this.handleShowHideText}>Edit Text Block</Button>  
+              <Button variant='secondary' onClick={this.handleShowHideText}><FontAwesomeIcon icon={faBrush}/>  Edit Text Block</Button>  
               { this.state.showText
 
               ? <Card className='input-text'>
@@ -388,7 +392,7 @@ handleSubmitSave(){
 
             {/* Color selection */}
             <Row className='edit-button'>
-              <Button variant='secondary' onClick={this.handleShowHideColor}>Edit Color</Button>  
+              <Button variant='secondary' onClick={this.handleShowHideColor}> <FontAwesomeIcon icon={faPalette}/> Edit Color</Button>  
             </Row>
 
     
@@ -401,14 +405,15 @@ handleSubmitSave(){
                       Background Color
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                      <Dropdown.Item onClick={()=>this.setState({backgroundColor:"black"})} active={this.state.backgroundColor === "black"} style={{"background-color":"black", "color":"white"}}>Black</Dropdown.Item>
-                      <Dropdown.Item onClick={()=>this.setState({backgroundColor:"white"})} active={this.state.backgroundColor === "white"} style={{"background-color":"white", "color":"black"}}>White</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({backgroundColor:"black"})} active={this.state.backgroundColor === "black"} style={{"background-color":"black", color:"white"}}>Black</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({backgroundColor:"white"})} active={this.state.backgroundColor === "white"} style={{"background-color":"white", color:"black"}}>White</Dropdown.Item>
                       <Dropdown.Item onClick={()=>this.setState({backgroundColor:"#f78f8f"})} active={this.state.backgroundColor === "#f78f8f"} style={{"background-color":"#f78f8f"}}>Red</Dropdown.Item>
                       <Dropdown.Item onClick={()=>this.setState({backgroundColor:"#f7cb92"})} active={this.state.backgroundColor === "#f7cb92"} style={{"background-color":"#f7cb92"}}>Orange</Dropdown.Item>
                       <Dropdown.Item onClick={()=>this.setState({backgroundColor:"lightpink"})} active={this.state.backgroundColor === "lightpink"}  style={{"background-color":"lightpink"}}>Pink</Dropdown.Item>
                       <Dropdown.Item onClick={()=>this.setState({backgroundColor:"lightblue"})} active={this.state.backgroundColor === "lightblue"} style={{"background-color":"lightblue"}}>Blue</Dropdown.Item>
                       <Dropdown.Item onClick={()=>this.setState({backgroundColor:"#fff5b3"})} active={this.state.backgroundColor === "#fff5b3"} style={{"background-color":"#fff5b3"}}>Yellow</Dropdown.Item>
                       <Dropdown.Item onClick={()=>this.setState({backgroundColor:"#d9ffb3"})} active={this.state.backgroundColor === "#d9ffb3"} style={{"background-color":"#d9ffb3"}}>Green</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({backgroundColor:"grey"})} active={this.state.backgroundColor === "grey"} style={{"background-color":"grey"}}>Grey</Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
                   </Col>
@@ -416,16 +421,18 @@ handleSubmitSave(){
                   <Col>
                   <Dropdown className="dropdown-box">
                     <Dropdown.Toggle style={{color: this.state.color ==="white" ?"black":"white", background: this.state.color}} >
-                      Text Color
+                    Text Color
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
-                      <Dropdown.Item onClick={()=>this.setState({color:"black"})} active={this.state.color === "black"}>Black</Dropdown.Item>
-                      <Dropdown.Item onClick={()=>this.setState({color:"white"})} active={this.state.color === "white"}>White</Dropdown.Item>
-                      <Dropdown.Item onClick={()=>this.setState({color:"red"})} active={this.state.color === "red"}>Red</Dropdown.Item>
-                      <Dropdown.Item onClick={()=>this.setState({color:"orange"})} active={this.state.color === "orange"}>Orange</Dropdown.Item>
-                      <Dropdown.Item onClick={()=>this.setState({color:"pink"})} active={this.state.color === "pink"}>Pink</Dropdown.Item>
-                      <Dropdown.Item onClick={()=>this.setState({color:"blue"})} active={this.state.color === "blue"}>Blue</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({color:"black"})} active={this.state.color === "black"} style={{color:"black"}}>Black</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({color:"blue"})} active={this.state.color === "darkblue"} style={{color:"blue"}}>Blue</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({color:"white"})} active={this.state.color === "white"} style={{color:"black"}}>White</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({color:"red"})} active={this.state.color === "red"} style={{color:"red"}}>Red</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({color:"orange"})} active={this.state.color === "orange"} style={{color:"orange"}}>Orange</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({color:"pink"})} active={this.state.color === "pink"} style={{color:"pink"}}>Pink</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({color:"green"})} active={this.state.color === "green"} style={{color:"green"}}>Green</Dropdown.Item>
+                      <Dropdown.Item onClick={()=>this.setState({color:"grey"})} active={this.state.color === "grey"} style={{color:"grey"}}>Grey</Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
                   </Col>
@@ -435,7 +442,7 @@ handleSubmitSave(){
 
             {/* Font selection */}
             <Row className='edit-button'>
-              <Button variant='secondary' onClick={this.handleShowHideFont}>Edit Font</Button>  
+              <Button variant='secondary' onClick={this.handleShowHideFont}><FontAwesomeIcon icon={faFont}/> Edit Font</Button>  
             </Row>
     
             {
@@ -506,8 +513,7 @@ handleSubmitSave(){
           <Button variant='primary'  onClick={this.handleSubmitSave}>Save</Button>  
         </Row>
 
-        <Row className='space'>
-        </Row>
+      
             {/* <Row>
               <Col className ="link-button">
                 <Link to='/'><Button variant='primary'>Return Home</Button></Link>
@@ -516,12 +522,14 @@ handleSubmitSave(){
               <Link to='/Template'><Button variant='primary'>Return Template</Button></Link>
               </Col>
             </Row> */}
-
+          </div>
           </Col>
         </Row>
 
-        {/* <Row className='space'>
-        </Row> */}
+        <Row className='space'>
+        </Row>
+        <Row className='space'>
+        </Row>
 
         {/* <Row  className='justify-content-md-center'>
           <Button variant='primary' style={{ width: '60rem'}} onClick={()=>{}}>Export Model as HTML/CSS</Button>  
@@ -531,6 +539,8 @@ handleSubmitSave(){
         
           
       </Container>
+      <Row className='space'>
+      </Row>
       </>
     )
       }
