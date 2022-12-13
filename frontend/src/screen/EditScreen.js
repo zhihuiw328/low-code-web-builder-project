@@ -105,11 +105,14 @@ class EditScreen extends React.Component {
     try {
       const config = {
         headers: {
-          'Content-Type': 'multipart/form'
+          'Content-Type': 'multipart/form-data'
         }
       }
 
-      const { image } = await axios.post('/api/upload', formData, config)
+      const { data } = await axios.post('/api/upload', formData, config)
+
+      this.setState({imageLink: '../../../../../' + data.split('/')[3]})
+      console.log(this.state.imageLink)
 
     }catch (error){
       console.log(error)
