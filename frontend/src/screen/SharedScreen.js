@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Button, Alert} from 'react-bootstrap'
+import { Button, Alert, Container} from 'react-bootstrap'
 import BasicTemplate1 from '../component/templates/BasicTemplate1';
 import BasicTemplate2 from '../component/templates/BasicTemplate2';
 import axios from 'axios'
@@ -57,9 +57,10 @@ class SharedScreen extends React.Component {
     </Alert> ;
 
     } else {
-      console.log(this.state.templateState)
+      console.log(this.state.templateState.backgroundColor)
     return(
-      <div>
+      <div style={{backgroundColor: this.state.templateState.backgroundColor}}>
+        <div style={{margin: '0 0 8% 0', backgroundColor: this.state.templateState.backgroundColor}}></div>
         
        <MyComponent templateState={this.state.templateState}
                       isDetailView={true}
