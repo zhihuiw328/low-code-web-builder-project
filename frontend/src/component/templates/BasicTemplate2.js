@@ -383,8 +383,8 @@ class BasicTemplate2 extends React.Component {
                             <p>{this.state.pageContent.subText1.text}</p>
                             {/* TODO:  */}
                             {this.state.pageContent.subText1.imageLink != null
-                                ? <img style={{ height: "20vh"}} src={this.state.pageContent.subText1.imageLink}></img>
-                                : <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbh_-7NSQ7J-RyYt42aP7R2ujOEvNUZtkKvGSX4DWMyA&s"}></img>
+                                ? <img style={{ height: "20vh"}} src={this.state.pageContent.subText1.imageLink} alt="User uploaded photo in section 1"></img>
+                                : <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbh_-7NSQ7J-RyYt42aP7R2ujOEvNUZtkKvGSX4DWMyA&s"} alt="Default cat photo"></img>
                             }
                             
                         </div>
@@ -415,8 +415,8 @@ class BasicTemplate2 extends React.Component {
                             <p>{this.state.pageContent.subText2.text}</p>
                             {this.state.pageContent.subText2.imageLink != null
                                 // ? <>{this.state.pageContent.subText2.imageLink}</>
-                                ?  <img style={{ height: "20vh"}} src={this.state.pageContent.subText2.imageLink}></img>
-                                : <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbh_-7NSQ7J-RyYt42aP7R2ujOEvNUZtkKvGSX4DWMyA&s"}></img>
+                                ?  <img style={{ height: "20vh"}} src={this.state.pageContent.subText2.imageLink} alt="User uploaded photo in section 2"></img>
+                                : <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbh_-7NSQ7J-RyYt42aP7R2ujOEvNUZtkKvGSX4DWMyA&s"} alt="Default cat photo"></img>
                             }
                         </div>
                     </div>

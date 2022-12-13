@@ -7,7 +7,7 @@ const Exhibition = (props) => {
     return (
       <Row  style={{paddingLeft: '2%', paddingRight: '2%', paddingBottom: '2%'}}>
           <Col>
-            <Image style={{height:"25rem",width:"45rem", margin:"1rem"}} src={require("./component_image/mainscreen_sample2.png")} />
+            <Image alt="An sample UIUC school website built by our website" style={{height:"25rem",width:"45rem", margin:"1rem"}} src={require("./component_image/mainscreen_sample2.png")} />
           </Col>
 
           <Col style={{height:"25rem",width:"40rem", margin:"auto"}}>
