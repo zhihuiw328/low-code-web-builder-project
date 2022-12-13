@@ -3,7 +3,7 @@ import TemplateList from '../component/TemplateList';
 import './TemplateScreen.scss';
 import Stack from 'react-bootstrap/Stack';
 import FormContainer from '../component/FormContainer';
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button, Container, Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 const TemplateScreen = () => {
@@ -23,7 +23,7 @@ const TemplateScreen = () => {
             data[i]["template_type"] = 0;
             data[i]["template_id"] = i;
             data[i]["template_str"] = "BasicTemplate" + (i+1);
-            data[i]["image_path"] = "IMG_2188.JPG"; //"BasicTemplate" + i + ".JPG";
+            data[i]["image_path"] = "temp" + (i+1) + ".jpeg";; //"BasicTemplate" + i + ".JPG";
           }
         setBasicTemplates(data);
       };
@@ -36,7 +36,7 @@ const TemplateScreen = () => {
             data[i]["template_type"] = 0;
             data[i]["template_id"] = i;
             data[i]["template_str"] = "BasicTemplate" + (i+1);
-            data[i]["image_path"] = "IMG_2188.JPG"; //"BasicTemplate" + i + ".JPG";
+            data[i]["image_path"] = "temp" + (i+1) + ".jpeg";; //"BasicTemplate" + i + ".JPG";
           }
         setBTemplates(data);
       };
@@ -47,25 +47,41 @@ const TemplateScreen = () => {
       },[]);
 
     return (
-        <Stack className='stack' gap={0}>
-                <div  id='Text' style={{ fontSize: 30, textAlign: 'center', marginLeft: 30, marginTop:20 }}>
-            <h1> Choose your template  </h1>
+      <div style={{backgroundColor:"lightgray"}}>
+        <Container className='stack' gap={0}>
+          <Row>
+          <div style={{margin: '0 0 3% 0'}}>
+                    </div>
+          </Row>
+          <Row>
+            <div  id='Text' style={{ fontSize: 30, textAlign: 'center', marginLeft: 30, marginTop:20 }}>
+              <h1> Choose your template  </h1>
             </div>
-            <div className='divider' id='Text' style={{ fontSize: 30, textAlign: 'center', marginLeft: 30, marginTop:20 }}>
+          </Row>
+          <Row>
+          <div className='divider' id='Text' style={{ fontSize: 30, textAlign: 'center', marginLeft: 30, marginTop:20 }}>
             <h3> Basic Templates </h3>
                 </div>
-                <div className='templates'>
+          </Row>
+
+           <Row>
+           <div className='templates'>
                 <TemplateList templates= {Basic_templates}></TemplateList>
             </div>
-            {/* <div className="divider" style={{margin: '0 0 3% 0'}}>
-            </div> */}
-            <div className='divider' id='Text' style={{ fontSize: 30, textAlign: 'center', marginLeft: 30 }}>
-            <h3> Profile Templates </h3>
+           </Row>
+          <Row>
+          <div className='divider' id='Text' style={{ fontSize: 30, textAlign: 'center', marginLeft: 30 }}>
+            <h3> Portfolio Template </h3>
               </div>
-              <div className='templates'>
+          </Row>
+          <Row>
+          <div className='templates'>
                 <TemplateList templates= {b_templates}></TemplateList>
             </div>
-        </Stack>
+          </Row>
+        </Container>
+      </div>
+        
     )
 }
 
