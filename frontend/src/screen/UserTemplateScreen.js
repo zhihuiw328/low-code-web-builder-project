@@ -1,16 +1,14 @@
 
-import Figure from 'react-bootstrap/Figure';
 import Container from 'react-bootstrap/Container';
-import { Form, Button, Col, Row, Badge, Modal, Dropdown, Alert} from 'react-bootstrap'
+import { Col, Row, Alert} from 'react-bootstrap'
 import "./UserTemplateScreen.scss"
 import BasicTemplate1 from '../component/templates/BasicTemplate1';
 import BasicTemplate2 from '../component/templates/BasicTemplate2';
 import Card from 'react-bootstrap/Card';
-import * as ReactDOMServer from 'react-dom/server';
 import axios from 'axios'
-import React, { useState } from 'react'
-import { Link, redirect } from 'react-router-dom'
-import TemplateList from '../component/TemplateList';
+import React from 'react'
+import { Link } from 'react-router-dom'
+
 
 class UserTemplateScreen extends React.Component {
     constructor(props) {
