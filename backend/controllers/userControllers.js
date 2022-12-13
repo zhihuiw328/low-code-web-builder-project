@@ -21,39 +21,85 @@ exports.loginUser = asyncHandler(async(req, res) => {
 })
 
 exports.registerUser = asyncHandler(async(req, res) => {
-    const {name, email, password, passwordSecond} = req.body;
+    const {name, email, password, confirmedPassword} = req.body;
     
     if (!name || !email || !password) {
+        res.status(400);
         throw new Error("Invalid name or email or password!");
     }
 
-    if (password !== passwordSecond) {
+    if (password !== confirmedPassword) {
+        res.status(400);
         throw new Error('password does not match');
     }
-
+    // console.log(name, email, password, confirmedPassword)
     //  check email unique
-    const existUser = await user.findOne({'email': email});
+    const existUser = await User.findOne({'email': email});
+    // console.log(existUser)
     if (existUser) {
-        res.status(500);
-        throw new Error("Email Exists");
+        res.status(400)
+        res.json({
+            'message': 'Email Exists',
+            'data': existUser
+        });
+        return;
     }
 
-    const user = await User.insertMany([{
-        'name': name,
-        'email': email,
-        'password': password,
-        'dateCreated': Date.now()
-    }]);
-
+    const user = await User.create({name, email, password, dateCreated: Date.now()})
+    
     if (user) {
         res.status(201);
         res.json({
             'message': 'OK',
-            'data': user[0]
+            'data': user
         });
     } else {
-        res.status(500);
+        res.status(400);
         throw new Error('Created user failed');
+    }
+})
+
+exports.updateUser = asyncHandler (async(req, res) => {
+    const {name, email, originPassword, password, confirmedPassword} = req.body;
+    
+    if (!name || !email || !password || !originPassword || !confirmedPassword) {
+        res.status(400);
+        throw new Error("Invalid input! Please enter every field");
+    }
+
+    if (password !== confirmedPassword) {
+        res.status(400);
+        throw new Error('Password does not match');
+    }
+
+    const user = await User.findById(req.user._id)
+
+    console.log(user)
+
+    if(user && !(await user.matchPassword(originPassword))){
+        res.status(400);
+        throw new Error('Origin password is wrong!');
+    }
+
+    if(user){
+        user.name = req.body.name || user.name;
+        user.email = req.body.email || user.email;
+        if(req.body.password){
+            user.password = req.body.password
+        }
+
+        const updatedUser = await user.save()
+        
+        res.json({
+            _id: updatedUser._id,
+            name: updatedUser.name,
+            email: updatedUser.email,
+            token: generateToken(updatedUser._id)
+        })
+
+    }else{
+        res.status(404)
+        throw new Error('User not found')
     }
 })
 
