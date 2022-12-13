@@ -2,7 +2,7 @@
 import Figure from 'react-bootstrap/Figure';
 import Container from 'react-bootstrap/Container';
 import { Form, Button, Col, Row, Badge, Modal, Dropdown, Alert} from 'react-bootstrap'
-import "./UserTemplateScreen.css"
+import "./UserTemplateScreen.scss"
 import BasicTemplate1 from '../component/templates/BasicTemplate1';
 import BasicTemplate2 from '../component/templates/BasicTemplate2';
 import Card from 'react-bootstrap/Card';
@@ -87,11 +87,31 @@ class UserTemplateScreen extends React.Component {
             )
           }else {
             return(
-            <div>
+            <div className='templatePage'>
+            <Container fluid="md">
+                <Row>
+                <div style={{margin: '0 0 3% 0'}}>
+                        </div>
+                <div  id='Text' style={{ fontSize: 30, textAlign: 'center', marginLeft: 30, marginTop:20 }}>
+                    <h1> My Own Templates  </h1>
+                    </div>
+                    <div style={{margin: '0 0 3% 0'}}>
+                        </div>
+                </Row>
+            
                 {this.state.templateList?.map((template, index) => (
                     <div>
                         {/* <Badge> */}
-                        <Container fluid="md">
+                      
+                        
+                            <Row>
+                            
+                            </Row>
+                        <Row className='justify-content-center divider'>
+                         
+                         {this.state.nameList[index]}
+                     
+                     </Row>
                             <Row className='no-gutters'>
                                 <Col>
 
@@ -103,19 +123,15 @@ class UserTemplateScreen extends React.Component {
                                 </Card>  
                             </Link>
                                 </Col>
-                            
-                       
                             </Row>
-                            <Row className='justify-content-center'>
-                         
-                                {this.state.nameList[index]}
-                            
+                            <Row>
+                            <div style={{margin: '0 0 5% 0' ,backgroundColor:'lightgray'}}>
+                                </div>
                             </Row>
-                            </Container>
                         {/* </Badge> */}
                     </div>
                 ))}
-                 
+                 </Container>
             </div>
         )
     }

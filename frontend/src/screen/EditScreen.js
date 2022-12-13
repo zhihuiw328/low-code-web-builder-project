@@ -320,6 +320,8 @@ handleSubmitSave(){
             type='file'
             onChange={this.handleUploadImage}
             />
+            <div style={{margin: '0 0 3% 0'}}>
+            </div>
           <Form.Control
             type='text'
             placeholder='Enter an URL for your picture'
@@ -370,9 +372,10 @@ handleSubmitSave(){
                   />
               </Form>
               <Modal.Footer>
-                <Button variant='danger' onClick={this.handleClearText}>
+                <Button className = "mx-3 my-3" variant='danger' onClick={this.handleClearText}>
                   Clear
                 </Button>
+                
                 <Button variant='success' onClick={this.handleShowHideText}>
                   Return
                 </Button>
@@ -387,6 +390,7 @@ handleSubmitSave(){
             <Row className='edit-button'>
               <Button variant='secondary' onClick={this.handleShowHideColor}>Edit Color</Button>  
             </Row>
+
     
             {
               this.state.showColor
@@ -495,6 +499,15 @@ handleSubmitSave(){
             </Row>
 
             {/* Return buttons */}
+            <Row className='space'>
+        </Row>
+        <Row className='edit-button'>
+
+          <Button variant='primary'  onClick={this.handleSubmitSave}>Save</Button>  
+        </Row>
+
+        <Row className='space'>
+        </Row>
             {/* <Row>
               <Col className ="link-button">
                 <Link to='/'><Button variant='primary'>Return Home</Button></Link>
@@ -514,15 +527,7 @@ handleSubmitSave(){
           <Button variant='primary' style={{ width: '60rem'}} onClick={()=>{}}>Export Model as HTML/CSS</Button>  
         </Row> */}
 
-        <Row className='space'>
-        </Row>
-        
-        <Row  className='justify-content-md-center'>
-          <Button variant='primary' style={{ width: '60rem'}} onClick={this.handleSubmitSave}>Save</Button>  
-        </Row>
 
-        <Row className='space'>
-        </Row>
         
           
       </Container>
