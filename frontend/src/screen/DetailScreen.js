@@ -62,8 +62,8 @@ class DetailScreen extends React.Component {
     } else {
       console.log(this.state.templateState)
     return(
-      <div>
-        <div style={{marginTop: '10%'}}></div>
+      <div style={{backgroundColor:this.state.templateState.backgroundColor}}>
+        <div style={{height:"10vh", backgroundColor:this.state.templateState.backgroundColor}}></div>
        <MyComponent templateState={this.state.templateState}
                       isDetailView={true}
                       updateBackgroundColor={(update)=>this.setState(state => ({backgroundColor: update}))}
@@ -77,7 +77,7 @@ class DetailScreen extends React.Component {
                       />
         <Link to={`/template/${this.state.userId}`}><Button style={{marginLeft: '30%'}}>Back to Your templates</Button></Link>
         <Button style={{marginLeft: '5%'}} onClick={() => {window.confirm(`Share the link to your friend now: http://localhost:3000/shared/${window.location.href.slice(29)}`)}}>Copy your website into your clipboard</Button>
-        <div style={{marginBottom: '10%'}}></div>
+        <div style={{backgroundColor:this.state.templateState.backgroundColor}}></div>
       </div>)
     }
   }
