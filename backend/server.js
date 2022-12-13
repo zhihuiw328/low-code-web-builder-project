@@ -25,7 +25,7 @@ app.use('/api/upload', uploadRoutes)
 app.use('/api/images', uploadRoutes)
 
 const dirname = path.resolve()
-if(env.NODE_ENV === 'production'){
+if(process.env.NODE_ENV === 'production'){
     app.use(express.static(path.join(dirname, '/frontend/build')))
     console.log(path.resolve(dirname, 'frontend', 'build', 'index.html'))
     app.get('*', (req, res) => res.sendFile(path.resolve(dirname, 'frontend', 'build', 'index.html')))
