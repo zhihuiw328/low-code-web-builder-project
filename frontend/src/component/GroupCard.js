@@ -18,7 +18,7 @@ const GroupCard = (props) => {
                 <Row xs={3} md={5} className="g-2">
                     <Col>
                     <Card>
-                        <Card.Img className='w-25 rounded mx-auto d-block mt-1' variant="top" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" />
+                        <Card.Img className='w-25 rounded mx-auto d-block mt-1' variant="top" src={require("./component_image/wan.png")}/>
                         <Card.Body>
                         <Card.Title className='text-center'>Zhihui Wan</Card.Title>
                         <Card.Text className='text-center'>
@@ -31,7 +31,7 @@ const GroupCard = (props) => {
 
                     <Col>
                     <Card>
-                        <Card.Img className='w-25 rounded mx-auto d-block mt-1' variant="top" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" />
+                        <Card.Img className='w-25 rounded mx-auto d-block mt-1' variant="top" src={require("./component_image/lai.jpeg")} />
                         <Card.Body>
                         <Card.Title className='text-center'>Lilac Lai</Card.Title>
                         <Card.Text className='text-center'>
@@ -43,7 +43,7 @@ const GroupCard = (props) => {
 
                     <Col>
                     <Card>
-                        <Card.Img className='w-25 rounded mx-auto d-block mt-1' variant="top" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" />
+                        <Card.Img className='w-25 rounded mx-auto d-block mt-1' variant="top" src={require("./component_image/song.jpeg")} />
                         <Card.Body>
                         <Card.Title className='text-center'>Carol Song</Card.Title>
                         <Card.Text className='text-center'>
@@ -56,7 +56,7 @@ const GroupCard = (props) => {
 
                     <Col>
                     <Card>
-                        <Card.Img className='w-25 rounded mx-auto d-block mt-1' variant="top" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" />
+                        <Card.Img className='w-25 rounded mx-auto d-block mt-1' variant="top" src={require("./component_image/he.JPG")}  />
                         <Card.Body>
                         <Card.Title className='text-center'>Xinyi He</Card.Title>
                         <Card.Text className='text-center'>
@@ -69,7 +69,7 @@ const GroupCard = (props) => {
 
                     <Col>
                     <Card>
-                        <Card.Img className='w-25 rounded mx-auto d-block mt-1' variant="top" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" />
+                        <Card.Img className='w-25 rounded mx-auto d-block mt-1' variant="top" src={require("./component_image/zhou.jpeg")} />
                         <Card.Body>
                         <Card.Title className='text-center'>Yang Zhou</Card.Title>
                         <Card.Text className='text-center'>

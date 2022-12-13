@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './TemplateList.css';
 import Image from 'react-bootstrap/Image'
 import { Form, Button, Row, Col,Modal } from 'react-bootstrap'
