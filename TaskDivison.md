@@ -35,3 +35,4 @@ Our team of 5 worked together and helped eachother out on most pages.
 
 - Implement the back-end structure, routes and controllers, connected database
 - Implement the front-end for different components, like carousel and gridcard, and general pages for the app, like mainscreen pages.
+- Pop up error message from sever side.
