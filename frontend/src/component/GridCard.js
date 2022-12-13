@@ -22,7 +22,7 @@ const GridCard = (props) => {
           </Card>
         </Col>
         <Col>
-          <Image fluid style={{height:"15rem",width:"40rem", margin:"auto"}} src={require("./component_image/logo.jpg")} />
+          <Image alt="Logo of Website Builder" fluid style={{height:"15rem",width:"40rem", margin:"auto"}} src={require("./component_image/logo.jpg")} />
         </Col>
     </Row>
     </Container>
