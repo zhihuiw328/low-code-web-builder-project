@@ -11,6 +11,7 @@ const Header = () => {
 
   const userLogin = JSON.parse(localStorage.getItem('userInfo'))
 
+
   const navigate  = useNavigate()
   const signoutHandler = () => {
     localStorage.removeItem('userInfo')
@@ -25,13 +26,23 @@ const Header = () => {
   const templateHandler = () => {
     navigate('/template/'+ JSON.parse(localStorage.getItem('userInfo')).name)
   }
+  window.addEventListener('scroll', event=>{
+
+    let navbar = document.getElementById('navbar')
+    
+    if (window.scrollY > 0){
+        navbar.style.fontSize = '150%'
+
+    } else {
+      navbar.style.fontSize = "200%"
+    }})
 
   return (
     <>
-      <Navbar style={{backgroundColor:'#0c2852'}} fixed="top" >
+      <Navbar  style={{backgroundColor:'#0c2852'}} fixed="top" >
       <Container>
-        <Navbar.Brand className='ms-auto' href="/" style={{color: 'white', fontSize: '150%'}}>Website Builder</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" style={{color: 'white'}} />
+        <Navbar.Brand className='ms-auto' id="navbar" href="/" style={{color: 'white', fontSize: '200%'}}>Website Builder</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" data-toggle="collapse" style={{color: 'white'}} />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto" >
             <Nav.Link href="/" style={{color: 'white'}}>Home</Nav.Link>
