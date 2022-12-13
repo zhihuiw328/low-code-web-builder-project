@@ -9,13 +9,13 @@
   }
 #Text{
   text-align: center;
-  font-family: "Monospace", Monaco;
+  font-family: "Monospace", Helvetica;
 }
   .stack{
     background-color: lightgray;
   }
 .divider{
-  font-family: "Monospace", Monaco;
+  font-family: "Monospace", Helvetica;
     color: black;
     font-size: 6vh;
     text-shadow: 1px 1px 1px rgba(0, 0, 0, .45);
@@ -33,12 +33,12 @@
     }
     
     &::before {
-      background: linear-gradient(to right, rgba(240,240,240,0), #fff);
+      background: linear-gradient(to right, rgba(240,240,240,0), darkblue);
       margin-right: 4vh;
     }
     
     &::after {
-      background: linear-gradient(to left, rgba(240,240,240,0), #fff);
+      background: linear-gradient(to left, rgba(240,240,240,0), darkblue);
       margin-left: 4vh;
     } 
 }
