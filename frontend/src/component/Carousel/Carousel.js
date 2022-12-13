@@ -18,31 +18,20 @@ const ControlledCarousel = ({children}) => {
         <Carousel.Item>
             <Image
             className="d-block w-100"
-            src={require("../component_image/mod2.png")}
+            src={require("../component_image/mainscreen_img1.png")}
             alt="Second slide"
             />
-            {/* <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </Carousel.Caption> */}
         </Carousel.Item>
+
         <Carousel.Item>
             <Image
             className="d-block w-100"
-            src={require("../component_image/mainscreen_img1.png")}
+            src={require("../component_image/mod2.png")}
             alt="First slide"
             />
-            {/* <div className='d-block w-100-item carousel-item'>
-                item1
-            </div> */}
-            {/* <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-            </Carousel.Caption> */}
         </Carousel.Item>
         
         </Carousel>
-        // </div>
     );
 }
 

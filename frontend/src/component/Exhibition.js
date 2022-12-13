@@ -10,7 +10,7 @@ const Exhibition = (props) => {
             <Image alt="An sample UIUC school website built by our website" style={{height:"25rem",width:"45rem", margin:"1rem"}} src={require("./component_image/mainscreen_sample2.png")} />
           </Col>
 
-          <Col style={{height:"25rem",width:"40rem", margin:"auto"}}>
+          <Col style={{height:"25rem", width:"40rem", margin:"auto"}}>
   
             <Card>
               {/* <Card.Img variant="top" src="holder.js/100px160" /> */}

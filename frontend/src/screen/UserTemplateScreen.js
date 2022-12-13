@@ -41,10 +41,8 @@ class UserTemplateScreen extends React.Component {
           let nameList = [];
           let idList = [];
             response.data.data.forEach(template => {
-                console.log(template)
                 nameList.push(template.name)
                 idList.push(template._id)
-                console.log(template.name)
                 let MyComponent = BasicTemplate1;
                 if (template.template === "BasicTemplate2"){
                     MyComponent = BasicTemplate2;
@@ -74,7 +72,6 @@ class UserTemplateScreen extends React.Component {
       })
     }
     render(){
-        console.log(this.state.nameList)
         if (!this.state.loaded) {
             return <Alert variant="secondary">
             Loading
@@ -120,7 +117,6 @@ class UserTemplateScreen extends React.Component {
 
                                 <Link to={`/detail/${this.state.idList[index].toString()}`} style={{ textDecoration: 'none' }}>
                                 <Card className='preview' border="dark" >
-                                        {console.log(`/detail/${this.state.idList[index].toString()}`)}
                                         {template}
                                     
                                 </Card>  
