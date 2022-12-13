@@ -1,11 +1,11 @@
 # Task Division & Documentation
-## Nov 21 Week
+Our team of 5 worked together and helped eachother out on most pages.
 ### Yang Zhou
 ### Lilac Lai
 - Start building front-end pages/ structure
-- Building Templates for Users
-    - user_input: Each template component will take in user inputs as one prop as a JSON.
-        - heading_text
+- Designed and nuilt 4 templates (BasicTemplate1, BasicTemplate2, BasicTemplate3, BasicTemplate4)
+    - Templates need to take text, images, and styling inputs from props & place them correctly.
+- Worked with DetailScreen & EditScreen so that templates can take input from users and uploads
 ### Xinyi He
 
 ### Carol Song
