@@ -60,7 +60,26 @@ exports.registerUser = asyncHandler(async(req, res) => {
 })
 
 exports.updateUser = asyncHandler (async(req, res) => {
+    const {name, email, originPassword, password, confirmedPassword} = req.body;
+    
+    if (!name || !email || !password || !originPassword || !confirmedPassword) {
+        res.status(400);
+        throw new Error("Invalid input! Please enter every field");
+    }
+
+    if (password !== confirmedPassword) {
+        res.status(400);
+        throw new Error('Password does not match');
+    }
+
     const user = await User.findById(req.user._id)
+
+    console.log(user)
+
+    if(user && !(await user.matchPassword(originPassword))){
+        res.status(400);
+        throw new Error('Origin password is wrong!');
+    }
 
     if(user){
         user.name = req.body.name || user.name;
@@ -75,7 +94,6 @@ exports.updateUser = asyncHandler (async(req, res) => {
             _id: updatedUser._id,
             name: updatedUser.name,
             email: updatedUser.email,
-            isAdmin: updatedUser.isAdmin,
             token: generateToken(updatedUser._id)
         })
 

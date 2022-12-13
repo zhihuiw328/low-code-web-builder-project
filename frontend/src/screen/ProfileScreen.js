@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Form, Button, Row, Col } from 'react-bootstrap'
+import { Form, Button } from 'react-bootstrap'
 import FormContainer from '../component/FormContainer'
 import axios from 'axios'
 
@@ -8,6 +8,7 @@ export const ProfileScreen = () => {
 
     const [email, setEmail] = useState('')
     const [name, setName] = useState('')
+    const [originPassword, setOriginPassword] = useState('')
     const [password, setPassword] = useState('')
     const [confirmedPassword, setConfirmedPassword] = useState('')
 
@@ -24,7 +25,6 @@ export const ProfileScreen = () => {
 
     const updateHandler = async(e) => {
         e.preventDefault()
-        console.log(userLogin)
         if(password !== confirmedPassword){
             alert("The passwords you entered two times are not consistence!")
         }else if(name === '' || email === '' || password === '' || confirmedPassword === ''){
@@ -36,9 +36,15 @@ export const ProfileScreen = () => {
                     Authorization: `Bearer ${userLogin.token}`
                 }
             }
-            const { data } = await axios.put(`/api/users/${userLogin._id}`, { email, name, password, confirmedPassword }, config)
-            localStorage.setItem('userInfo', JSON.stringify(data))
-            navigate('/profile')
+            console.log(userLogin._id)
+            try{
+                const { data } = await axios.put(`/api/users/${userLogin._id}`, { email, name, originPassword, password, confirmedPassword }, config)
+                alert('Update Successfully!')
+                localStorage.setItem('userInfo', JSON.stringify(data))
+            }catch(error){
+                alert(error.response.data.message)
+            }
+            window.location.reload()
         }
     }
 
@@ -57,11 +63,15 @@ export const ProfileScreen = () => {
                         <Form.Label>Email Address</Form.Label>
                         <Form.Control type='email' placeholder='Change Email' value={email} onChange={(e) => setEmail(e.target.value)}></Form.Control>
                     </Form.Group>
+                    <Form.Group controlId='originPassword'>
+                        <Form.Label>Origin Password</Form.Label>
+                        <Form.Control type='password' placeholder='Origin Password' value={originPassword} onChange={(e) => setOriginPassword(e.target.value)}></Form.Control>
+                    </Form.Group>
                     <Form.Group controlId='password'>
                         <Form.Label>Password</Form.Label>
-                        <Form.Control type='password' placeholder='Change Password' value={password} onChange={(e) => setPassword(e.target.value)}></Form.Control>
+                        <Form.Control type='password' placeholder='Changed Password' value={password} onChange={(e) => setPassword(e.target.value)}></Form.Control>
                     </Form.Group>
-                    <Form.Group controlId='email'>
+                    <Form.Group controlId='confirmedPassword'>
                         <Form.Label>Confirmed Password</Form.Label>
                         <Form.Control type='password' placeholder='Enter Your Changed Password Again' value={confirmedPassword} onChange={(e) => setConfirmedPassword(e.target.value)}></Form.Control>
                     </Form.Group>
