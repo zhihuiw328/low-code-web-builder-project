@@ -1,19 +1,20 @@
 .templates {
+  
     display: block;
     /* justify-content: center; */
-    margin: auto;
+    margin: 20 auto;
     /* overflow-y: scroll; */
     display: flex;
     flex-wrap: no-wrap;
     overflow-x: scroll;
+  
   }
+
+  
 #Text{
   text-align: center;
 
 }
-  .stack{
-    background-color: lightgray;
-  }
 .divider{
     // font-family: "Fantasy", Papyrus;
     color: black;

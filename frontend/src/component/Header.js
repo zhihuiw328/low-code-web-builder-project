@@ -52,7 +52,7 @@ const Header = () => {
             {userLogin ? (
               <NavDropdown title={userLogin.name} id="basic-nav-dropdown" style={{color: 'white'}}>
                 <NavDropdown.Item onClick = {profileHandler}>User profile</NavDropdown.Item>
-                <NavDropdown.Item onClick = {templateHandler}>My Templates</NavDropdown.Item>
+                <NavDropdown.Item onClick = {templateHandler}>My Websites</NavDropdown.Item>
                 <NavDropdown.Item onClick = {signoutHandler}>Sign Out</NavDropdown.Item>
               </NavDropdown>
             ) : (
