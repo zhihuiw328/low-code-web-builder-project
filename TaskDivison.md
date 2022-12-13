@@ -29,3 +29,9 @@ Our team of 5 worked together and helped eachother out on most pages.
 - Help on My template Page.
 - Fix bug on Template backend.
 - Fix bug on alerts at frontend.
+
+
+### Zhihui Wan
+
+- Implement the back-end structure, routes and controllers, connected database
+- Implement the front-end for different components, like carousel and gridcard, and general pages for the app, like mainscreen pages.
