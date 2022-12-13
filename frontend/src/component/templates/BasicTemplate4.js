@@ -1,18 +1,18 @@
 import React from 'react';
 import './BasicTemplate.css';
 
-class BasicTemplate2 extends React.Component {
+class BasicTemplate4 extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            templateName: "BasicTemplate2",
+            templateName: "BasicTemplate4",
             isDetailView: false,
             currentSection : null,
             backgroundColor: "white",
             pageContent : {
                 pageTitle : {
                     name: "pageTitle",
-                    text: "USER INPUT PAGE TITLE",
+                    text: "BasicTemplate4444444",
                     style: "div_hover",
                     color: "black",
                     backgroundColor: "white",
@@ -453,4 +453,4 @@ class BasicTemplate2 extends React.Component {
 
 
 
-export default BasicTemplate2;
+export default BasicTemplate4;
