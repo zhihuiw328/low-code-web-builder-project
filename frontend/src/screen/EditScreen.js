@@ -356,7 +356,8 @@ handleSubmitSave(){
           {/* Buttons for editing */}
           <Col  style={{margin:"auto", height: "20rem"}}>
             <div>
-          
+            <Row className='space'>
+            </Row>
             <Row className='edit-button'>
               <Button variant='secondary' onClick={this.handleShowImage}> <FontAwesomeIcon icon={faUpload}/> Upload Image</Button>  
             </Row>
@@ -506,8 +507,7 @@ handleSubmitSave(){
             </Row>
 
             {/* Return buttons */}
-            <Row className='space'>
-        </Row>
+
         <Row className='edit-button'>
 
           <Button variant='primary'  onClick={this.handleSubmitSave}>Save</Button>  
